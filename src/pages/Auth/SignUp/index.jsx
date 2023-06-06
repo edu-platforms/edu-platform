@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import  { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { useSteps } from "@/hooks";
 import { setType } from "@/store";
@@ -8,11 +8,11 @@ import { Steps, Divider } from "antd";
 import { SetUpForm, StartUpForm, CodeForm } from "@/modules";
 import { apple, google, arrowBack, facebookLogo } from "@/assets";
 import { userSignUpFacebook, userSignUpGoogle } from "../../../store";
-
+import { useMedia } from "../../../hooks";
 export default function SignUp() {
   const dispatch = useDispatch();
   const { next, prev, current } = useSteps();
-
+ const {isMobile} = useMedia()
   const handleChoose = (type) => {
     dispatch(setType(type));
     next();
@@ -28,7 +28,7 @@ export default function SignUp() {
 
   return (
     <Sign>
-      <div className="sign-up-container">
+      <div className={`sign-up-container ${isMobile ? 'px-4':''}`}>
         <button
           className={current === 0 ? "hidden" : "absolute left-10 top-[5%]"}
           onClick={() => prev()}
@@ -45,16 +45,16 @@ export default function SignUp() {
                 Who will be learning English on edu-platform?
               </h2>
 
-              <div className="w-full flex-center gap-x-5 mt-10">
+              <div className={`w-full flex-center gap-x-5 mt-10 ${isMobile ? "flex-wrap gap-y-5 justify-center" : ''}`}>
                 <button
-                  className="sign-up-btn"
+                  className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
                   onClick={() => handleChoose("me")}
                 >
                   Me
                 </button>
 
                 <button
-                  className="sign-up-btn"
+                  className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
                   onClick={() => handleChoose("child")}
                 >
                   My Child
@@ -77,7 +77,7 @@ export default function SignUp() {
                 </button>
               </div>
 
-              <Divider className="px-40">or</Divider>
+              <Divider className="px-2">or</Divider>
 
               <SetUpForm next={next} />
             </Fragment>

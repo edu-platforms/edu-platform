@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { removeLocalStorage } from "@/libs";
+import { removeLocalStorage } from "../../libs";
 
 const initialState = {
   user: {
-    type: "",
+    whom: "",
+    role:"user",
     email: "",
     password: "",
+    passwordConfirm:"",
   },
   teacher: {
     user_displayname: "",
@@ -39,13 +41,17 @@ const authSlice = createSlice({
     },
 
     setType: (state, { payload }) => {
-      state.user.type = payload;
+      state.user.whom = payload;
+      console.log(state.user.whom);
     },
 
     setLogin: (state, { payload }) => {
       state.user.email = payload.email;
       state.user.password = payload.password;
+      state.user.passwordConfirm = payload.passwordConfirm;
     },
+
+    // setFullName:
 
     setToken: (state, { payload }) => {
       state.token = payload;

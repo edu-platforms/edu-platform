@@ -1,3 +1,4 @@
+
 import { Form, Row, Typography } from "antd";
 import { EmailField, PasswordField } from "@/components";
 import { Link } from "react-router-dom";
@@ -16,6 +17,12 @@ export const SetUpForm = ({ isSignIn, onFinish }) => {
         name="password"
         label="Password"
         placeholder="Enter a password"
+      />
+
+      <PasswordField
+        name="passwordConfirm"
+        label="password Confirm"
+        placeholder="Enter a password Confirm"
       />
 
       <Primary block submit rounded className="mb-3">
