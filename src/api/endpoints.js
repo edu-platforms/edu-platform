@@ -7,7 +7,7 @@ export const endpoints = {
   otp:"/otp",
 
 
-  become:"/become-teacher",
+  become:"/become-tutor",
   
   google:"/user-auth-google",
   signUpGoogle:"/callback",
