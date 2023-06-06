@@ -116,7 +116,7 @@
   }
 
   .student-dash-list {
-    @apply h-full flex-column justify-between;
+    @apply h-full flex-column justify-between items-start;
   }
 
   .student-dash-list li {
