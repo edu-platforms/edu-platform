@@ -1,0 +1,334 @@
+@layer components {
+  .flex-center {
+    @apply flex items-center;
+  }
+
+  .flex-column {
+    @apply flex flex-col;
+  }
+
+  .flex-start {
+    @apply flex items-start;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-items-center {
+    @apply flex items-center justify-center;
+  }
+
+  .grid-template {
+    @apply grid grid-cols-1 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-12 gap-5 
+  }
+
+  .flex-template {
+    @apply flex flex-wrap gap-5 justify-around items-center
+  }
+
+  /* Student */
+  .avatar-active {
+    @apply absolute flex-items-center bg-white w-[20px] h-[20px] rounded-full right-0 bottom-1;
+  }
+
+  .search-input {
+    @apply w-80 py-2 pl-12 bg-transparent rounded-full border border-gray placeholder:text-sm;
+  }
+
+  .search-thumb {
+    @apply absolute left-5 top-[50%];
+    @apply rounded-10 translate-y-[-50%] translate-x-[-20%];
+  }
+
+  .subs_active::after{
+    @apply w-full h-1 bg-green block rounded-t-md content-[''] mt-1;
+  }
+
+  /* Antd */
+  .prefix-icon {
+    @apply absolute top-1/2 left-5 translate-y-[-50%] z-10;
+  }
+
+  /* Auth */
+  .sign {
+    @apply relative h-screen flex-items-center bg-blue-600;
+  }
+
+  .sign > div {
+    @apply rounded-20 z-10 bg-white shadow-sign
+  }
+
+  .sign_mobile > div {
+    @apply z-10 bg-white mx-auto h-full
+
+  }
+
+  .sign::before {
+    @apply content-[""] absolute w-full h-full bg-[url('../assets/img/clouds.png')] bg-cover bg-center;
+  }
+
+  .sign-title {
+    @apply text-4xl font-normal text-center
+  }
+
+  .sign-up-container {
+    @apply relative w-[800px] h-[560px] py-6 px-24;
+  }
+
+  .sign-in-container {
+    @apply w-[500px] h-[520px] flex-items-center flex-col p-12;
+  }
+
+  .sign-in-mobile-container {
+    @apply max-w-[480px] h-screen flex-items-center flex-col p-6 ss:p-12;
+  }
+
+  .sign-in-mobile-btn {
+    @apply w-full text-black h-14 my-2 bg-[#ECEEF1] text-center rounded-20;
+  }
+
+  .sign-up-title {
+    @apply text-2xl mb-6;
+  }
+
+  .sign-up-btn {
+    @apply w-1/2 h-24 px-5 border hover:border-green border-gray-100 rounded-20 text-start;
+  }
+
+  /* Footer */
+  .footer-list {
+    @apply flex items-start justify-between;
+  }
+
+  .footer-list li {
+    @apply space-y-2.5;
+  }
+
+  .footer-list li > div {
+    @apply flex-center gap-x-5;
+  }
+
+  /* Dashboard Student */
+  .student-dash {
+    @apply flex gap-x-5;
+  }
+
+  .student-dash-list {
+    @apply h-full flex-column justify-between;
+  }
+
+  .student-dash-list li {
+    @apply text-lg font-medium;
+  }
+
+  .student-dash-link {
+    @apply relative;
+  }
+
+  .student-dash-link-active::after,
+  .student-dash-link::before {
+    @apply content-[""] absolute w-[100%] h-[2px] -bottom-1.5 left-0 rounded-full bg-green;
+  }
+
+  .student-dash-link::before {
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .student-dash-link:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+
+  .student-dash-link-mobile{
+    @apply py-3 px-6 rounded-3xl min-w-fit flex justify-center items-center transition-all duration-500 border;
+  }
+
+  .dash-card {
+    @apply flex;
+  }
+
+  .dash-card p {
+    @apply opacity-60;
+  }
+
+  .dash-card-thumb {
+    @apply w-[70px] h-[70px] object-cover rounded-full;
+  }
+
+  .dash-card-content {
+    @apply flex-column justify-between;
+  }
+
+  .dash-card-content-item {
+    @apply flex-center gap-x-1;
+  }
+
+  .dash-actions {
+    @apply flex-center gap-x-8;
+  }
+
+  .dash-actions button {
+    @apply flex-center gap-x-1;
+  }
+
+  /* Payment */
+  .payment-label {
+    @apply relative h-20 mb-4 p-4 flex-center bg-slate-100 rounded-10 cursor-pointer;
+    @apply border border-slate-100 hover:border-green hover:text-green transition-all ease-in duration-200;
+  }
+
+  .payment-label-active {
+    @apply border border-green text-green;
+  }
+
+  .paymentRadio {
+    @apply w-6 h-6 rounded-full border border-green flex-items-center;
+  }
+
+  .paymentRadio li {
+    @apply w-4 h-4 rounded-full transition-all ease-in duration-200;
+  }
+
+  .summary {
+    @apply w-full my-4 xl:px-4 px-0;
+  }
+
+  .summary li {
+    @apply flex-between text-lg border-t border-gray py-5;
+  }
+
+  .summary li:last-child {
+    @apply border-b;
+  }
+
+  .teacher-list {
+    @apply w-full space-y-5 mt-5;
+  }
+
+  .teacher-list li {
+    @apply flex-between py-1 px-3 border-gray-200 border-b;
+  }
+
+  .teacher-list li > p {
+    @apply text-lg font-medium;
+  }
+
+  .teacher-list li > button {
+    @apply text-lg text-green;
+  }
+
+  /* History */
+  .history-statistics {
+    @apply w-full flex-between;
+  }
+
+  .history-statistics li {
+    @apply flex-center flex-col gap-y-2 border-r pr-11;
+  }
+
+  .history-statistics li:last-child {
+    @apply border-none pr-0
+  }
+
+  .history-statistics h4 {
+    @apply font-bold text-xl;
+  }
+  
+  /* Courses */
+  .courses-title {
+    @apply font-extrabold text-2xl leading-8 text-[#1A1A1A]
+  }
+
+  .courses-description {
+    @apply font-normal max-w-[957px] min-w-[476px] text-base leading-6 text-[#5C5C5C]
+  }
+  
+  /* Courses Card: Tutor */
+  .tutor-courses-card {
+    @apply col-span-3 box-border h-[420px] w-[305px]
+    /* h-[400px] */
+    /* md: h-[416px] h-[416px] */
+  }
+
+  .tutor-footer {
+    @apply bg-[#E6E6E6] rounded-2xl p-5 mt-1
+  }
+
+  .tutor-footer a {
+    @apply font-extrabold text-2xl leading-8 text-[#1A1A1A]
+  }
+
+  .tutor-card-country {
+    @apply text-base mt-1 leading-5 text-[#5C5C5C]
+  }
+
+  .tutor-courses-card img {
+    /* @apply w-full rounded-2xl object-cover */
+  }
+
+  .tutor-courses-card-img{
+    @apply w-full h-[320px] object-cover rounded-2xl
+  }
+
+  /* Courses Card: Courses */
+  .courses-card {
+    @apply col-span-3 relative
+  }
+  
+  .courses-card img {
+    @apply w-full rounded-2xl object-cover
+  }
+
+  .rating {
+    @apply font-medium text-base leading-5 text-[#1A1A1A]
+  }
+
+  .footer-primary {
+    @apply py-[20px] flex-column justify-between pl-[20px] h-[132px] w-full bg-[#E6E6E6] rounded-2xl relative bottom-[35px]
+  }
+
+  .footer-title {
+    @apply tracking-[0.01em] font-semibold text-2xl leading-7 text-[#1A1A1A]
+  }
+
+  .footer-bottom {
+    @apply flex gap-4 font-normal text-sm leading-5 text-[#5C5C5C] mt-4
+  }
+
+  .card-degree {
+    @apply border-r-[2px] border-r-[#CCCCCC] pr-4 
+  }
+
+  .course-card-btn {
+    @apply absolute hidden group-hover:block right-3 bottom-3 cursor-pointer !w-9 !h-9 p-[10px] bg-white !rounded-lg hover:bg-[#fbfafa]
+  }
+
+  .white-btn {
+    @apply !border border-[#CCCCCC] text-[#1A1A1A] font-medium text-base leading-6 flex items-center hover:!text-[#1a1a1a] !py-[10px] !px-[155px] !bg-white
+  }
+
+  /* Home Page */
+  .main-title {
+    @apply font-extrabold text-4xl
+  }
+
+  .slide {
+    @apply bg-[#E6E6E6] pt-5 px-5 pb-9 rounded-2xl max-w-[413px] w-full h-[320px]
+  }
+
+  .slide img {
+    @apply w-20 h-20 rounded-full object-cover
+  }
+
+  /* Cources Details */
+  .cource-info {
+    @apply font-medium text-base leading-5 text-gray-800
+  }
+
+  .hashtag {
+    @apply border border-[#EBEBEB] rounded-20 py-2 px-5 bg-[#F5F5F5] text-gray-CCC text-base
+  }
+}

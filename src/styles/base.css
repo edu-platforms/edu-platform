@@ -1,0 +1,109 @@
+@layer base {
+  @font-face {
+    font-family: "Bw Nista Grotesk";
+    src: url("/fonts/BwNistaGrotesk-Bold.eot");
+    src: local("Bw Nista Grotesk Bold"), local("BwNistaGrotesk-Bold"),
+      url("/fonts/BwNistaGrotesk-Bold.eot?#iefix") format("embedded-opentype"),
+      url("/fonts/BwNistaGrotesk-Bold.woff2") format("woff2"),
+      url("/fonts/BwNistaGrotesk-Bold.woff") format("woff"),
+      url("/fonts/BwNistaGrotesk-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Bw Nista Grotesk";
+    src: url("/fonts/BwNistaGrotesk-Medium.eot");
+    src: local("Bw Nista Grotesk Medium"), local("BwNistaGrotesk-Medium"),
+      url("/fonts/BwNistaGrotesk-Medium.eot?#iefix") format("embedded-opentype"),
+      url("/fonts/BwNistaGrotesk-Medium.woff2") format("woff2"),
+      url("/fonts/BwNistaGrotesk-Medium.woff") format("woff"),
+      url("/fonts/BwNistaGrotesk-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Bw Nista Grotesk";
+    src: url("/fonts/BwNistaGrotesk-Regular.eot");
+    src: local("Bw Nista Grotesk Regular"), local("BwNistaGrotesk-Regular"),
+      url("/fonts/BwNistaGrotesk-Regular.eot?#iefix") format("embedded-opentype"),
+      url("/fonts/BwNistaGrotesk-Regular.woff2") format("woff2"),
+      url("/fonts/BwNistaGrotesk-Regular.woff") format("woff"),
+      url("/fonts/BwNistaGrotesk-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PP Formula";
+    src: url("/fonts/PP-Formula/PPFormula-SemiExtendedBold.eot");
+    src: local("PP-Formula"), local("PP-Formula"),
+      url("/fonts/PP-Formula/PPFormula-SemiExtendedBold.eot?#iefix") format("embedded-opentype"),
+      url("/fonts/PP-Formula/PPFormula-SemiExtendedBold.woff2") format("woff2"),
+      url("/fonts/PP-Formula/PPFormula-SemiExtendedBold.woff") format("woff"),
+      url("/fonts/PP-Formula/PPFormula-SemiExtendedBold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    @apply font-grotesk;
+  }
+
+  header {
+    @apply flex-center py-4 sm:py-6 px-4 sm:px-6 md:px-14 lg:px-24 shadow-header;
+  }
+
+  footer {
+    @apply py-4 sm:py-11 px-4 sm:px-6 md:px-14 lg:px-24;
+  }
+
+  main {
+    @apply !min-h-[470px] py-6 xl:py-10 md:py-5 px-4 sm:px-6 md:px-14 lg:px-24 bg-main;
+  }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2,
+  h4 {
+    @apply text-xl font-bold;
+  }
+
+  h3 {
+    @apply font-medium
+  }
+
+  h5 {
+    @apply font-bold text-base
+  }
+
+  ul,
+  li {
+    @apply list-none;
+  }
+
+  input {
+    @apply outline-none;
+  }
+
+  button {
+    @apply hover:opacity-80;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  .slick-track {
+    display: flex;
+    gap: 404px;
+  }
+  
+  .slick-slide .slick-active .slick-current {
+    display: flex;
+    justify-content: center;
+  }
+}

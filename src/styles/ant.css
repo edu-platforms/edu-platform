@@ -1,0 +1,24 @@
+.ant-select-selector {
+  padding: 20px 10px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.ant-selector-rounded-full .ant-select-selector {
+  border-radius: 50px !important;
+  padding: 20px 40px !important;
+  border-color: #e8e4e4 !important;
+}
+
+.ant-select .ant-select-selector {
+  padding-left: calc(3rem - 8px);
+}
+
+.fc-button {
+  border: 1px solid #d1d1d1 !important;
+  background-color: #39b980 !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: #39b980;
+}

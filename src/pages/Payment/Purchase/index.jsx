@@ -1,0 +1,98 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Input, Space } from "antd";
+import { payments } from "@/constants";
+import { Wrapper, Primary } from "@/UI";
+
+export default function Purchase() {
+  const [paymentId, setPaymentId] = useState(0);
+
+  function getMethod() {
+    localStorage.setItem("payment_method", payments[paymentId].title);
+  }
+
+  return (
+    <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
+      <div>
+        <Wrapper className="flex xl:flex-row flex-col justify-between xl:items-center items-start mb-5 xl:px-6 px-4">
+          <h2 className="xl:mb-0 mb-3">Coupon code</h2>
+
+          <Space.Compact className="xl:w-3/5 w-full" size="large">
+            <Input placeholder="Please enter your code" />
+            <Button className="text-green">Submit</Button>
+          </Space.Compact>
+        </Wrapper>
+
+        <Wrapper className="xl:px-6 px-4">
+          <h2 className="mb-5">Payment Methods</h2>
+
+          <ul>
+            {payments.map(({ id, title, src }) => (
+              <div
+                key={id}
+                className={`payment-label ${id === Number(paymentId) ? "payment-label-active" : null} flex-between`}
+                onClick={() => setPaymentId(id)}
+              >
+
+                <div className="flex-items-center">
+                  <img src={src} alt={title} />
+                  <p className="ml-5 font-semibold">{title}</p>
+                </div>
+
+                <div className="paymentRadio"><li className={id === Number(paymentId) ? "bg-green" : null}></li></div>
+
+              </div>
+            ))}
+          </ul>
+        </Wrapper>
+      </div>
+
+      <div>
+        <Wrapper className="flex-col mb-5 xl:px-6 px-4">
+          <h2 className="mb-3">Plan summary</h2>
+
+          <div className="xl:flex gap-y-4 hidden">
+            <p>30 minutes per day, 2 days per week | Quarter</p>
+
+            <span className="mx-2 text-green">&#x2022;</span>
+            <Link to="/plan" className="text-green-500 underline">
+              Change
+            </Link>
+          </div>
+
+          <ul className="summary">
+            <li className="flex-col">
+              <div className="flex-between w-full">
+                <span>Monthly Value</span>
+                <span>$89.00</span>
+              </div>
+
+              <div className="flex-between w-full">
+                <p className="text-xs mt-2">3 month subscription: 10% off</p>
+                <p className="text-xs text-end mt-2">-$8.90</p>
+              </div>
+            </li>
+
+            <li>
+              Monthly Price
+              <span>$80.10</span>
+            </li>
+
+            <li>
+              Subtotal (3 month)
+              <span>$240.30</span>
+            </li>
+          </ul>
+
+          <div className="w-full flex-between bg-gray-50 p-5 rounded-10">
+            <h4 className="xl:text-xl text-base">Total due today (in USD)</h4>
+
+            <span className="text-green-500 font-bold xl:text-xl text-base">$240.30</span>
+          </div>
+        </Wrapper>
+
+        <Primary className="w-full" onClick={getMethod}>Purchase</Primary>
+      </div>
+    </div>
+  );
+}
