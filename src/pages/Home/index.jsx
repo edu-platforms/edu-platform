@@ -46,7 +46,20 @@ export default function Home() {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 2
+    slidesToScroll: 2,
+    responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+      }
+    },
+    ]
   };
 
   return (
@@ -56,7 +69,7 @@ export default function Home() {
         <>
           <div className="lg:flex md:flex sm:flex sm:items-start sm:justify-center items-start pt-[30px] justify-between">
             <div className="sm:flex-col items-center w-full">
-              <h2 className="uppercase text-4xl lg:leading-[70px] md:leading-[55px] mb-9 lg:text-6xl md:text-4xl">
+              <h2 className="uppercase text-4xl lg:leading-[70px] md:leading-[55px] mb-9 lg:text-6xl sm:text-3xl md:text-4xl">
                 Speak languages with confidence
               </h2>
               <div>
@@ -71,11 +84,8 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {isTablet ?
-              <img className="object-contain" src={mobileImg} alt="Introduce Photo" />
-              :
-              <img className="object-contain lg:max-w-[571px] md:max-w-[450px]" src={intro} alt="Introduce Photo" />
-            }
+            <img className="object-contain md:hidden w-full" src={mobileImg} alt="Introduce Photo" />
+            <img className="object-contain hidden md:block lg:max-w-[571px] md:max-w-[450px]" src={intro} alt="Introduce Photo" />
           </div>
 
           <h3 className="max-w-[475px] font-medium text-2xl leading-8 text-[#5c5c5c] mt-[78px] mb-6">
@@ -106,7 +116,7 @@ export default function Home() {
 
           <Divider className="mt-[132px] mb-5" />
           <div className="grid-template">
-            {a.map((i) => (
+            {a.map(i => (
               <CourseCard course={course} key={i} />
             ))}
           </div>
@@ -129,7 +139,7 @@ export default function Home() {
           </div>
 
           <Slider {...settings}>
-            {c.map((i) => (
+            {c.map(i => (
               <div key={i} className="slide">
                 <div className="flex-center gap-5">
                   <img src={reviews?.img} alt="Student's avatar" />
@@ -146,7 +156,7 @@ export default function Home() {
             ))}
           </Slider>
 
-          <div className="mt-[80px] mb-[132px] flex sm:flex-row flex-col justify-evenly items-start gap-4">
+          <div className="mt-[150px] mb-[132px] flex sm:flex-row flex-col justify-evenly items-start gap-4">
             <p className="main-title max-w-[300px] leading-[50px]">
               Start Goals With Edu-Platform
             </p>

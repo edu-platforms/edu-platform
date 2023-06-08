@@ -2,7 +2,7 @@ import React from 'react';
 import { star } from '@/assets';
 import { Link } from 'react-router-dom';
 
-export default function TutorCard({ info, h }) {
+export default function TutorCard({ info }) {
   return (
     <div className='tutor-courses-card'>
       <img className='tutor-courses-card-img' src="https://picsum.photos/200/300" alt="Tutor's avatar" />

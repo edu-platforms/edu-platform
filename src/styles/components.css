@@ -249,7 +249,7 @@
   
   /* Courses Card: Tutor */
   .tutor-courses-card {
-    @apply col-span-3 box-border h-[420px] w-[305px]
+    @apply col-span-3 box-border h-[420px] w-[305px] sm:ml-0 ml-5
     /* h-[400px] */
     /* md: h-[416px] h-[416px] */
   }
