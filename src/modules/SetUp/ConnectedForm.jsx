@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { setLogin } from "@/store";
@@ -11,12 +12,8 @@ export default function ConnectedForm({ next }) {
   const isSignIn = pathname === "/sign-in";
 
   const onFinish = (values) => {
-    if (isSignIn) { 
-      const option = {
-        email:values.email,
-        password:values.password
-      }
-        dispatch(userSignIn(option))
+    if (isSignIn) {
+      dispatch(userSignIn(values))
     } else {
       dispatch(setLogin(values));
       next();
