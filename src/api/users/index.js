@@ -2,7 +2,7 @@ import { Instance } from "../instance";
 import { endpoints } from "../endpoints";
 
 const config = {
-  baseURL: endpoints.users,
+  baseURL: endpoints.user,
 };
 
 class UsersApi extends Instance {

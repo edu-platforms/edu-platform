@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Form, Input } from "antd";
-import { files } from "@/constants";
+import { files } from "src/libs/constants";
 import { Wrapper, Primary } from "@/UI";
 import { Files, LibraryModal } from "@/components";
 import { plus, searchGray, arrowSort } from "@/assets";

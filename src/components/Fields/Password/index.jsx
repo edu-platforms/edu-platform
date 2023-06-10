@@ -1,4 +1,4 @@
-import { passwordRegex } from "@/utils/general";
+import { passwordRegex } from "@/libs/utils/general";
 import { Form, Input } from "antd";
 
 export const PasswordField = ({ name, label, placeholder }) => {

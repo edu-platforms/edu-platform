@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { useSteps } from "@/hooks";
-import { setType } from "@/store";
-import { steps } from "@/constants";
+import { useSteps } from "src/libs/hooks";
+import { setType } from "src/libs/store";
+import { steps } from "src/libs/constants";
 import { Sign } from "@/components";
 import { Steps, Divider } from "antd";
-import { SetUpForm, StartUpForm, CodeForm } from "@/modules";
+import { SetUpForm, StartUpForm, CodeForm } from "src/libs/modules";
 import { apple, google, arrowBack, facebookLogo } from "@/assets";
-import { userSignUpFacebook, userSignUpGoogle } from "../../../store";
+import { userSignUpFacebook, userSignUpGoogle } from "../../../libs/store";
 
 export default function SignUp() {
   const dispatch = useDispatch();

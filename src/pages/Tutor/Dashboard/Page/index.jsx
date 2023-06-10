@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Wrapper } from "@/UI";
 import { NavLink, Outlet } from "react-router-dom";
-import { tutorDashLinks } from "@/constants";
+import { tutorDashLinks } from "src/libs/constants";
 import { Switch } from "antd";
 
 export default function TutorDashboard() {

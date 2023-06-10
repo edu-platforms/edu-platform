@@ -8,7 +8,7 @@ import {
     student,
     arrowLeft
 } from "@/assets";
-import { useMedia } from "@/hooks";
+import { useMedia } from "src/libs/hooks";
 
 export const Favorites = () => {
     const { isMobile } = useMedia();

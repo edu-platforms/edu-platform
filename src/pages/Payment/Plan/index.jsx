@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Wrapper, Primary } from "@/UI";
-import { history } from "@/utils";
+import { history } from "src/libs/utils";
 import { Select, Form } from "antd";
-import { plans, timeOptions, dayOptions } from "@/constants";
+import { plans, timeOptions, dayOptions } from "src/libs/constants";
 
 export default function Plan() {
   const [level, setLevel] = useState(0);
