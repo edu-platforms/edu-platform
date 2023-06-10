@@ -1,195 +1,186 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-<<<<<<< HEAD:src/store/auth/actions.js
-import { authApi, authGoogleApi } from "../../api/auth";
-import { history } from "../../utils";
-import { setLoading, setId } from "./features";
-import { setLocalStorage } from "../../libs";
-import { addNotification } from "../../utils/addNotification";
-import { usersApi } from "../../api";
-=======
-import { authApi, usersApi, authGoogleApi } from "@/api/index.js";
-import { history } from "@/libs/utils/index.js";
-import { setLocalStorage } from "@/libs/utils";
-import { setLoading, setId } from "./features.js";
-import { addNotification } from "@/libs/utils/addNotification.js";
->>>>>>> ce88142 (update: files):src/libs/store/auth/actions.js
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { authApi, usersApi, authGoogleApi } from '@/api/index.js'
+import { history } from '@/libs/utils/index.js'
+import { setLocalStorage } from '@/libs/utils'
+import { setLoading, setId } from './features.js'
+import { addNotification } from '@/libs/utils/addNotification.js'
 
 // sign-up
 export const userSignUp = createAsyncThunk(
-  "user/sign-up",
+  'user/sign-up',
   async ({ option, next }, { dispatch }) => {
     try {
-      dispatch(setLoading(true));
-      const { id } = await authApi.signUp(option);
-      console.log(id);
+      dispatch(setLoading(true))
+      const { id } = await authApi.signUp(option)
+      console.log(id)
       if (id) {
-        dispatch(setId(id));
-        next();
+        dispatch(setId(id))
+        next()
       }
     } catch (error) {
-      addNotification(error);
+      addNotification(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // sign-up-otp
 export const userOtp = createAsyncThunk(
-  "user/otp",
+  'user/otp',
   async (params, { dispatch }) => {
     try {
-      dispatch(setLoading(true));
-      const { token } = await authApi.otp(params);
+      dispatch(setLoading(true))
+      const { token } = await authApi.otp(params)
       if (token && token !== null) {
-        setLocalStorage("access-token", token);
-        history.push("/student");
+        setLocalStorage('access-token', token)
+        history.push('/student')
       }
     } catch (error) {
-      addNotification(error);
+      addNotification(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // sgin-in
 export const userSignIn = createAsyncThunk(
-  "/user/SignIn",
+  '/user/SignIn',
   async (params, { dispatch }) => {
     try {
-      dispatch(setLoading(true));
-      const { data } = await authApi.signIn(params);
+      dispatch(setLoading(true))
+      const { data } = await authApi.signIn(params)
       if (data.token && data.token !== null) {
-        setLocalStorage("access-token", data.token);
-        history.push("/student");
+        setLocalStorage('access-token', data.token)
+        history.push('/student')
       }
     } catch (error) {
-      addNotification(error);
+      addNotification(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // user-reset-password
 export const userResetPassword = createAsyncThunk(
-  "user-reset-password",
+  'user-reset-password',
   async (params, { dispatch }) => {
     try {
-      dispatch(setLoading(true));
-      const data = await authApi.resetPassword(params?.option);
+      dispatch(setLoading(true))
+      const data = await authApi.resetPassword(params?.option)
       if (data.status && data.status === 200) {
-        params.navigate("/reset");
+        params.navigate('/reset')
       }
     } catch (error) {
-      addNotification(error);
+      addNotification(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 //user-change-password
 export const userChangePassword = createAsyncThunk(
-  "user/change-password",
+  'user/change-password',
   async (params, { dispatch }) => {
     try {
-      const { data } = await authApi.changePassword(params);
-      console.log(data);
+      const { data } = await authApi.changePassword(params)
+      console.log(data)
     } catch (error) {
-      addNotification(error);
+      addNotification(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // google signUp
 export const userSignUpGoogle = createAsyncThunk(
-  "/user-up-google",
+  '/user-up-google',
   async (params, { dispatch }) => {
     try {
-      dispatch(setLoading(true));
-      const token = await authGoogleApi.signUpWidthGoogle();
-      console.log(token);
+      dispatch(setLoading(true))
+      const token = await authGoogleApi.signUpWidthGoogle()
+      console.log(token)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // google signIn
 export const userSignInGoogle = createAsyncThunk(
-  "/user-up-google",
+  '/user-up-google',
   async (params, { dispatch }) => {
     window.open(
       `http://single.uz/api/user-auth-google/google`,
-      "_blank",
-      "width=500 height=600"
-    );
+      '_blank',
+      'width=500 height=600',
+    )
     try {
-      dispatch(setLoading(true));
-      const token = await authGoogleApi.signInWidthGoogle();
-      console.log(token);
+      dispatch(setLoading(true))
+      const token = await authGoogleApi.signInWidthGoogle()
+      console.log(token)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // facebook signUp
 export const userSignUpFacebook = createAsyncThunk(
-  "/user-up-google",
+  '/user-up-google',
   async (params, { dispatch }) => {
     try {
-      dispatch(setLoading(true));
-      const token = await authApi.signUpWidthFacebook();
-      console.log(token);
+      dispatch(setLoading(true))
+      const token = await authApi.signUpWidthFacebook()
+      console.log(token)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // facebook signIn
 export const userSignInFacebook = createAsyncThunk(
-  "/user-up-google",
+  '/user-up-google',
   async (params, { dispatch }) => {
     try {
-      dispatch(setLoading(true));
-      const token = await authApi.signInWidthFacebook();
-      console.log(token);
+      dispatch(setLoading(true))
+      const token = await authApi.signInWidthFacebook()
+      console.log(token)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)
 
 // techer register
 
 export const teacherBecome = createAsyncThunk(
-  "teacher/beacome",
+  'teacher/beacome',
   async (params, { dispatch }) => {
-    console.log(params);
+    console.log(params)
     try {
-      dispatch(setLoading(true));
-      const { data } = await usersApi.becomeTeacher(params);
+      dispatch(setLoading(true))
+      const { data } = await usersApi.becomeTeacher(params)
 
-      console.log(data);
+      console.log(data)
     } catch (error) {
-      console.log(error);
-      addNotification(error);
+      console.log(error)
+      addNotification(error)
     } finally {
-      dispatch(setLoading(false));
+      dispatch(setLoading(false))
     }
-  }
-);
+  },
+)

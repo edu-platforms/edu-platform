@@ -1,13 +1,12 @@
 import { Fragment } from 'react'
 import { useDispatch } from 'react-redux'
-import { useSteps } from 'src/libs/hooks'
+import { useMedia, useSteps } from 'src/libs/hooks'
 import { setType } from 'src/libs/store'
 import { steps } from 'src/libs/constants'
 import { Sign } from '@/components'
 import { Steps, Divider } from 'antd'
 import { SetUpForm, StartUpForm, CodeForm } from 'src/libs/modules'
 import { apple, google, arrowBack, facebookLogo } from '@/assets'
-import { useMedia } from '../../../hooks'
 import { userSignUpFacebook, userSignUpGoogle } from '../../../libs/store'
 
 export default function SignUp() {
