@@ -2,7 +2,6 @@ import React from 'react'
 import { Wrapper } from '@/UI'
 import { Divider } from 'antd'
 import { day, chat, week, time, review, source } from '@/assets'
-import { useMedia } from 'src/libs/hooks'
 
 export default function LessonCard({ button, completed }) {
 
