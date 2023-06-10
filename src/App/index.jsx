@@ -1,7 +1,8 @@
 import "@/styles/global.css";
 
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { history } from "@/utils";
 import { Provider } from "react-redux";
 import { store } from "@/store";
@@ -13,16 +14,18 @@ import { Router } from "@/router";
 
 export const App = () => {
   return (
-    <HistoryRouter history={history}>
-      <Provider store={store}>
-        <ConfigProvider theme={theme}>
-          <Suspense fallback={<Loader />}>
-            <ModalProvider>
-              <Router />
-            </ModalProvider>
-          </Suspense>
-        </ConfigProvider>
-      </Provider>
-    </HistoryRouter>
+    <GoogleOAuthProvider clientId="966040164858-d01oql7ungul6fcpoc3e0ft0vqalnuhc.apps.googleusercontent.com">
+      <HistoryRouter history={history}>
+        <Provider store={store}>
+          <ConfigProvider theme={theme}>
+            <Suspense fallback={<Loader />}>
+              <ModalProvider>
+                <Router />
+              </ModalProvider>
+            </Suspense>
+          </ConfigProvider>
+        </Provider>
+      </HistoryRouter>
+    </GoogleOAuthProvider>
   );
 };

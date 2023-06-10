@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import  { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { useSteps } from "@/hooks";
 import { setType } from "@/store";
@@ -8,29 +8,42 @@ import { Steps, Divider } from "antd";
 import { SetUpForm, StartUpForm, CodeForm } from "@/modules";
 import { apple, google, arrowBack, facebookLogo } from "@/assets";
 import { userSignUpFacebook, userSignUpGoogle } from "../../../store";
-
+import { useMedia } from "../../../hooks";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 export default function SignUp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { next, prev, current } = useSteps();
-
+ const {isMobile} = useMedia()
   const handleChoose = (type) => {
     dispatch(setType(type));
     next();
   };
 
-  const authSignUpGoogle = () =>{
-    dispatch(userSignUpGoogle())
-  }
+  const authSignUpGoogle = useGoogleLogin({
+    onSuccess: async (res) => {
+      const option = {
+        token:res.access_token,
+        navigate:navigate
+      }
+      dispatch(userSignUpGoogle(option))
+    },
+    onError:(error) =>{
+      console.log(error);
+    }
+  });
 
-  const authSignUpFacebook = () =>{
-    dispatch(userSignUpFacebook())
-  }
-
+  const authSignUpFacebook = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      console.log(tokenResponse);
+    },
+  });
   return (
     <Sign>
-      <div className="sign-up-container">
+      <div className={`sign-up-container ${isMobile ? 'px-4':''}`}>
         <button
-          className={current === 0 ? "hidden" : "absolute left-10 top-[5%]"}
+          className={current === 0 ? "hidden" : `absolute ${isMobile ? 'right-10 absolute z-10': 'left-10'} top-[5%]`}
           onClick={() => prev()}
         >
           <img src={arrowBack} alt="Back" />
@@ -45,16 +58,16 @@ export default function SignUp() {
                 Who will be learning English on edu-platform?
               </h2>
 
-              <div className="w-full flex-center gap-x-5 mt-10">
+              <div className={`w-full flex-center gap-x-5 mt-10 ${isMobile ? "flex-wrap gap-y-5 justify-center" : ''}`}>
                 <button
-                  className="sign-up-btn"
+                  className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
                   onClick={() => handleChoose("me")}
                 >
                   Me
                 </button>
 
                 <button
-                  className="sign-up-btn"
+                  className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
                   onClick={() => handleChoose("child")}
                 >
                   My Child
@@ -77,7 +90,7 @@ export default function SignUp() {
                 </button>
               </div>
 
-              <Divider className="px-40">or</Divider>
+              <Divider className="px-2">or</Divider>
 
               <SetUpForm next={next} />
             </Fragment>

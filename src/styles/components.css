@@ -73,13 +73,14 @@
   }
 
   .sign-up-container {
-    @apply relative w-[800px] h-[560px] py-6 px-24;
+    @apply relative max-w-[800px] h-[650px] py-2 px-24;
   }
+
 
   .sign-in-container {
-    @apply w-[500px] h-[520px] flex-items-center flex-col p-12;
+    @apply w-[500px] min-h-[520px] flex-items-center flex-col py-4 px-8;
   }
-
+  
   .sign-in-mobile-container {
     @apply max-w-[480px] h-screen flex-items-center flex-col p-6 ss:p-12;
   }
@@ -331,4 +332,22 @@
   .hashtag {
     @apply border border-[#EBEBEB] rounded-20 py-2 px-5 bg-[#F5F5F5] text-gray-CCC text-base
   }
+
+  .chat-container{
+    @apply w-11/12 flex items-center justify-between
+  }
+  .chat-menu{
+    @apply w-[350px] min-h-[100vh] overflow-y-scroll
+  }
+  .chat-menu::-webkit-scrollbar {
+    display: none;
+  }
+  .chat-bar{
+    @apply w-[60%] overflow-y-scroll relative h-[100vh]  border-2 border-slate-200 bg-white rounded-10 flex flex-col
+  }
+  .chat-bar::-webkit-scrollbar {
+    display: none;
+  }
 }
+
+
