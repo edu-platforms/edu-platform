@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Upload, message } from "antd";
-import { useUpload } from "@/hooks";
+import { useUpload } from "src/libs/hooks";
 import { upload } from "@/assets";
 
 export default function FileUpload({ fileLists, setFileList }) {

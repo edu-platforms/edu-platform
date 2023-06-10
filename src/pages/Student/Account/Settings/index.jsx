@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { SettingsMobile } from './Mobile';
 import { Wrapper } from "@/UI";
 import { Button } from 'antd';
-import { useMedia } from "@/hooks";
+import { useMedia } from "src/libs/hooks";
 import { ModalContext } from "@/context";
 import { AccountModal } from "@/components";
 

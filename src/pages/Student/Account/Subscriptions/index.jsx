@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button } from 'antd';
-import { useMedia } from "@/hooks";
+import { useMedia } from "src/libs/hooks";
 import { arrowLeft } from "@/assets";
 export const Subscriptions = () => {
     const [tab, setTab] = useState(1);

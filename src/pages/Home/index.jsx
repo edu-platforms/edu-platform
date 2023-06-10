@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Primary, Secondary } from "@/UI";
 import { TutorCard, CourseCard } from "@/components";
 import { intro, arrowWhite, forChild, arrowCourseCard, tutor, mobileImg } from "@/assets";
-import { useMedia } from "@/hooks";
+import { useMedia } from "src/libs/hooks";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";

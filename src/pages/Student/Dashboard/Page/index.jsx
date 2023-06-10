@@ -1,8 +1,8 @@
 import React from "react";
 import { Wrapper } from "@/UI";
 import { Outlet, NavLink } from "react-router-dom";
-import { studentDashLinks } from "@/constants";
-import {useMedia} from "@/hooks";
+import { studentDashLinks } from "src/libs/constants";
+import {useMedia} from "src/libs/hooks";
 export default function Dashboard() {
   const { isMobile } = useMedia();
 

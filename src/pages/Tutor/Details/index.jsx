@@ -2,7 +2,7 @@ import React from "react";
 import { Tooltip, Badge, Avatar, Divider, Calendar, Pagination, Button, Row, Popover } from "antd";
 import { BsShare, BsHeart, star, verified, arrowLeft, verticalDots } from "@/assets";
 import { Primary, Wrapper } from "@/UI";
-import { useMedia } from "../../../hooks";
+import { useMedia } from "../../../libs/hooks";
 import { TutorMobile } from "./Mobile";
 
 const onPanelChange = (value, mode) => {

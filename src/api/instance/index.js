@@ -1,7 +1,7 @@
 import axios from "axios";
-import { stage } from "@/config";
+import { stage } from "src/libs/config";
 import { endpoints } from "../endpoints";
-import { getLocalStorage } from "../../libs";
+import { getLocalStorage } from "../../libs/utils";
 
 export class Instance {
   instanc;
