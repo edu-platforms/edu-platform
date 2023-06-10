@@ -5,15 +5,14 @@ import { setLoading, setId } from "./features";
 import { setLocalStorage } from "../../libs";
 import { addNotification } from "../../utils/addNotification";
 import { usersApi } from "../../api";
+import axios from "axios";
 
-// sign-up
 export const userSignUp = createAsyncThunk(
   "user/sign-up",
   async ({ option, next }, { dispatch }) => {
     try {
       dispatch(setLoading(true));
       const { id } = await authApi.signUp(option);
-      console.log(id);
       if (id) {
         dispatch(setId(id));
         next();
@@ -97,14 +96,14 @@ export const userChangePassword = createAsyncThunk(
   }
 );
 
-// google signUp
+
 export const userSignUpGoogle = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
     try {
       dispatch(setLoading(true));
-      const token = await authGoogleApi.signUpWidthGoogle();
-      console.log(token);
+      const {data} = authApi.signUpWidthGoogle(params.token)
+      if(data) params.navigate('/student')
     } catch (error) {
       console.log(error);
     } finally {
@@ -113,7 +112,7 @@ export const userSignUpGoogle = createAsyncThunk(
   }
 );
 
-// google signIn
+
 export const userSignInGoogle = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
@@ -134,7 +133,7 @@ export const userSignInGoogle = createAsyncThunk(
   }
 );
 
-// facebook signUp
+
 export const userSignUpFacebook = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
@@ -150,7 +149,7 @@ export const userSignUpFacebook = createAsyncThunk(
   }
 );
 
-// facebook signIn
+
 export const userSignInFacebook = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
@@ -166,7 +165,7 @@ export const userSignInFacebook = createAsyncThunk(
   }
 );
 
-// techer register
+
 
 export const teacherBecome = createAsyncThunk(
   "teacher/beacome",
