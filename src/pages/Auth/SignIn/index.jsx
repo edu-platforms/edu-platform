@@ -1,10 +1,10 @@
 import { Sign } from "@/components";
 import { Divider } from "antd";
-import { SetUpForm } from "@/modules";
+import { SetUpForm } from "src/libs/modules";
 import { apple, google, facebookLogo } from "@/assets";
-import { useMedia } from "@/hooks";
+import { useMedia } from "src/libs/hooks";
 import { useDispatch } from "react-redux";
-import { userSignInGoogle } from "@/store";
+import { userSignInGoogle } from "src/libs/store";
 
 export default function SignIn() {
   const dispatch = useDispatch()

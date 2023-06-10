@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Header, Footer } from "@/components";
-import { studentLinks } from "@/constants";
+import { studentLinks } from "src/libs/constants";
 
 export default function Studentayout() {
   return (

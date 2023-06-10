@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
-import { useSteps } from "@/hooks";
+import { useSteps } from "src/libs/hooks";
 import { Steps } from "antd";
-import { tutorSteps } from "@/constants";
+import { tutorSteps } from "src/libs/constants";
 import { Wrapper, Primary } from "@/UI";
-import { PersonalForm, ProfileForm, Finish } from "@/modules";
+import { PersonalForm, ProfileForm, Finish } from "src/libs/modules";
 
 export default function TutorRegister() {
     const { next, prev, current } = useSteps();

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Primary } from "@/UI";
 import { Button, Form, Input, Select, Checkbox, DatePicker } from "antd";
 import { useDispatch } from "react-redux";
-import { setEducation } from "@/store";
+import { setEducation } from "src/libs/store";
 
 export default function EducationModal({ close }) {
   const [until, setUntil] = useState(false);

@@ -3,7 +3,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Modal, Primary } from "@/UI";
 import { Button, Form, Input, Upload } from "antd";
 import { useDispatch } from "react-redux";
-import { setCertificates } from "@/store";
+import { setCertificates } from "src/libs/store";
 export default function CertificatesModal({ close }) {
     const dispatch = useDispatch()
     const [form] = Form.useForm();

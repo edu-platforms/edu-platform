@@ -1,4 +1,4 @@
-import { useMedia } from '@/hooks';
+import { useMedia } from 'src/libs/hooks';
 import { Primary } from '@/UI';
 import { Divider } from 'antd';
 import { CourseCard } from '@/components'

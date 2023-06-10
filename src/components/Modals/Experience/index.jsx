@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Primary } from "@/UI";
 import { DatePicker, Button, Form, Input, Checkbox } from "antd";
 import { useDispatch } from "react-redux";
-import { setExprience } from "@/store";
+import { setExprience } from "src/libs/store";
 export default function ExperienceModal({ close }) {
   const dispatch = useDispatch();
   const [until, setUntil] = useState(false);

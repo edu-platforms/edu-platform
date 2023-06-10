@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Badge, Space, Avatar, Tooltip } from "antd";
 import { Wrapper, CustomSelect } from "@/UI";
-import { useMedia } from "@/hooks";
+import { useMedia } from "src/libs/hooks";
 import { StudentMobile } from "./Mobile";
 import {
   star,
