@@ -1,16 +1,18 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { authApi, usersApi, authGoogleApi } from "@/api/index.js";
-import { history } from "@/libs/utils/index.js";
-import { setLocalStorage } from "@/libs/utils";
-import { setLoading, setId } from "./features.js";
-import { addNotification } from "@/libs/utils/addNotification.js";
+import {createAsyncThunk} from "@reduxjs/toolkit";
+import {authApi, usersApi, authGoogleApi} from "@/api/index.js";
+import {history} from "@/libs/utils/index.js";
+import {setLocalStorage} from "@/libs/utils";
+import {setLoading, setId} from "./features.js";
+import {addNotification} from "@/libs/utils/addNotification.js";
+import {TOKEN} from "@/libs/constants/cookie.js";
+import Cookies from "js-cookie";
 
 export const userSignUp = createAsyncThunk(
   "user/sign-up",
-  async ({ option, next }, { dispatch }) => {
+  async ({option, next}, {dispatch}) => {
     try {
       dispatch(setLoading(true));
-      const { id } = await authApi.signUp(option);
+      const {id} = await authApi.signUp(option);
 
       if (id) {
         dispatch(setId(id));
@@ -26,12 +28,13 @@ export const userSignUp = createAsyncThunk(
 
 export const userOtp = createAsyncThunk(
   "user/otp",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
       dispatch(setLoading(true));
-      const { token } = await authApi.otp(params);
+      const {token} = await authApi.otp(params);
       if (token && token !== null) {
         setLocalStorage("access-token", token);
+        Cookies.set(TOKEN, token)
         history.push("/student");
       }
     } catch (error) {
@@ -44,13 +47,13 @@ export const userOtp = createAsyncThunk(
 
 export const userSignIn = createAsyncThunk(
   "user/sign-in",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
       dispatch(setLoading(true));
       const res = await authApi.signIn(params);
 
       if (res.data) {
-        const { data } = res
+        const {data} = res
 
         setLocalStorage("access-token", data.token);
         history.push("/student");
@@ -65,7 +68,7 @@ export const userSignIn = createAsyncThunk(
 
 export const userResetPassword = createAsyncThunk(
   "user/reset-password",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
       dispatch(setLoading(true));
       const data = await authApi.resetPassword(params.option);
@@ -83,9 +86,9 @@ export const userResetPassword = createAsyncThunk(
 
 export const userChangePassword = createAsyncThunk(
   "user/change-password",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
-      const { data } = await authApi.changePassword(params);
+      const {data} = await authApi.changePassword(params);
 
     } catch (error) {
       addNotification(error);
@@ -97,7 +100,7 @@ export const userChangePassword = createAsyncThunk(
 
 export const userSignUpGoogle = createAsyncThunk(
   "user/sign-up/google",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
       dispatch(setLoading(true));
       const token = await authGoogleApi.signUpWidthGoogle();
@@ -111,7 +114,7 @@ export const userSignUpGoogle = createAsyncThunk(
 
 export const userSignInGoogle = createAsyncThunk(
   "user/sign-in/google",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     window.open(
       `http://single.uz/api/user-auth-google/google`,
       "_blank",
@@ -130,7 +133,7 @@ export const userSignInGoogle = createAsyncThunk(
 
 export const userSignUpFacebook = createAsyncThunk(
   "/user-up-google",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
       dispatch(setLoading(true));
       const token = await authApi.signUpWidthFacebook();
@@ -144,7 +147,7 @@ export const userSignUpFacebook = createAsyncThunk(
 
 export const userSignInFacebook = createAsyncThunk(
   "/user-up-google",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
       dispatch(setLoading(true));
       const token = await authApi.signInWidthFacebook();
@@ -158,10 +161,10 @@ export const userSignInFacebook = createAsyncThunk(
 
 export const teacherBecome = createAsyncThunk(
   "teacher/become",
-  async (params, { dispatch }) => {
+  async (params, {dispatch}) => {
     try {
       dispatch(setLoading(true));
-      const { data } = await usersApi.becomeTeacher(params);
+      const {data} = await usersApi.becomeTeacher(params);
 
     } catch (e) {
       addNotification(e);

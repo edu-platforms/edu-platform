@@ -1,7 +1,7 @@
-import { Form, Input, Typography } from "antd";
-import { Primary } from "@/UI/index.js";
+import {Form, Input, Typography} from "antd";
+import {Primary} from "@/UI/index.js";
 
-export const StartForm = ({ onFinish }) => {
+export const StartForm = ({onFinish}) => {
   return (
     <Form layout="vertical" onFinish={onFinish} className="w-80">
       <Form.Item
@@ -13,7 +13,7 @@ export const StartForm = ({ onFinish }) => {
           },
         ]}
       >
-        <Input className="py-3 px-4 my-2" placeholder="Type your first name" />
+        <Input className="py-3 px-4 my-2" placeholder="Type your first name"/>
       </Form.Item>
       <Form.Item
         name="lastname"
@@ -24,7 +24,7 @@ export const StartForm = ({ onFinish }) => {
           },
         ]}
       >
-        <Input className="py-3 px-4 my-2" placeholder="Type your last name" />
+        <Input className="py-3 px-4 my-2" placeholder="Type your last name"/>
       </Form.Item>
 
       <Typography className="text-gray-500 mt-2 mb-5">
