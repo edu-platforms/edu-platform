@@ -1,9 +1,9 @@
-import { Suspense } from "react";
-import { useBootstrap } from "src/libs/hooks";
-import { Loader } from "@/UI";
+import { Suspense } from 'react'
+import { useBootstrap } from 'src/libs/hooks'
+import { Loader } from '@/UI'
 // import { PublicRoutes } from "./PublicRoutes";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { UserLayout, TutorLayout, StudentLayout } from "@/layouts";
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { UserLayout, TutorLayout, StudentLayout } from '@/layouts'
 
 import {
   Home,
@@ -37,14 +37,15 @@ import {
   Settings,
   Subscriptions,
   Favorites,
-  Feedback
-} from "@/pages";
+  Feedback,
+} from '@/pages'
+import { AccountProfile } from '@/router/lazy.jsx'
 
 export const Router = () => {
-  const { isAuth, isInitiated } = useBootstrap();
+  const { isAuth, isInitiated } = useBootstrap()
 
   if (isInitiated) {
-    return <Loader />;
+    return <Loader />
   }
 
   return (
@@ -107,6 +108,11 @@ export const Router = () => {
         />
       </Route>
 
+      <Route path="/account" element={<UserLayout />}>
+        <Route index replace element={<Navigate to={'/account/profile'} />} />
+        <Route path="profile" element={<AccountProfile />} />
+      </Route>
+
       {/* STUDENT */}
       <Route path="/student" element={<StudentLayout />}>
         <Route index element={<Student />} />
@@ -122,11 +128,7 @@ export const Router = () => {
         <Route path="feedback" element={<Feedback />} />
 
         <Route path="dashboard" element={<StudentDashboard />}>
-          <Route
-            index
-            replace
-            element={<Navigate to={"/student/dashboard/upcoming"} />}
-          />
+          <Route index replace element={<Navigate to={'/student/dashboard/upcoming'} />} />
 
           <Route
             path="upcoming"
@@ -205,11 +207,7 @@ export const Router = () => {
         />
 
         <Route path="dashboard" element={<TutorDashboard />}>
-          <Route
-            index
-            replace
-            element={<Navigate to={"/tutor/dashboard/incoming"} />}
-          />
+          <Route index replace element={<Navigate to={'/tutor/dashboard/incoming'} />} />
           <Route path="incoming" element={<TutorIncoming />} />
           <Route path="unassigned" element={<TutorUnassigned />} />
           <Route path="upcoming" element={<TutorUpcoming />} />
@@ -239,5 +237,5 @@ export const Router = () => {
       />
       {/* </Route> */}
     </Routes>
-  );
-};
+  )
+}
