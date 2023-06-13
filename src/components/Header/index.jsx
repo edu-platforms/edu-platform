@@ -71,11 +71,11 @@ export default function Header({ links, status }) {
 
   return (
     <header className="flex-between">
-      <Link to="/" className="xl:w-[20%] w-[40%]">
+      <Link to="/" className="xl:w-[20%] lg:w-[15%] w-[40%]">
         <img className="" src={logo} alt="Logo" />
       </Link>
 
-      <div className="w-[75%] xl:flex-between lg:flex-between hidden">
+      <div className="xl:w-[75%] lg:w-[75%] xl:flex-between lg:flex-between hidden">
         <ul className="flex-center sm:gap-x-7 md:gap-x-10 text-sm">
           {links.map(({ key, label }) => (
             <li key={key}>

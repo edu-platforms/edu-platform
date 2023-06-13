@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { useBootstrap } from "@/hooks";
+import { useBootstrap } from "src/libs/hooks";
 import { Loader } from "@/UI";
 // import { PublicRoutes } from "./PublicRoutes";
 import { Navigate, Route, Routes } from "react-router-dom";

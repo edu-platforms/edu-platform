@@ -1,8 +1,8 @@
 import React from "react";
 import { Wrapper } from "@/UI";
 import { Outlet, NavLink } from "react-router-dom";
-import { studentDashLinks } from "@/constants";
-import {useMedia} from "@/hooks";
+import { studentDashLinks } from "src/libs/constants";
+import {useMedia} from "src/libs/hooks";
 export default function Dashboard() {
   const { isMobile } = useMedia();
 
@@ -27,9 +27,9 @@ export default function Dashboard() {
       </div>
       </div>
     ):(
-      <div className="grid xl:grid-cols-3 md:grid-cols-1 gap-5">
-      <Wrapper className="xl:h-[210px] md:h-fit col-span-1">
-        <ul className="xl:student-dash-list md:flex-between">
+      <div className="grid xl:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-5">
+      <Wrapper className="xl:h-[210px] md:h-fit sm:h-fit col-span-1">
+        <ul className="xl:student-dash-list md:flex-between sm:flex-between">
           {studentDashLinks.map(({ key, label }) => (
             <li key={key}>
               <NavLink

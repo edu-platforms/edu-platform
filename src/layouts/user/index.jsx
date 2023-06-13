@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Header, Footer } from "@/components";
-import { userLinks } from "@/constants";
+import { userLinks } from "src/libs/constants";
 
 export default function UserLayout() {
   return (

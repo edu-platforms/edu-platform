@@ -11,7 +11,17 @@ import "slick-carousel/slick/slick-theme.css";
 
 export const MobileHome = () => {
   const settings = {
+    dots: false,
+    center: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
+
+  const settings2 = {
     dots: true,
+    arrows: false,
     center: true,
     infinite: true,
     speed: 500,
@@ -64,7 +74,7 @@ export const MobileHome = () => {
         </Link>
       </div>
       <Divider />
-      <Slider {...settings}>
+      <Slider {...settings2}>
         {c.map(i => (
           <TutorCard key={i} info={info} />
         ))}
@@ -115,7 +125,7 @@ export const MobileHome = () => {
           </div>
         ))}
       </Slider>
-      <p className="main-title leading-[48px] mt-20 mb-3">
+      <p className="main-title leading-[48px] mt-28 mb-3">
         Start Goals With Edu-Platform
       </p>
       <h3 className="text-base text-[#5C5C5C] mb-4">

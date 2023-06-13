@@ -1,6 +1,6 @@
 
 import { Sign } from "@/components";
-import { ResetForm } from "@/modules";
+import { ResetForm } from "src/libs/modules";
 
 export default function Forgot() {
   return (
