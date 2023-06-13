@@ -1,15 +1,54 @@
 import image from '@/assets/img/tutor.png'
 import { heart, verified } from '@/assets'
-import { Col, Row, Calendar, Avatar, Pagination, Button, Divider } from 'antd'
+import { Col, Row, Avatar, Button, Divider } from 'antd'
+import Slider from 'react-slick'
 import { Wrapper, Primary } from '@/UI'
-
-const onPanelChange = (value, mode) => {
-  console.log(value.format('YYYY-MM-DD'), mode)
-}
+import { edit, plus, deleteIcon } from '@/assets'
+import { settings } from '@/libs/constants'
 
 export const AccountProfile = () => {
   return (
     <div className="flex justify-between">
+      <div className="w-1/3 mx-4">
+        <iframe
+          className="w-full rounded-20 h-52 mb-6"
+          src="https://www.youtube.com/embed/zJ0WMaYHIoU"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <Wrapper className="mb-6">
+          <h2>Trial lesson</h2>
+          <p>One time, 15 minutes</p>
+          <Divider className="opacity-50 my-3" />
+          <ul className="flex flex-between">
+            <li>Trial lesson</li>
+            <li className="text-green">Free</li>
+          </ul>
+          <Primary className="mt-5 w-full" htmlType="button">
+            Call
+          </Primary>
+        </Wrapper>
+        <Wrapper className="mb-6">
+          <h2>Private lesson</h2>
+          <Divider className="opacity-50 my-3" />
+          <Primary className="w-full my-5" htmlType="button">
+            Start Lesson
+          </Primary>
+          <Button
+            block
+            size="large"
+            shape="round"
+            type="primary"
+            ghost
+            htmlType="submit"
+            className="bg-green !h-12"
+          >
+            Contact Lesson
+          </Button>
+        </Wrapper>
+      </div>
       <div className="w-2/3 flex flex-col gap-5">
         <div className="bg-white rounded-10 pt-7 pb-7 pl-5 pr-5 gap-7 flex flex-col border-2">
           <div className="flex gap-7">
@@ -48,7 +87,7 @@ export const AccountProfile = () => {
           <div className="flex flex-col gap-4">
             <div className="flex justify-between">
               <h2>About me</h2>
-              <span className="text-slate-500">edu-platform teacher since May 18, 2021</span>
+              <img src={edit} alt="" className="mx-3" />
             </div>
             <div className="text-base">
               All language. One world. Hello everyone! I do speak Chinese, English, Japanese, and
@@ -101,7 +140,10 @@ export const AccountProfile = () => {
           </Col>
         </Row>
         <div className="w-full flex flex-col bg-white border-2 rounded-10 pt-[30px] pb-[30px] pl-[25px] pr-[25px] gap-4">
-          <h2>Me as a Teacher</h2>
+          <div className="flex justify-between">
+            <h2>Me as a Teacher</h2>
+            <img src={edit} alt="" className="mx-3" />
+          </div>
           <div>
             I have been teaching for about 15 years, and one and a half years online. Several times
             I have been awarded for high student satisfaction. I have taught at all levels from
@@ -111,59 +153,96 @@ export const AccountProfile = () => {
         </div>
         <div className="w-full flex flex-col bg-white border-2 rounded-10 pt-[30px] pb-[30px] pl-[25px] pr-[25px]">
           <Wrapper className="mb-6">
-            <h2>
-              Resume <span className="italic"></span>
-            </h2>
+            <div className="flex justify-between">
+              <h2>
+                Resume <span className="italic"></span>
+              </h2>
+              <img className="bg-green rounded-20 p-2" src={plus} alt="" />
+            </div>
+
             <div className="work-experience mt-5">
               <h3 className="font-semibold mb-2">Work experience</h3>
-              <ul className="flex justify-between w-3/4 mb-4">
+              <ul className="flex justify-between mb-4">
                 <li>2003-2007</li>
                 <ul>
                   <li>Lector Benedek Elek College</li>
                   <li>Benedek Elek College - Sopron, Hungary</li>
                 </ul>
+                <ul>
+                  <li className="flex justify-between gap-3">
+                    <img src={deleteIcon} alt="" />
+                    <img src={edit} alt="" />
+                  </li>
+                </ul>
               </ul>
-              <ul className="flex justify-between w-3/4 mb-4">
+              <ul className="flex justify-between mb-4">
                 <li>2003-2007</li>
                 <ul>
                   <li>Lector Benedek Elek College</li>
                   <li>Benedek Elek College - Sopron, Hungary</li>
                 </ul>
+                <ul>
+                  <li className="flex justify-between gap-3">
+                    <img src={deleteIcon} alt="" />
+                    <img src={edit} alt="" />
+                  </li>
+                </ul>
               </ul>
-              <ul className="flex justify-between w-3/4 mb-4">
+              <ul className="flex justify-between mb-4">
                 <li>2003-2007</li>
                 <ul>
                   <li>Lector Benedek Elek College</li>
                   <li>Benedek Elek College - Sopron, Hungary</li>
+                </ul>
+                <ul>
+                  <li className="flex justify-between gap-3">
+                    <img src={deleteIcon} alt="" />
+                    <img src={edit} alt="" />
+                  </li>
                 </ul>
               </ul>
             </div>
             <div className="education mt-5">
               <h3 className="font-semibold mb-2">Education</h3>
-              <ul className="flex justify-between w-3/4 mb-4">
+              <ul className="flex justify-between mb-4">
                 <li>2003-2007</li>
                 <ul>
                   <li>Lector Benedek Elek College</li>
                   <li>Benedek Elek College - Sopron, Hungary</li>
                 </ul>
+                <ul>
+                  <li className="flex justify-between gap-3">
+                    <img src={deleteIcon} alt="" />
+                    <img src={edit} alt="" />
+                  </li>
+                </ul>
               </ul>
-              <ul className="flex justify-between w-3/4 mb-4">
+              <ul className="flex justify-between mb-4">
                 <li>2003-2007</li>
                 <ul>
                   <li>Lector Benedek Elek College</li>
                   <li>Benedek Elek College - Sopron, Hungary</li>
+                </ul>
+                <ul>
+                  <li className="flex justify-between gap-3">
+                    <img src={deleteIcon} alt="" />
+                    <img src={edit} alt="" />
+                  </li>
                 </ul>
               </ul>
             </div>
           </Wrapper>
         </div>
         <Wrapper className="mb-6">
-          <h2 className="mb-3">
-            Certificates <span className="italic">(optional)</span>
-          </h2>
+          <div className="flex justify-between">
+            <h2 className="mb-3">
+              Certificates <span className="italic">(optional)</span>
+            </h2>
+            <img className="bg-green rounded-20 p-2" src={plus} alt="" />
+          </div>
           <div className="certificates mt-5">
             <h3 className="font-semibold mb-2">Education</h3>
-            <ul className="flex justify-between w-3/4 mb-4">
+            <ul className="flex justify-between mb-4">
               <li>2003-2007</li>
               <li className="flex justify-between">
                 Teaching English as a Second Language TEFL
@@ -171,8 +250,12 @@ export const AccountProfile = () => {
                   <img src={verified} alt="logo" /> Verified
                 </span>
               </li>
+              <li className="flex gap-3">
+                <img src={deleteIcon} alt="" />
+                <img src={edit} alt="" />
+              </li>
             </ul>
-            <ul className="flex justify-between w-3/4 mb-4">
+            <ul className="flex justify-between mb-4">
               <li>2003-2007</li>
               <li className="flex">
                 Teaching English as a Second Language TEFL
@@ -181,113 +264,71 @@ export const AccountProfile = () => {
                   Verified
                 </span>
               </li>
+              <li className="flex gap-3">
+                <img src={deleteIcon} alt="" />
+                <img src={edit} alt="" />
+              </li>
             </ul>
           </div>
         </Wrapper>
         <Wrapper className="mb-6">
-          <h2 className="mb-3">Schedule</h2>
-          <li className="my-3">Select a day</li>
-          <div className="w-full border border-gray rounded-20 overflow-hidden">
-            <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-          </div>
-        </Wrapper>
-        <Wrapper className="mb-6">
           <h2 className="mb-3">Reviews</h2>
-          <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-5">
-            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
-              <div className="w-3/4">
-                <div className="flex items-center mb-3">
-                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
-                  <ul className="mx-3">
-                    <h3 className="font-semibold">John Doe</h3>
-                    <p>3 English lessons</p>
-                  </ul>
+          <div className="grid xxl:grid-cols-2 md:grid-cols-1 gap-5">
+            <Slider style={{ margin: '100px' }} {...settings}>
+              <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+                <div className="w-full">
+                  <div className="flex items-center mb-3">
+                    <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                    <ul className="mx-3">
+                      <h3 className="font-semibold">John Doe</h3>
+                      <p>3 English lessons</p>
+                    </ul>
+                  </div>
+                  <p>The interested warm up. Insist on learning more from Frank</p>
+                  <p className="text-gray-500 my-2">Mar 8, 2023</p>
                 </div>
-                <p>The interested warm up. Insist on learning more from Frank</p>
-                <p className="text-gray-500 my-2">Mar 8, 2023</p>
               </div>
-            </div>
-            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
-              <div className="w-3/4">
-                <div className="flex items-center mb-3">
-                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
-                  <ul className="mx-3">
-                    <h3 className="font-semibold">John Doe</h3>
-                    <p>3 English lessons</p>
-                  </ul>
+              <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+                <div className="w-3/4">
+                  <div className="flex items-center mb-3">
+                    <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                    <ul className="mx-3">
+                      <h3 className="font-semibold">John Doe</h3>
+                      <p>3 English lessons</p>
+                    </ul>
+                  </div>
+                  <p>The interested warm up. Insist on learning more from Frank</p>
+                  <p className="text-gray-500 my-2">Mar 8, 2023</p>
                 </div>
-                <p>The interested warm up. Insist on learning more from Frank</p>
-                <p className="text-gray-500 my-2">Mar 8, 2023</p>
               </div>
-            </div>
-            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
-              <div className="w-3/4">
-                <div className="flex items-center mb-3">
-                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
-                  <ul className="mx-3">
-                    <h3 className="font-semibold">John Doe</h3>
-                    <p>3 English lessons</p>
-                  </ul>
+              <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+                <div className="w-3/4">
+                  <div className="flex items-center mb-3">
+                    <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                    <ul className="mx-3">
+                      <h3 className="font-semibold">John Doe</h3>
+                      <p>3 English lessons</p>
+                    </ul>
+                  </div>
+                  <p>The interested warm up. Insist on learning more from Frank</p>
+                  <p className="text-gray-500 my-2">Mar 8, 2023</p>
                 </div>
-                <p>The interested warm up. Insist on learning more from Frank</p>
-                <p className="text-gray-500 my-2">Mar 8, 2023</p>
               </div>
-            </div>
-            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
-              <div className="w-3/4">
-                <div className="flex items-center mb-3">
-                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
-                  <ul className="mx-3">
-                    <h3 className="font-semibold">John Doe</h3>
-                    <p>3 English lessons</p>
-                  </ul>
+              <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+                <div className="w-3/4">
+                  <div className="flex items-center mb-3">
+                    <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                    <ul className="mx-3">
+                      <h3 className="font-semibold">John Doe</h3>
+                      <p>3 English lessons</p>
+                    </ul>
+                  </div>
+                  <p>The interested warm up. Insist on learning more from Frank</p>
+                  <p className="text-gray-500 my-2">Mar 8, 2023</p>
                 </div>
-                <p>The interested warm up. Insist on learning more from Frank</p>
-                <p className="text-gray-500 my-2">Mar 8, 2023</p>
               </div>
-            </div>
+            </Slider>
           </div>
-          <Pagination className="w-full text-center mt-5" defaultCurrent={2} total={20} />
-        </Wrapper>
-      </div>
-      <div className="w-1/3 mx-4">
-        <iframe
-          className="w-full rounded-20 h-52 mb-6"
-          src="https://www.youtube.com/embed/zJ0WMaYHIoU"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-        <Wrapper className="mb-6">
-          <h2>Trial lesson</h2>
-          <p>One time, 15 minutes</p>
-          <Divider className="opacity-50 my-3" />
-          <ul className="flex flex-between">
-            <li>Trial lesson</li>
-            <li className="text-green">Free</li>
-          </ul>
-          <Primary htmlType="button" style={{ marginTop: '1rem' }}>
-            Call
-          </Primary>
-        </Wrapper>
-        <Wrapper className="mb-6">
-          <h2>Private lesson</h2>
-          <Divider className="opacity-50 my-3" />
-          <Primary htmlType="button" style={{ marginBottom: '1rem' }}>
-            Start Lesson
-          </Primary>
-          <Button
-            block
-            size="large"
-            shape="round"
-            type="primary"
-            ghost
-            htmlType="submit"
-            className="bg-green !h-12"
-          >
-            Contact Lesson
-          </Button>
         </Wrapper>
       </div>
     </div>
