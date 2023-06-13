@@ -19,12 +19,6 @@ export const SetUpForm = ({ isSignIn, onFinish }) => {
         placeholder="Enter a password"
       />
 
-      <PasswordField
-        name="passwordConfirm"
-        label="password Confirm"
-        placeholder="Enter a password Confirm"
-      />
-
       <Primary block submit rounded className="mb-3">
         {isSignIn ? "Log In" : "Create account"}
       </Primary>

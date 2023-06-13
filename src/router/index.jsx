@@ -37,7 +37,8 @@ import {
   Settings,
   Subscriptions,
   Favorites,
-  Feedback
+  Feedback,
+  Chat
 } from "@/pages";
 
 export const Router = () => {
@@ -120,7 +121,7 @@ export const Router = () => {
         <Route path="favorites" element={<Favorites />} />
         <Route path="help" element={<Help />} />
         <Route path="feedback" element={<Feedback />} />
-
+        <Route path="chat" element={<Chat/>} />
         <Route path="dashboard" element={<StudentDashboard />}>
           <Route
             index

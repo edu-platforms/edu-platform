@@ -22,10 +22,13 @@ export default function SignUp() {
     dispatch(userSignUpGoogle())
   }
 
-  const authSignUpFacebook = () => {
-    dispatch(userSignUpFacebook())
-  }
 
+
+  const authSignUpFacebook = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      console.log(tokenResponse);
+    },
+  });
   return (
     <Sign>
       <div className={`sign-up-container ${isMobile ? 'px-4' : ''}`}>

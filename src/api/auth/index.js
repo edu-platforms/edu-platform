@@ -20,6 +20,8 @@ class AuthApi extends Instance {
   resetPassword = (email) => this.post(endpoints.resetPsw, email);
   changePassword = (params) => this.post(endpoints.changePsw, params);
 
+  signUpWidthGoogle = (params) => this.get(endpoints,params)
+
   // facebook auth
   signUpWidthFacebook = () => this.get(endpoints.signUpFacebook)
   signInWidthFacebook = () => this.get(endpoints.signInFacebook)
@@ -41,7 +43,7 @@ class AuthGoogle extends Instance {
   }
 
     // google auth
-    signUpWidthGoogle = () => this.get(endpoints.signUpGoogle)
+ 
     signInWidthGoogle = () => this.get(endpoints.signInGoogle)
 }
 
