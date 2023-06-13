@@ -1,10 +1,15 @@
 import image from '@/assets/img/tutor.png'
-import { heart } from '@/assets'
-import { Card, Col, Row, Space } from 'antd'
+import { heart, verified } from '@/assets'
+import { Col, Row, Calendar, Avatar, Pagination, Button, Divider } from 'antd'
+import { Wrapper, Primary } from '@/UI'
+
+const onPanelChange = (value, mode) => {
+  console.log(value.format('YYYY-MM-DD'), mode)
+}
 
 export const AccountProfile = () => {
   return (
-    <div>
+    <div className="flex justify-between">
       <div className="w-2/3 flex flex-col gap-5">
         <div className="bg-white rounded-10 pt-7 pb-7 pl-5 pr-5 gap-7 flex flex-col border-2">
           <div className="flex gap-7">
@@ -105,16 +110,186 @@ export const AccountProfile = () => {
           </div>
         </div>
         <div className="w-full flex flex-col bg-white border-2 rounded-10 pt-[30px] pb-[30px] pl-[25px] pr-[25px]">
-          <h2>Resume</h2>
-          <Space direction="vertical" size="middle">
-            <Card title="Work Expreince" size="small">
-              <p>Card content</p>
-              <p>Card content</p>
-            </Card>
-          </Space>
+          <Wrapper className="mb-6">
+            <h2>
+              Resume <span className="italic"></span>
+            </h2>
+            <div className="work-experience mt-5">
+              <h3 className="font-semibold mb-2">Work experience</h3>
+              <ul className="flex justify-between w-3/4 mb-4">
+                <li>2003-2007</li>
+                <ul>
+                  <li>Lector Benedek Elek College</li>
+                  <li>Benedek Elek College - Sopron, Hungary</li>
+                </ul>
+              </ul>
+              <ul className="flex justify-between w-3/4 mb-4">
+                <li>2003-2007</li>
+                <ul>
+                  <li>Lector Benedek Elek College</li>
+                  <li>Benedek Elek College - Sopron, Hungary</li>
+                </ul>
+              </ul>
+              <ul className="flex justify-between w-3/4 mb-4">
+                <li>2003-2007</li>
+                <ul>
+                  <li>Lector Benedek Elek College</li>
+                  <li>Benedek Elek College - Sopron, Hungary</li>
+                </ul>
+              </ul>
+            </div>
+            <div className="education mt-5">
+              <h3 className="font-semibold mb-2">Education</h3>
+              <ul className="flex justify-between w-3/4 mb-4">
+                <li>2003-2007</li>
+                <ul>
+                  <li>Lector Benedek Elek College</li>
+                  <li>Benedek Elek College - Sopron, Hungary</li>
+                </ul>
+              </ul>
+              <ul className="flex justify-between w-3/4 mb-4">
+                <li>2003-2007</li>
+                <ul>
+                  <li>Lector Benedek Elek College</li>
+                  <li>Benedek Elek College - Sopron, Hungary</li>
+                </ul>
+              </ul>
+            </div>
+          </Wrapper>
         </div>
+        <Wrapper className="mb-6">
+          <h2 className="mb-3">
+            Certificates <span className="italic">(optional)</span>
+          </h2>
+          <div className="certificates mt-5">
+            <h3 className="font-semibold mb-2">Education</h3>
+            <ul className="flex justify-between w-3/4 mb-4">
+              <li>2003-2007</li>
+              <li className="flex justify-between">
+                Teaching English as a Second Language TEFL
+                <span className="text-green-500 mx-3 flex items-center">
+                  <img src={verified} alt="logo" /> Verified
+                </span>
+              </li>
+            </ul>
+            <ul className="flex justify-between w-3/4 mb-4">
+              <li>2003-2007</li>
+              <li className="flex">
+                Teaching English as a Second Language TEFL
+                <span className="text-green-500 mx-3 flex items-center">
+                  <img src={verified} alt="logo" />
+                  Verified
+                </span>
+              </li>
+            </ul>
+          </div>
+        </Wrapper>
+        <Wrapper className="mb-6">
+          <h2 className="mb-3">Schedule</h2>
+          <li className="my-3">Select a day</li>
+          <div className="w-full border border-gray rounded-20 overflow-hidden">
+            <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+          </div>
+        </Wrapper>
+        <Wrapper className="mb-6">
+          <h2 className="mb-3">Reviews</h2>
+          <div className="grid xl:grid-cols-2 md:grid-cols-1 gap-5">
+            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+              <div className="w-3/4">
+                <div className="flex items-center mb-3">
+                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                  <ul className="mx-3">
+                    <h3 className="font-semibold">John Doe</h3>
+                    <p>3 English lessons</p>
+                  </ul>
+                </div>
+                <p>The interested warm up. Insist on learning more from Frank</p>
+                <p className="text-gray-500 my-2">Mar 8, 2023</p>
+              </div>
+            </div>
+            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+              <div className="w-3/4">
+                <div className="flex items-center mb-3">
+                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                  <ul className="mx-3">
+                    <h3 className="font-semibold">John Doe</h3>
+                    <p>3 English lessons</p>
+                  </ul>
+                </div>
+                <p>The interested warm up. Insist on learning more from Frank</p>
+                <p className="text-gray-500 my-2">Mar 8, 2023</p>
+              </div>
+            </div>
+            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+              <div className="w-3/4">
+                <div className="flex items-center mb-3">
+                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                  <ul className="mx-3">
+                    <h3 className="font-semibold">John Doe</h3>
+                    <p>3 English lessons</p>
+                  </ul>
+                </div>
+                <p>The interested warm up. Insist on learning more from Frank</p>
+                <p className="text-gray-500 my-2">Mar 8, 2023</p>
+              </div>
+            </div>
+            <div className="rounded-10 bg-blue-50 border-2 border-gray-200 p-4">
+              <div className="w-3/4">
+                <div className="flex items-center mb-3">
+                  <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+                  <ul className="mx-3">
+                    <h3 className="font-semibold">John Doe</h3>
+                    <p>3 English lessons</p>
+                  </ul>
+                </div>
+                <p>The interested warm up. Insist on learning more from Frank</p>
+                <p className="text-gray-500 my-2">Mar 8, 2023</p>
+              </div>
+            </div>
+          </div>
+          <Pagination className="w-full text-center mt-5" defaultCurrent={2} total={20} />
+        </Wrapper>
       </div>
-      <div className="w-1/3 bg-amber-200"></div>
+      <div className="w-1/3 mx-4">
+        <iframe
+          className="w-full rounded-20 h-52 mb-6"
+          src="https://www.youtube.com/embed/zJ0WMaYHIoU"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <Wrapper className="mb-6">
+          <h2>Trial lesson</h2>
+          <p>One time, 15 minutes</p>
+          <Divider className="opacity-50 my-3" />
+          <ul className="flex flex-between">
+            <li>Trial lesson</li>
+            <li className="text-green">Free</li>
+          </ul>
+          <Primary htmlType="button" style={{ marginTop: '1rem' }}>
+            Call
+          </Primary>
+        </Wrapper>
+        <Wrapper className="mb-6">
+          <h2>Private lesson</h2>
+          <Divider className="opacity-50 my-3" />
+          <Primary htmlType="button" style={{ marginBottom: '1rem' }}>
+            Start Lesson
+          </Primary>
+          <Button
+            block
+            size="large"
+            shape="round"
+            type="primary"
+            ghost
+            htmlType="submit"
+            className="bg-green !h-12"
+          >
+            Contact Lesson
+          </Button>
+        </Wrapper>
+      </div>
     </div>
   )
 }
