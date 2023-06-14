@@ -7,7 +7,7 @@ export default function ConnectedForm({ prev, next }) {
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    // values?.photo = 
+    
     dispatch(setPersonal(values))
     next();
   };

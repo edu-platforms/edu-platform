@@ -1,6 +1,5 @@
 import { Form, Input, Select, Typography } from 'antd'
 import { Primary } from '@/UI'
-import { genderOptions } from '../../constants/options'
 
 export const StartForm = ({ onFinish }) => {
   return (
@@ -11,30 +10,7 @@ export const StartForm = ({ onFinish }) => {
         rules={[
           {
             required: true,
-            type: 'string',
-          },
-        ]}
-      >
-        <Input className='py-3 px-4 my-2' placeholder='Type your first name' />
-      </Form.Item>
-      <Form.Item
-        name='gender'
-        label='gender'
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Select options={genderOptions} />
-      </Form.Item>{' '}
-      <Form.Item
-        name='phone'
-        label='Your phone'
-        rules={[
-          {
-            required: true,
-            type: 'string',
+            type:'string',
           },
         ]}
       >

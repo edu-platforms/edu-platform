@@ -12,11 +12,10 @@ export default function ConnectedForm({ next }) {
 
   const onFinish = (values) => {
     const option = {
-      user_firstname: values.name,
-      user_lastname: values.lastname,
-      user_email: user.email,
-      user_password: user.password,
-      user_whom: user.type,
+      firstname: values.name,
+      email: user.email,
+      password: user.password,
+      whom: user.whom,
     }
     dispatch(userSignUp({ option, next }))
 

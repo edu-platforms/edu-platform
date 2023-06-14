@@ -5,10 +5,8 @@ import { removeLocalStorage } from '@/libs/utils'
 const initialState = {
   user: {
     whom: '',
-    role: 'user',
     email: '',
     password: '',
-    passwordConfirm: '',
   },
   teacher: {
     user_displayname: '',
@@ -43,13 +41,11 @@ const authSlice = createSlice({
 
     setType: (state, { payload }) => {
       state.user.whom = payload
-      console.log(state.user.whom)
     },
 
     setLogin: (state, { payload }) => {
       state.user.email = payload.email
       state.user.password = payload.password
-      state.user.passwordConfirm = payload.passwordConfirm
     },
 
     // setFullName:
@@ -88,7 +84,6 @@ const authSlice = createSlice({
 
     setEducation: (state, { payload }) => {
       state.teacher.education = payload
-      console.log(payload)
     },
 
     setExprience: (state, { payload }) => {

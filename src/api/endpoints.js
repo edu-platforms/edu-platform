@@ -1,31 +1,26 @@
 export const endpoints = {
-  base: "/api",
-  user:"/user",
-  login:"login",
-  signIn: "/signin",
-  signUp:"/signup",
-  otp:"/otp",
+  base: '/api',
+  user: '/user',
+  login: 'login',
+  signIn: '/client/login',
+  signUp: '/client/register',
+  otp: '/otp',
 
+  become: '/become-tutor',
 
-  become:"/become-tutor",
-  
+  google: '/user-auth-google',
+  signUpGoogle: '/callback',
+  signInGoogle: '/google',
 
-  google:"/user-auth-google",
-  signUpGoogle:"/callback",
-  signInGoogle:"/google",
+  facebook: 'user-auth-facebook',
+  signUpFacebook: '/callback',
+  signInFacebook: '/facebook',
 
+  resetPsw: '/reset-password',
+  changePsw: '/change-password',
+  resetVerify: '/resetverify',
 
-  facebook:"user-auth-facebook",
-  signUpFacebook:"/callback",
-  signInFacebook:"/facebook",
-  
-  resetPsw: "/reset-password",
-  changePsw: "/change-password",
-  resetVerify: "/resetverify",
+  courses: '/courses',
 
-
-
-  courses: "/courses",
-
-  file: "/file",
-};
+  file: '/file',
+}
