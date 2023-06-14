@@ -38,11 +38,12 @@ import {
   Subscriptions,
   Favorites,
   Feedback,
+  Chat,
 } from '@/pages'
 import { AccountProfile } from '@/router/lazy.jsx'
 
 export const Router = () => {
-  const { isAuth, isInitiated } = useBootstrap()
+  const { isInitiated } = useBootstrap()
 
   if (isInitiated) {
     return <Loader />
@@ -126,7 +127,7 @@ export const Router = () => {
         <Route path="favorites" element={<Favorites />} />
         <Route path="help" element={<Help />} />
         <Route path="feedback" element={<Feedback />} />
-
+        <Route path="chat" element={<Chat />} />
         <Route path="dashboard" element={<StudentDashboard />}>
           <Route index replace element={<Navigate to={'/student/dashboard/upcoming'} />} />
 

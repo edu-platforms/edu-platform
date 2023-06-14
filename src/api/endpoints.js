@@ -9,6 +9,7 @@ export const endpoints = {
 
   become:"/become-tutor",
   
+
   google:"/user-auth-google",
   signUpGoogle:"/callback",
   signInGoogle:"/google",
