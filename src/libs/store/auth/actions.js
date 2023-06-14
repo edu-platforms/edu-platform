@@ -22,46 +22,40 @@ export const userSignUp = createAsyncThunk(
     } finally {
       dispatch(setLoading(false))
     }
-  },
+  }
 )
 
 // sign-up-otp
-export const userOtp = createAsyncThunk(
-  'user/otp',
-  async (params, { dispatch }) => {
-    try {
-      dispatch(setLoading(true))
-      const { token } = await authApi.otp(params)
-      if (token && token !== null) {
-        setLocalStorage('access-token', token)
-        history.push('/student')
-      }
-    } catch (error) {
-      addNotification(error)
-    } finally {
-      dispatch(setLoading(false))
+export const userOtp = createAsyncThunk('user/otp', async (params, { dispatch }) => {
+  try {
+    dispatch(setLoading(true))
+    const { token } = await authApi.otp(params)
+    if (token && token !== null) {
+      setLocalStorage('access-token', token)
+      history.push('/student')
     }
-  },
-)
+  } catch (error) {
+    addNotification(error)
+  } finally {
+    dispatch(setLoading(false))
+  }
+})
 
 // sgin-in
-export const userSignIn = createAsyncThunk(
-  '/user/SignIn',
-  async (params, { dispatch }) => {
-    try {
-      dispatch(setLoading(true))
-      const { data } = await authApi.signIn(params)
-      if (data.token && data.token !== null) {
-        setLocalStorage('access-token', data.token)
-        history.push('/student')
-      }
-    } catch (error) {
-      addNotification(error)
-    } finally {
-      dispatch(setLoading(false))
+export const userSignIn = createAsyncThunk('/user/SignIn', async (params, { dispatch }) => {
+  try {
+    dispatch(setLoading(true))
+    const { data } = await authApi.signIn(params)
+    if (data.token && data.token !== null) {
+      setLocalStorage('access-token', data.token)
+      history.push('/student')
     }
-  },
-)
+  } catch (error) {
+    addNotification(error)
+  } finally {
+    dispatch(setLoading(false))
+  }
+})
 
 // user-reset-password
 export const userResetPassword = createAsyncThunk(
@@ -78,7 +72,7 @@ export const userResetPassword = createAsyncThunk(
     } finally {
       dispatch(setLoading(false))
     }
-  },
+  }
 )
 
 //user-change-password
@@ -93,7 +87,7 @@ export const userChangePassword = createAsyncThunk(
     } finally {
       dispatch(setLoading(false))
     }
-  },
+  }
 )
 
 // google signUp
@@ -109,18 +103,14 @@ export const userSignUpGoogle = createAsyncThunk(
     } finally {
       dispatch(setLoading(false))
     }
-  },
+  }
 )
 
 // google signIn
 export const userSignInGoogle = createAsyncThunk(
   '/user-up-google',
   async (params, { dispatch }) => {
-    window.open(
-      `http://single.uz/api/user-auth-google/google`,
-      '_blank',
-      'width=500 height=600',
-    )
+    window.open(`http://single.uz/api/user-auth-google/google`, '_blank', 'width=500 height=600')
     try {
       dispatch(setLoading(true))
       const token = await authGoogleApi.signInWidthGoogle()
@@ -130,7 +120,7 @@ export const userSignInGoogle = createAsyncThunk(
     } finally {
       dispatch(setLoading(false))
     }
-  },
+  }
 )
 
 // facebook signUp
@@ -146,7 +136,7 @@ export const userSignUpFacebook = createAsyncThunk(
     } finally {
       dispatch(setLoading(false))
     }
-  },
+  }
 )
 
 // facebook signIn
@@ -162,25 +152,22 @@ export const userSignInFacebook = createAsyncThunk(
     } finally {
       dispatch(setLoading(false))
     }
-  },
+  }
 )
 
 // techer register
 
-export const teacherBecome = createAsyncThunk(
-  'teacher/beacome',
-  async (params, { dispatch }) => {
-    console.log(params)
-    try {
-      dispatch(setLoading(true))
-      const { data } = await usersApi.becomeTeacher(params)
+export const teacherBecome = createAsyncThunk('teacher/beacome', async (params, { dispatch }) => {
+  console.log(params)
+  try {
+    dispatch(setLoading(true))
+    const { data } = await usersApi.becomeTeacher(params)
 
-      console.log(data)
-    } catch (error) {
-      console.log(error)
-      addNotification(error)
-    } finally {
-      dispatch(setLoading(false))
-    }
-  },
-)
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+    addNotification(error)
+  } finally {
+    dispatch(setLoading(false))
+  }
+})
