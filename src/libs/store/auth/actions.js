@@ -19,7 +19,10 @@ export const userSignUp = createAsyncThunk('user/sign-up', async (params, { disp
     dispatch(setLoading(false))
   }
 })
+  }
+)
 
+// sign-up-otp
 export const userOtp = createAsyncThunk('user/otp', async (params, { dispatch }) => {
   try {
     dispatch(setLoading(true))
@@ -35,6 +38,7 @@ export const userOtp = createAsyncThunk('user/otp', async (params, { dispatch })
   }
 })
 
+// sgin-in
 export const userSignIn = createAsyncThunk('/user/SignIn', async (params, { dispatch }) => {
   try {
     dispatch(setLoading(true))
@@ -143,6 +147,7 @@ export const userSignInFacebook = createAsyncThunk(
   }
 )
 
+// techer register
 export const teacherBecome = createAsyncThunk('teacher/beacome', async (params, { dispatch }) => {
   console.log(params)
   try {
