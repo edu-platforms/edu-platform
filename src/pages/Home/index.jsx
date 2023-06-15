@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { Link } from "react-router-dom";
 import { Primary, Secondary } from "@/UI";
@@ -10,9 +10,19 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MobileHome } from "./Mobile";
+import { courcesSelector, fetchCources } from "@/libs/slices/courceSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
-  const { isSmallMobile, isTablet } = useMedia()
+  const { data } = useSelector(courcesSelector);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCources());
+  }, []);
+
+  const { isSmallMobile } = useMedia()
 
   const info = {
     name: "Smith",
@@ -116,8 +126,8 @@ export default function Home() {
 
           <Divider className="mt-[132px] mb-5" />
           <div className="grid-template">
-            {a.map(i => (
-              <CourseCard course={course} key={i} />
+            {data?.cources.map(cource => (
+              <CourseCard course={cource} key={cource.id} />
             ))}
           </div>
 
