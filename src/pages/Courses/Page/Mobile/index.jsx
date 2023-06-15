@@ -1,7 +1,6 @@
 import { CourseCard } from '@/components'
 
 export const CourseMobile = ({ course }) => {
-  8
   const a = Array.from({ length: 8 }, () => Math.random());
 
   return (

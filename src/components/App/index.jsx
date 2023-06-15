@@ -11,6 +11,7 @@ import { Loader } from "@/UI/index.js";
 import { ModalProvider } from "../../context/index.jsx";
 import { Router } from "@/router/index.jsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+
 export const App = () => {
   return (
     <GoogleOAuthProvider clientId="966040164858-d01oql7ungul6fcpoc3e0ft0vqalnuhc.apps.googleusercontent.com">
