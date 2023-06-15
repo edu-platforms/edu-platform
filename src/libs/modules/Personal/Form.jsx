@@ -1,26 +1,19 @@
-import React, { useState } from "react";
-import { Upload } from "@/components/index.js";
-import { Back, Wrapper, Primary } from "@/UI/index.js";
-import { Form, Input, Select, DatePicker } from "antd";
-import {
-  fromOptions,
-  livingOptions,
-  genderOptions,
-  accentOptions,
-} from "@/libs/constants/index.js";
-
+import { useState } from 'react'
+import { Upload } from '@/components/index.js'
+import { Back, Wrapper, Primary } from '@/UI/index.js'
+import { Form, Input, Select, DatePicker } from 'antd'
+import { fromOptions, livingOptions, genderOptions, accentOptions } from '@/libs/constants/index.js'
+import { nameRegex } from '@/libs/utils/general'
 export const PersonalForm = ({ prev, onFinish }) => {
-  const { Item } = Form;
-  const [fileList, setFileList] = useState([]);
-console.log(fileList);
-  const getFile = (e) => {
-    console.log("Upload event:", e);
+  const { Item } = Form
+  const [fileList, setFileList] = useState([])
 
+  const getFile = (e) => {
     if (Array.isArray(e)) {
-      return e;
+      return e
     }
-    return e && e.fileList;
-  };
+    return e && e.fileList
+  }
 
   return (
     <Form className="w-3/4 space-y-5" layout="vertical" onFinish={onFinish}>
@@ -34,7 +27,7 @@ console.log(fileList);
             rules={[
               {
                 required: true,
-                message: "Please enter your Number",
+                message: 'Please enter your Number',
               },
             ]}
           >
@@ -65,7 +58,8 @@ console.log(fileList);
             rules={[
               {
                 required: true,
-                message: "Please enter your First Name",
+                pattern: nameRegex,
+                message: 'Please enter your First Name',
               },
             ]}
           >
@@ -78,7 +72,8 @@ console.log(fileList);
             rules={[
               {
                 required: true,
-                message: "Please enter your Last Name",
+                pattern: nameRegex,
+                message: 'Please enter your Last Name',
               },
             ]}
           >
@@ -104,10 +99,10 @@ console.log(fileList);
             rules={[
               {
                 required: true,
-               
+
                 validator: async () => {
                   if (!fileList.length) {
-                    return Promise.reject("Please enter Photo");
+                    return Promise.reject('Please enter Photo')
                   }
                 },
               },
@@ -136,5 +131,5 @@ console.log(fileList);
         </div>
       </Wrapper>
     </Form>
-  );
-};
+  )
+}

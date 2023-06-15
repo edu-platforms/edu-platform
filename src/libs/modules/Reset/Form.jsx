@@ -1,8 +1,8 @@
-import React from "react";
-import { Form, Row, Typography } from "antd";
-import { Link } from "react-router-dom";
-import { Primary } from "@/UI/index.js";
-import { EmailField, PasswordField } from "@/components/index.js";
+import React from 'react'
+import { Form, Row, Typography } from 'antd'
+import { Link } from 'react-router-dom'
+import { Primary } from '@/UI/index.js'
+import { EmailField, PasswordField } from '@/components/index.js'
 
 export const ResetForm = ({ isForgot, onFinish }) => {
   return (
@@ -11,7 +11,7 @@ export const ResetForm = ({ isForgot, onFinish }) => {
         <EmailField />
       ) : (
         <>
-         <EmailField />
+          <EmailField />
           <PasswordField
             name="new_password"
             label="New password"
@@ -27,16 +27,16 @@ export const ResetForm = ({ isForgot, onFinish }) => {
       )}
 
       <Primary block submit rounded className="my-3">
-        {isForgot ? "Reset password" : "Save password"}
+        {isForgot ? 'Reset password' : 'Save password'}
       </Primary>
 
       {isForgot ? (
         <Row justify="end">
-          <Link to={"/sign-in"}>
+          <Link to={'/sign-in'}>
             <Typography.Text strong>I already have an account</Typography.Text>
           </Link>
         </Row>
       ) : null}
     </Form>
-  );
-};
+  )
+}
