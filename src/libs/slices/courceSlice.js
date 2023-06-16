@@ -21,7 +21,7 @@ export const fetchCources = createAsyncThunk(getPrefix(name, 'fetchCources'), as
 })
 
 export const fetchSingleCource = createAsyncThunk(getPrefix(name, 'fetchSingleCource'), async (id) => {
-  const response = await rest.get(`/course/${id}`);
+  const response = await rest.get(`https://single.uz/api/course/${id}`);
   return response.data;
 })
 
@@ -69,6 +69,7 @@ const courcesSlice = createSlice({
 })
 
 export const courcesSelector = (state) => state.cources;
+export const courceSelector = (state) => state.cource;
 export const courceActions = courcesSlice.actions;
 
 export default courcesSlice.reducer;

@@ -8,16 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { courcesSelector, fetchCources } from '@/libs/slices/courceSlice';
 
 export default function Courses() {
-  window.scrollTo(0, 0);
-  const dispatch = useDispatch();
+  window.scrollTo(0, 0)
+  const dispatch = useDispatch()
 
-  const { data } = useSelector(courcesSelector);
+  const { data } = useSelector(courcesSelector)
 
   useEffect(() => {
-    dispatch(fetchCources());
-  }, []);
+    dispatch(fetchCources())
+  }, [])
 
-  const { isSmallMobile } = useMedia();
+  const { isSmallMobile } = useMedia()
 
   const course = {
     name: 'John Doe',
@@ -57,6 +57,6 @@ export default function Courses() {
   );
 
   return (
-    <> {isSmallMobile ? <CourseMobile course={''} /> : CourseDesktop} </>
+    <> {isSmallMobile ? <CourseMobile data={data?.cources} /> : CourseDesktop} </>
   );
 }
