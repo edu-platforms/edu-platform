@@ -4,6 +4,7 @@ import ExperienceModal from "./Experience";
 import CertificatesModal from "./Certificates";
 import MobileNavbar from "./Navbar";
 import AccountModal from "./Account";
+import LoginModal from "./Login";
 
 export {
   LibraryModal,
@@ -11,5 +12,6 @@ export {
   ExperienceModal,
   CertificatesModal,
   MobileNavbar,
-  AccountModal
+  AccountModal,
+  LoginModal
 };

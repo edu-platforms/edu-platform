@@ -19,8 +19,7 @@ export const userSignUp = createAsyncThunk('user/sign-up', async (params, { disp
     dispatch(setLoading(false))
   }
 })
-  }
-)
+
 
 // sign-up-otp
 export const userOtp = createAsyncThunk('user/otp', async (params, { dispatch }) => {
