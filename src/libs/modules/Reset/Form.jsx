@@ -1,4 +1,3 @@
-import React from 'react'
 import { Form, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
 import { Primary } from '@/UI/index.js'

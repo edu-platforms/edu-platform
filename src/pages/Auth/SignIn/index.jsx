@@ -6,9 +6,8 @@ import { useMedia } from 'src/libs/hooks'
 import { useLogin } from 'react-facebook'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useDispatch } from 'react-redux'
-import { userSignIn } from 'src/libs/store'
-import { facebook_url, google_url } from '@/libs/constants/providerSettings'
-import axios from 'axios'
+import { userLogin } from '@/libs/slices/authSlices'
+import { getFacebookData, getGoogleData } from '@/libs/constants/providerSettings'
 
 export default function SignIn() {
   const { login } = useLogin()
@@ -18,18 +17,8 @@ export default function SignIn() {
   const authSignInGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       if (tokenResponse && tokenResponse.access_token) {
-        const { data } = await axios.get(google_url, {
-          headers: {
-            Authorization: `Bearer ${tokenResponse.access_token}`,
-          },
-        })
-        if (data) {
-          const option = {
-            email: data.email,
-            google_id: data.sub,
-          }
-          dispatch(userSignIn(option))
-        }
+        const { email, google_id } = await getGoogleData(tokenResponse.access_token)
+        dispatch(userLogin({ email, google_id }))
       }
     },
   })
@@ -38,14 +27,11 @@ export default function SignIn() {
     const { authResponse } = await login({
       scope: 'email',
     })
-    const { data } = await axios.get(
-      `${facebook_url}/${authResponse.userID}?fields=name,email&access_token=${authResponse.accessToken}`
+    const { email, facebook_id } = await getFacebookData(
+      authResponse.userID,
+      authResponse.accessToken
     )
-    const option = {
-      email: data.email,
-      facebook_id: authResponse.userID,
-    }
-    dispatch(userSignIn(option))
+    dispatch(userLogin({ email, facebook_id }))
   }
 
   return (
