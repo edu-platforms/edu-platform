@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { setLogin } from '@/libs/store/index.js'
+import { setLogin } from '@/libs/slices/authSlices.js'
 import { SetUpForm } from './Form.jsx'
 import { userSignIn } from '../../store/index.js'
 

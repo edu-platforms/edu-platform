@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useMedia, useSteps } from 'src/libs/hooks'
-import { authSelector, setType } from 'src/libs/store'
+import { authSelector, setType, userResgister } from '@/libs/slices/authSlices'
 import { steps } from 'src/libs/constants'
 import { Sign } from '@/components'
 import { Steps, Divider } from 'antd'
@@ -9,9 +9,8 @@ import { SetUpForm, StartUpForm } from 'src/libs/modules'
 import { apple, google, arrowBack, facebookLogo } from '@/assets'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useLogin } from 'react-facebook'
-import { userSignUp } from '../../../libs/store'
-import { google_url, facebook_url } from '@/libs/constants/providerSettings'
-import axios from 'axios'
+import { getFacebookData, getGoogleData } from '@/libs/constants/providerSettings'
+
 export default function SignUp() {
   const { login } = useLogin()
   const dispatch = useDispatch()
@@ -26,43 +25,21 @@ export default function SignUp() {
   const authSignUpGoogle = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       if (tokenResponse && tokenResponse.access_token) {
-        const { data } = await axios.get(google_url, {
-          headers: {
-            Authorization: `Bearer ${tokenResponse.access_token}`,
-          },
-        })
-        if (data) {
-          const option = {
-            email: data.email,
-            google_id: data.sub,
-            firstname: data.given_name,
-            whom: user.whom,
-          }
-          dispatch(userSignUp(option))
-        }
+        const { email, google_id, firstname } = await getGoogleData(tokenResponse.access_token)
+        dispatch(userResgister({ email, google_id, firstname, whom: user.whom }))
       }
     },
   })
 
   const authSignUpFacebook = async () => {
-    try {
-      const { authResponse } = await login({
-        scope: 'email',
-      })
-
-      const { data } = await axios.get(
-        `${facebook_url}/${authResponse.userID}?fields=name,email&access_token=${authResponse.accessToken}`
-      )
-      const option = {
-        email: data.email,
-        facebook_id: authResponse.userID,
-        firstname: data.name,
-        whom: user.whom,
-      }
-      dispatch(userSignUp(option))
-    } catch (error) {
-      console.log(error.message)
-    }
+    const { authResponse } = await login({
+      scope: 'email',
+    })
+    const { email, facebook_id, firstname } = await getFacebookData(
+      authResponse.userID,
+      authResponse.accessToken
+    )
+    dispatch(userResgister({ email, facebook_id, firstname, whom: user.whom }))
   }
   return (
     <Sign>
@@ -88,7 +65,7 @@ export default function SignUp() {
               >
                 <button
                   className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
-                  onClick={() => handleChoose('Kid')}
+                  onClick={() => handleChoose('kid')}
                 >
                   Kid
                 </button>

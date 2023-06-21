@@ -1,19 +1,19 @@
-import { notification } from "antd";
-import { AxiosError } from "axios";
-import { makeErrMsg } from "./general.js";
+import { notification } from 'antd'
+import { AxiosError } from 'axios'
+import { makeErrMsg } from './general.js'
 
 export const addNotification = (data) => {
   if (data instanceof AxiosError) {
     notification.error({
       message: makeErrMsg(data),
-      placement: "topRight",
-    });
+      placement: 'topRight',
+    })
 
-    return;
+    return
   }
 
   notification.success({
     message: data,
-    placement: "topRight",
-  });
-};
+    placement: 'topRight',
+  })
+}

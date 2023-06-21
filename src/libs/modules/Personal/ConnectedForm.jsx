@@ -1,16 +1,14 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { setPersonal } from "@/libs/store/index.js";
-import { PersonalForm } from "./Form.jsx";
+import { useDispatch } from 'react-redux'
+import { setPersonal } from '@/libs/slices/authSlices.js'
+import { PersonalForm } from './Form.jsx'
 
 export default function ConnectedForm({ prev, next }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onFinish = (values) => {
-    
     dispatch(setPersonal(values))
-    next();
-  };
+    next()
+  }
 
-  return <PersonalForm prev={prev} onFinish={onFinish} />;
+  return <PersonalForm prev={prev} onFinish={onFinish} />
 }

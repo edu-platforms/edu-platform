@@ -1,13 +1,7 @@
-const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key));
+const getLocalStorage = (key) => JSON.parse(localStorage.getItem(key))
 
-const setLocalStorage = (key, value) =>
-  localStorage.setItem(key, JSON.stringify(value));
+const setLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value))
 
+const removeLocalStorage = (key) => localStorage.removeItem(key)
 
-const removeLocalStorage = (key) => localStorage.removeItem(key);
-
-export {
-  getLocalStorage,
-  setLocalStorage,
-  removeLocalStorage,
-};
+export { getLocalStorage, setLocalStorage, removeLocalStorage }

@@ -1,4 +1,4 @@
-import { Form, Input } from "antd";
+import { Form, Input } from 'antd'
 
 export const EmailField = () => {
   return (
@@ -9,11 +9,11 @@ export const EmailField = () => {
       rules={[
         {
           required: true,
-          type: "email",
+          type: 'email',
         },
       ]}
     >
       <Input className="py-3 px-4" placeholder="Enter your email" />
     </Form.Item>
-  );
+  )
 }

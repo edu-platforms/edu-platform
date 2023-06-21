@@ -19,30 +19,12 @@ export const userSignUp = createAsyncThunk('user/sign-up', async (params, { disp
     dispatch(setLoading(false))
   }
 })
-  }
-)
 
-// sign-up-otp
-export const userOtp = createAsyncThunk('user/otp', async (params, { dispatch }) => {
-  try {
-    dispatch(setLoading(true))
-    const { token } = await authApi.otp(params)
-    if (token && token !== null) {
-      setLocalStorage('access-token', token)
-      history.push('/student')
-    }
-  } catch (error) {
-    addNotification(error)
-  } finally {
-    dispatch(setLoading(false))
-  }
-})
-
-// sgin-in
 export const userSignIn = createAsyncThunk('/user/SignIn', async (params, { dispatch }) => {
   try {
     dispatch(setLoading(true))
     const { data } = await authApi.signIn(params)
+    console.log(data)
     if (data.token && data.token !== null) {
       setLocalStorage('access-token', data.token)
       history.push('/student')
@@ -79,68 +61,6 @@ export const userChangePassword = createAsyncThunk(
       console.log(data)
     } catch (error) {
       addNotification(error)
-    } finally {
-      dispatch(setLoading(false))
-    }
-  }
-)
-
-export const userSignUpGoogle = createAsyncThunk(
-  '/user-up-google',
-  async (params, { dispatch }) => {
-    console.log(params)
-    try {
-      dispatch(setLoading(true))
-      const token = await authApi.signUp(params)
-      console.log(token)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      dispatch(setLoading(false))
-    }
-  }
-)
-
-export const userSignInGoogle = createAsyncThunk(
-  '/user-up-google',
-  async (params, { dispatch }) => {
-    window.open(`http://single.uz/api/user-auth-google/google`, '_blank', 'width=500 height=600')
-    try {
-      dispatch(setLoading(true))
-      const token = await authGoogleApi.signInWidthGoogle()
-      console.log(token)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      dispatch(setLoading(false))
-    }
-  }
-)
-
-export const userSignUpFacebook = createAsyncThunk(
-  '/user-up-google',
-  async (params, { dispatch }) => {
-    try {
-      dispatch(setLoading(true))
-      const token = await authApi.signUpWidthFacebook()
-      console.log(token)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      dispatch(setLoading(false))
-    }
-  }
-)
-
-export const userSignInFacebook = createAsyncThunk(
-  '/user-up-google',
-  async (params, { dispatch }) => {
-    try {
-      dispatch(setLoading(true))
-      const token = await authApi.signInWidthFacebook()
-      console.log(token)
-    } catch (error) {
-      console.log(error)
     } finally {
       dispatch(setLoading(false))
     }
