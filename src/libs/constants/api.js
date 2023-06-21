@@ -1,5 +1,10 @@
 export const API = {
   LOGIN: '/api/user/login',
+  REGISTER: '/api/user/client/register',
+  CLIENT_LOGIN: '/api/user/client/login',
+  SEND_EMAIL: '/api/user/send-emile-code',
+  CHEK_CODE: '/api/user/chek-code',
+  CHANGE_PASSWORD: '/api/user/change-password',
   ME: '/api/user/me',
   USER: '/api/user',
   TUTOR: '/api/user/tutor',

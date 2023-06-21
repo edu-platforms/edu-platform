@@ -1,23 +1,23 @@
-import {yandex, paypal, webmoney, masterCard} from "@/assets/index.js"
+import { yandex, paypal, webmoney, masterCard } from '@/assets/index.js'
 export const payments = [
   {
     id: 0,
-    title: "Debit/ Credit card",
+    title: 'Debit/ Credit card',
     src: yandex,
   },
   {
     id: 1,
-    title: "PayPal",
+    title: 'PayPal',
     src: paypal,
   },
   {
     id: 2,
-    title: "WebMoney",
+    title: 'WebMoney',
     src: webmoney,
   },
   {
     id: 3,
-    title: "MasterCard",
+    title: 'MasterCard',
     src: masterCard,
   },
-];
+]
