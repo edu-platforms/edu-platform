@@ -1,27 +1,26 @@
-import React, { useState } from "react";
-import { Modal, Primary } from "@/UI";
-import { DatePicker, Button, Form, Input, Checkbox } from "antd";
-import { useDispatch } from "react-redux";
-import { setExprience } from "src/libs/store";
+import { useState } from 'react'
+import { Modal, Primary } from '@/UI'
+import { DatePicker, Button, Form, Input, Checkbox } from 'antd'
+import { useDispatch } from 'react-redux'
+import { setExprience } from '@/libs/slices/authSlices'
 export default function ExperienceModal({ close }) {
-  const dispatch = useDispatch();
-  const [until, setUntil] = useState(false);
-  const { TextArea } = Input;
-  const [form] = Form.useForm();
+  const dispatch = useDispatch()
+  const [until, setUntil] = useState(false)
+  const { TextArea } = Input
+  const [form] = Form.useForm()
   const handleFinishForm = (values) => {
-    dispatch(setExprience(values?.experience));
-    close();
-  };
+    dispatch(setExprience(values?.experience))
+    close()
+  }
 
   const handleCancel = () => {
-    form.resetFields();
-    close();
-  };
+    form.resetFields()
+    close()
+  }
 
   const onChange = (e) => {
-    console.log(`checked = ${e.target.checked}`);
-    setUntil(!until);
-  };
+    setUntil(!until)
+  }
 
   return (
     <Modal className="!w-[600px]" onCancel={handleCancel}>
@@ -35,10 +34,8 @@ export default function ExperienceModal({ close }) {
                 <div key={key} className="border-gray-200 border-b mb-5">
                   <div className="w-full flex items-start gap-x-4">
                     <Form.Item
-                      name={[name, "experience_title"]}
-                      rules={[
-                        { required: true, message: "Please enter your job!" },
-                      ]}
+                      name={[name, 'experience_title']}
+                      rules={[{ required: true, message: 'Please enter your job!' }]}
                       className="w-full"
                       {...restField}
                     >
@@ -47,35 +44,27 @@ export default function ExperienceModal({ close }) {
                   </div>
                   <div className="w-full flex items-start gap-x-4">
                     <Form.Item
-                      name={[name, "experience_descr"]}
+                      name={[name, 'experience_descr']}
                       rules={[{ required: false }]}
                       className="w-full"
                       {...restField}
                     >
-                      <TextArea
-                        className="p-2 py-4"
-                        placeholder="Description"
-                      />
+                      <TextArea className="p-2 py-4" placeholder="Description" />
                     </Form.Item>
                   </div>
 
                   <div className="w-full grid grid-cols-3 items-center">
                     <Form.Item
                       className="w-full"
-                      name={[name, "experience_from"]}
-                      rules={[
-                        { required: true, message: "Please enter your date!" },
-                      ]}
+                      name={[name, 'experience_from']}
+                      rules={[{ required: true, message: 'Please enter your date!' }]}
                       {...restField}
                     >
-                      <DatePicker
-                        placeholder="From date"
-                        className="p-2 w-11/12"
-                      />
+                      <DatePicker placeholder="From date" className="p-2 w-11/12" />
                     </Form.Item>
                     <Form.Item
                       className="w-full"
-                      name={[name, "experience_to"]}
+                      name={[name, 'experience_to']}
                       rules={[{ required: false }]}
                       {...restField}
                     >
@@ -93,10 +82,7 @@ export default function ExperienceModal({ close }) {
                     </Form.Item>
                   </div>
                   <div className="flex justify-end">
-                    <Button
-                      className="border-none text-[#D73604]"
-                      onClick={() => remove(name)}
-                    >
+                    <Button className="border-none text-[#D73604]" onClick={() => remove(name)}>
                       Discard
                     </Button>
                   </div>
@@ -111,11 +97,7 @@ export default function ExperienceModal({ close }) {
         </Form.List>
 
         <div className="flex justify-end gap-x-4">
-          <button
-            type="button"
-            className="text-green"
-            onClick={() => handleCancel()}
-          >
+          <button type="button" className="text-green" onClick={() => handleCancel()}>
             Cancel
           </button>
 
@@ -123,5 +105,5 @@ export default function ExperienceModal({ close }) {
         </div>
       </Form>
     </Modal>
-  );
+  )
 }

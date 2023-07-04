@@ -1,39 +1,35 @@
-import axios from "axios";
-import { stage } from "src/libs/config";
-import { endpoints } from "../endpoints";
-import { getLocalStorage } from "../../libs/utils";
+import axios from 'axios'
+import { stage } from 'src/libs/config'
+import { endpoints } from '../endpoints'
+import { getLocalStorage } from '../../libs/utils'
 
 export class Instance {
-  instanc;
-  baseURL = "";
+  instanc
+  baseURL = ''
 
   constructor({ baseURL = endpoints.base, headers, timeout = 65000 }) {
     this.instance = axios.create({
       baseURL,
       timeout,
       headers,
-    });
-    this.instance.interceptors.request.use(this.handleRequest);
-    this.instance.interceptors.response.use(
-      this.handleResponse,
-      this.handleResponseError
-    );
-    this.baseURL = baseURL;
+    })
+    this.instance.interceptors.request.use(this.handleRequest)
+    this.instance.interceptors.response.use(this.handleResponse, this.handleResponseError)
+    this.baseURL = baseURL
   }
 
-  
-  
-  handleResponse = (response) => response;
+  handleResponse = (response) => response
 
   handleResponseError = (error) => {
     if (error.response?.status === 401) {
+      return {}
     }
 
-    throw error;
-  };
+    throw error
+  }
 
   handleRequest = async ({ headers, ...restConfig }) => {
-    const accessToken = getLocalStorage("access-token");
+    const accessToken = getLocalStorage('access-token')
     return {
       headers: {
         ...headers,
@@ -42,59 +38,59 @@ export class Instance {
         }),
       },
       ...restConfig,
-    };
-  };
+    }
+  }
 
   async send(method, url, params, config) {
     const { data } = await this.instance[method](url, params, {
       ...config,
       baseURL: `${stage.apiUrl}${this.baseURL}`,
-    });
+    })
 
-    return data;
+    return data
   }
 
   async get(url, params) {
     const { data } = await this.instance.get(url, {
       ...params,
       baseURL: `${stage.apiUrl}${this.baseURL}`,
-    });
+    })
 
-    return data;
+    return data
   }
 
   async post(url, params, config) {
     const { data } = await this.instance.post(url, params, {
       ...config,
       baseURL: `${stage.apiUrl}${this.baseURL}`,
-    });
-    return data;
+    })
+    return data
   }
 
   async delete(url, config) {
     const { data } = await this.instance.delete(url, {
       ...config,
       baseURL: `${stage.apiUrl}${this.baseURL}`,
-    });
+    })
 
-    return data;
+    return data
   }
 
   async put(url, params, config) {
     const { data } = await this.instance.put(url, params, {
       ...config,
       baseURL: `${stage.apiUrl}${this.baseURL}`,
-    });
+    })
 
-    return data;
+    return data
   }
 
   async patch(url, params, config) {
     const { data } = await this.instance.patch(url, params, {
       ...config,
       baseURL: `${stage.apiUrl}${this.baseURL}`,
-    });
+    })
 
-    return data;
+    return data
   }
 }

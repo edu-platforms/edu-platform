@@ -1,7 +1,7 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
 import { TOKEN } from '../constants/cookie'
 import { API_URL } from '../constants/common.js'
+import { getLocalStorage } from '@/libs/utils/index.js'
 
 const rest = axios.create({
   baseURL: API_URL,
@@ -15,7 +15,7 @@ const rest = axios.create({
  */
 const setToken = (config) => {
   if (!config?.headers?.authorization) {
-    const token = Cookies.get(TOKEN)
+    const token = getLocalStorage(TOKEN)
     if (token && config.headers) {
       config.headers.authorization = token
     }

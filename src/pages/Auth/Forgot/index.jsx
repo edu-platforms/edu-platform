@@ -1,6 +1,5 @@
-import React from "react";
-import { Sign } from "@/components";
-import { ResetForm } from "src/libs/modules";
+import { Sign } from '@/components'
+import { ResetForm } from 'src/libs/modules'
 
 export default function Forgot() {
   return (
@@ -10,5 +9,5 @@ export default function Forgot() {
         <ResetForm />
       </div>
     </Sign>
-  );
+  )
 }

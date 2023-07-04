@@ -1,38 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Badge, Space, Avatar, Tooltip } from "antd";
-import { Wrapper, CustomSelect } from "@/UI";
-import { useMedia } from "src/libs/hooks";
-import { StudentMobile } from "./Mobile";
-import {
-  star,
-  offer,
-  timer,
-  search,
-  BsHeart,
-  student,
-  payment,
-  publicEarth,
-} from "@/assets";
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Badge, Space, Avatar, Tooltip } from 'antd'
+import { Wrapper, CustomSelect } from '@/UI'
+import { useMedia } from 'src/libs/hooks'
+import { StudentMobile } from './Mobile'
+import { star, offer, timer, search, BsHeart, student, payment, publicEarth } from '@/assets'
 
 export default function Student() {
-  window.scrollTo(0, 0);
+  window.scrollTo(0, 0)
 
-  const [filter, setFilter]=useState(false);
-  const { isMobile, isTablet } = useMedia();
+  const [filter, setFilter] = useState(false)
+  const { isMobile, isTablet } = useMedia()
 
   return (
     <>
-      {isMobile ? <StudentMobile/> 
-      : 
-      (
+      {isMobile ? (
+        <StudentMobile />
+      ) : (
         <div>
           <h1>The best English tutor for you</h1>
 
           <p className="mt-5 mb-5 w-full">
-            Looking for a great way to improve your English? this platform provides
-            you with qualified English teachers. Hire an online English tutor to
-            help you learn English.
+            Looking for a great way to improve your English? this platform provides you with
+            qualified English teachers. Hire an online English tutor to help you learn English.
           </p>
           {isTablet ? (
             <form>
@@ -53,8 +43,8 @@ export default function Student() {
                     defaultValue="english"
                     options={[
                       {
-                        value: "english",
-                        label: "English",
+                        value: 'english',
+                        label: 'English',
                       },
                     ]}
                   />
@@ -65,8 +55,8 @@ export default function Student() {
                     defaultValue="category"
                     options={[
                       {
-                        value: "category",
-                        label: "Category",
+                        value: 'category',
+                        label: 'Category',
                       },
                     ]}
                   />
@@ -77,8 +67,8 @@ export default function Student() {
                     defaultValue="time"
                     options={[
                       {
-                        value: "time",
-                        label: "Time ",
+                        value: 'time',
+                        label: 'Time ',
                       },
                     ]}
                   />
@@ -89,8 +79,8 @@ export default function Student() {
                     defaultValue="price"
                     options={[
                       {
-                        value: "price",
-                        label: "Price",
+                        value: 'price',
+                        label: 'Price',
                       },
                     ]}
                   />
@@ -99,76 +89,68 @@ export default function Student() {
             </form>
           ) : (
             <form className="flex gap-x-14 xl:overflow-visible md:overflow-scroll">
-        <Space size={[10, 0]}>
-          <CustomSelect
-            prefixIcon={publicEarth}
-            defaultValue="english"
-            options={[
-              {
-                value: "english",
-                label: "English",
-              },
-            ]}
-          />
+              <Space size={[10, 0]}>
+                <CustomSelect
+                  prefixIcon={publicEarth}
+                  defaultValue="english"
+                  options={[
+                    {
+                      value: 'english',
+                      label: 'English',
+                    },
+                  ]}
+                />
 
-          <CustomSelect
-            prefixIcon={offer}
-            defaultValue="category"
-            options={[
-              {
-                value: "category",
-                label: "Category",
-              },
-            ]}
-          />
+                <CustomSelect
+                  prefixIcon={offer}
+                  defaultValue="category"
+                  options={[
+                    {
+                      value: 'category',
+                      label: 'Category',
+                    },
+                  ]}
+                />
 
-          <CustomSelect
-            prefixIcon={timer}
-            defaultValue="time"
-            options={[
-              {
-                value: "time",
-                label: "Time ",
-              },
-            ]}
-          />
+                <CustomSelect
+                  prefixIcon={timer}
+                  defaultValue="time"
+                  options={[
+                    {
+                      value: 'time',
+                      label: 'Time ',
+                    },
+                  ]}
+                />
 
-          <CustomSelect
-            prefixIcon={payment}
-            defaultValue="price"
-            options={[
-              {
-                value: "price",
-                label: "Price ",
-              },
-            ]}
-          />
-        </Space>
+                <CustomSelect
+                  prefixIcon={payment}
+                  defaultValue="price"
+                  options={[
+                    {
+                      value: 'price',
+                      label: 'Price ',
+                    },
+                  ]}
+                />
+              </Space>
 
-        <label className="relative">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search course/teacher"
-          />
+              <label className="relative">
+                <input type="text" className="search-input" placeholder="Search course/teacher" />
 
-          <img src={search} className="search-thumb" alt="Search" />
-        </label>
-      </form>
+                <img src={search} className="search-thumb" alt="Search" />
+              </label>
+            </form>
           )}
 
           <div className="my-10 grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
-
             {[1, 2, 3].map((item, key) => (
               <Wrapper size="small" key={key}>
                 <div className="min-h-[185px] gap-x-4">
                   <Space className="w-full justify-between" direction="horizontal" size={[0, 7]}>
                     <div className="flex" size={[0, 7]}>
                       <Badge className="relative">
-                        <Avatar
-                          src={"https://picsum.photos/id/237/200/300"}
-                          size={60}
-                        />
+                        <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
 
                         <div className="avatar-active">
                           <span className="bg-green w-[12px] h-[12px] rounded-full" />
@@ -195,8 +177,8 @@ export default function Student() {
                     </Tooltip>
                   </Space>
                   <p className="line-clamp-2 my-5">
-                    Hello everyone, my name is Darren. I live in Normandy in
-                    France with my beautiful wife butdsfsd
+                    Hello everyone, my name is Darren. I live in Normandy in France with my
+                    beautiful wife butdsfsd
                   </p>
                   <div className="flex justify-end mt-5">
                     <div className="flex items-center gap-x-2">
@@ -212,8 +194,6 @@ export default function Student() {
                 </div>
               </Wrapper>
             ))}
-
-
           </div>
 
           <button className="text-green font-bold border border-green py-3 px-14 block mx-auto rounded-full hover:opacity-70">
@@ -222,5 +202,5 @@ export default function Student() {
         </div>
       )}
     </>
-  );
+  )
 }

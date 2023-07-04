@@ -5,10 +5,8 @@ import { removeLocalStorage } from '@/libs/utils'
 const initialState = {
   user: {
     whom: '',
-    role: 'user',
     email: '',
     password: '',
-    passwordConfirm: '',
   },
   teacher: {
     user_displayname: '',
@@ -48,7 +46,6 @@ const authSlice = createSlice({
     setLogin: (state, { payload }) => {
       state.user.email = payload.email
       state.user.password = payload.password
-      state.user.passwordConfirm = payload.passwordConfirm
     },
 
     // setFullName:

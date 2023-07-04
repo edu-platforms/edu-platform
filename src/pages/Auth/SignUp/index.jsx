@@ -1,16 +1,20 @@
 import { Fragment } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useMedia, useSteps } from 'src/libs/hooks'
-import { setType } from 'src/libs/store'
+import { authSelector, setType, userResgister } from '@/libs/slices/authSlices'
 import { steps } from 'src/libs/constants'
 import { Sign } from '@/components'
 import { Steps, Divider } from 'antd'
-import { SetUpForm, StartUpForm, CodeForm } from 'src/libs/modules'
+import { SetUpForm, StartUpForm } from 'src/libs/modules'
 import { apple, google, arrowBack, facebookLogo } from '@/assets'
-import { userSignUpFacebook, userSignUpGoogle } from '../../../libs/store'
+import { useGoogleLogin } from '@react-oauth/google'
+import { useLogin } from 'react-facebook'
+import { getFacebookData, getGoogleData } from '@/libs/constants/providerSettings'
 
 export default function SignUp() {
+  const { login } = useLogin()
   const dispatch = useDispatch()
+  const { user } = useSelector(authSelector)
   const { next, prev, current } = useSteps()
   const { isMobile } = useMedia()
   const handleChoose = (type) => {
@@ -18,14 +22,25 @@ export default function SignUp() {
     next()
   }
 
-  const authSignUpGoogle = () => {
-    dispatch(userSignUpGoogle())
-  }
+  const authSignUpGoogle = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      if (tokenResponse && tokenResponse.access_token) {
+        const { email, google_id, firstname } = await getGoogleData(tokenResponse.access_token)
+        dispatch(userResgister({ email, google_id, firstname, whom: user.whom }))
+      }
+    },
+  })
 
-  const authSignUpFacebook = () => {
-    dispatch(userSignUpFacebook())
+  const authSignUpFacebook = async () => {
+    const { authResponse } = await login({
+      scope: 'email',
+    })
+    const { email, facebook_id, firstname } = await getFacebookData(
+      authResponse.userID,
+      authResponse.accessToken
+    )
+    dispatch(userResgister({ email, facebook_id, firstname, whom: user.whom }))
   }
-
   return (
     <Sign>
       <div className={`sign-up-container ${isMobile ? 'px-4' : ''}`}>
@@ -50,16 +65,16 @@ export default function SignUp() {
               >
                 <button
                   className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
-                  onClick={() => handleChoose('me')}
+                  onClick={() => handleChoose('kid')}
                 >
-                  Me
+                  Kid
                 </button>
 
                 <button
                   className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
-                  onClick={() => handleChoose('child')}
+                  onClick={() => handleChoose('adult')}
                 >
-                  My Child
+                  adult
                 </button>
               </div>
             </Fragment>

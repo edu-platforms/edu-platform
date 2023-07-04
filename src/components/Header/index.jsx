@@ -1,25 +1,24 @@
-import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { logo, bar, account, crown, heart, help, feedback, logout } from "@/assets";
-import { ModalContext } from "@/context";
-import { MobileNavbar } from "@/components";
-import { DownOutlined } from '@ant-design/icons';
-import { Button, Dropdown, Select } from "antd";
-import { question, calendar, notifications } from "@/assets";
+import React, { useContext } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { logo, bar, account, crown, heart, help, feedback, logout } from '@/assets'
+import { ModalContext } from '@/context'
+import { MobileNavbar } from '@/components'
+import { DownOutlined } from '@ant-design/icons'
+import { Button, Dropdown, Select } from 'antd'
+import { question, calendar, notifications } from '@/assets'
 
 export default function Header({ links, status }) {
-
-  const { barShow, barClose } = useContext(ModalContext);
+  const { barShow, barClose } = useContext(ModalContext)
 
   const items = [
     {
       key: '1',
       label: (
-        <NavLink to="settings"  className="ml-1" >
+        <NavLink to="settings" className="ml-1">
           Account settings
         </NavLink>
       ),
-      icon: <img src={account} alt="menu_icon"/>,
+      icon: <img src={account} alt="menu_icon" />,
     },
     {
       key: '2',
@@ -28,7 +27,7 @@ export default function Header({ links, status }) {
           Subscriptions
         </NavLink>
       ),
-      icon: <img src={crown} alt="menu_icon"/>,
+      icon: <img src={crown} alt="menu_icon" />,
     },
     {
       key: '3',
@@ -37,7 +36,7 @@ export default function Header({ links, status }) {
           Favorites
         </NavLink>
       ),
-      icon: <img src={heart} alt="menu_icon"/>,
+      icon: <img src={heart} alt="menu_icon" />,
     },
     {
       key: '4',
@@ -46,7 +45,7 @@ export default function Header({ links, status }) {
           Help
         </NavLink>
       ),
-      icon: <img src={help} alt="menu_icon"/>,
+      icon: <img src={help} alt="menu_icon" />,
     },
     {
       key: '5',
@@ -55,7 +54,7 @@ export default function Header({ links, status }) {
           Feedback
         </NavLink>
       ),
-      icon: <img src={feedback} alt="menu_icon"/>,
+      icon: <img src={feedback} alt="menu_icon" />,
     },
     {
       key: '6',
@@ -64,10 +63,9 @@ export default function Header({ links, status }) {
           Logout
         </NavLink>
       ),
-      icon: <img src={logout} alt="menu_icon"/>,
+      icon: <img src={logout} alt="menu_icon" />,
     },
   ]
-
 
   return (
     <header className="flex-between">
@@ -79,18 +77,17 @@ export default function Header({ links, status }) {
         <ul className="flex-center sm:gap-x-7 md:gap-x-10 text-sm">
           {links.map(({ key, label }) => (
             <li key={key}>
-              <NavLink
-                to={`/${label}`}
-                className={({ isActive }) => `${isActive && `underline`}`}
-              >
+              <NavLink to={`/${label}`} className={({ isActive }) => `${isActive && `underline`}`}>
                 {key}
               </NavLink>
             </li>
           ))}
         </ul>
-        {status === "student" ? (
+        {status === 'student' ? (
           <div className="flex-center gap-x-12 ml-auto">
-            <img src={question} alt="Question" />
+            <Link to="/student/chat">
+              <img src={question} alt="Question" />
+            </Link>
             <img src={calendar} alt="Calendar" />
             <img src={notifications} alt="Notifications" />
             <Dropdown
@@ -104,7 +101,7 @@ export default function Header({ links, status }) {
               <div className="flex items-center gap-x-2">
                 <img
                   className="dash-card-thumb w-8 h-8"
-                  src={"https://picsum.photos/id/237/200/300"}
+                  src={'https://picsum.photos/id/237/200/300'}
                   alt="Person"
                 />
                 <h3>Saidalixon</h3>
@@ -112,25 +109,30 @@ export default function Header({ links, status }) {
               </div>
             </Dropdown>
           </div>
-
-        ) : status === "user" ? (
+        ) : status === 'user' ? (
           <div className="flex-center sm:gap-x-7 md:gap-x-5 text-sm">
             <Select
               defaultValue="english"
               style={{
-                width: 145
+                width: 145,
               }}
               bordered={false}
-              options={[{
-                value: 'english',
-                label: 'English-USD $',
-              },]}
+              options={[
+                {
+                  value: 'english',
+                  label: 'English-USD $',
+                },
+              ]}
             />
             <NavLink to={`/sign-in`}>
-              <Button shape="round" size="large">Log in</Button>
+              <Button shape="round" size="large">
+                Log in
+              </Button>
             </NavLink>
             <NavLink to={`/sign-up/student`}>
-              <Button shape="round" size="large">Sign up</Button>
+              <Button shape="round" size="large">
+                Sign up
+              </Button>
             </NavLink>
           </div>
         ) : (
@@ -149,7 +151,7 @@ export default function Header({ links, status }) {
               <div className="flex items-center gap-x-2">
                 <img
                   className="dash-card-thumb w-8 h-8"
-                  src={"https://picsum.photos/id/237/200/300"}
+                  src={'https://picsum.photos/id/237/200/300'}
                   alt="Person"
                 />
                 <h3>Tutor Alex</h3>
@@ -162,9 +164,9 @@ export default function Header({ links, status }) {
 
       {/* btn icon that appear in mobile and tablet */}
       <img onClick={() => barShow()} src={bar} alt="bar" className="xl:hidden lg:hidden md:block" />
-      
+
       {/* drawer navbar that appear when click the bar btn in mobile and tablet */}
-      <MobileNavbar links={links} close={barClose} status={status} items={items}/>
+      <MobileNavbar links={links} close={barClose} status={status} items={items} />
     </header>
-  );
+  )
 }

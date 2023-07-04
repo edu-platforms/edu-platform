@@ -8,9 +8,6 @@ const steps = [
   {
     title: "Start Learning",
   },
-  {
-    title: "Message",
-  },
 ];
 
 const tutorSteps = [

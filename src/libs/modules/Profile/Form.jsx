@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
-import { ModalContext } from "@/context/index.jsx";
-import { Input, Form } from "antd";
-import { EducationModal, ExperienceModal, CertificatesModal } from "@/components/index.js";
-import { Wrapper, Primary, Back } from "@/UI/index.js";
+import React, { useContext, useState } from 'react'
+import { ModalContext } from '@/context/index.jsx'
+import { Input, Form } from 'antd'
+import { EducationModal, ExperienceModal, CertificatesModal } from '@/components/index.js'
+import { Wrapper, Primary, Back } from '@/UI/index.js'
 export const ProfileForm = ({ onFinish, prev }) => {
-  const { show, close } = useContext(ModalContext);
-  const [modal, setModal] = useState(null);
+  const { show, close } = useContext(ModalContext)
+  const [modal, setModal] = useState(null)
 
   const handleOpenModal = (type) => {
-    setModal(type);
-    show();
-  };
+    setModal(type)
+    show()
+  }
 
   return (
     <>
@@ -47,8 +47,7 @@ export const ProfileForm = ({ onFinish, prev }) => {
 
         <Wrapper size="medium" className="flex-center flex-col p-10 mb-6">
           <h2>
-            3.2 Professional Teaching Background{" "}
-            <span className="italic">(optional)</span>
+            3.2 Professional Teaching Background <span className="italic">(optional)</span>
           </h2>
 
           <ul className="teacher-list">
@@ -85,9 +84,13 @@ export const ProfileForm = ({ onFinish, prev }) => {
         </Wrapper>
       </Form>
 
-      {modal === 1 ? <EducationModal close={close} /> 
-      : modal ===2 ? <ExperienceModal close={close}/>
-      : modal ===3 ? <CertificatesModal close={close}/> : null}
+      {modal === 1 ? (
+        <EducationModal close={close} />
+      ) : modal === 2 ? (
+        <ExperienceModal close={close} />
+      ) : modal === 3 ? (
+        <CertificatesModal close={close} />
+      ) : null}
     </>
-);
-};
+  )
+}

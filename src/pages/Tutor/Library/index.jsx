@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
-import { Form, Input } from "antd";
-import { files } from "src/libs/constants";
-import { Wrapper, Primary } from "@/UI";
-import { Files, LibraryModal } from "@/components";
-import { plus, searchGray, arrowSort } from "@/assets";
-import { ModalContext } from "@/context";
+import { useContext, useState } from 'react'
+import { Form, Input } from 'antd'
+import { files } from 'src/libs/constants'
+import { Wrapper, Primary } from '@/UI'
+import { Files, LibraryModal } from '@/components'
+import { plus, searchGray, arrowSort } from '@/assets'
+import { ModalContext } from '@/context'
 
 export default function Library() {
-  const [value, setValue] = useState("");
-  const { show, close } = useContext(ModalContext);
+  const [value, setValue] = useState('')
+  const { show, close } = useContext(ModalContext)
 
   return (
     <Wrapper size="medium" className="h-[600px]">
@@ -17,8 +17,7 @@ export default function Library() {
           <h3 className="text-2xl mb-1.5">My Saved Files</h3>
 
           <p className="text-gray-300">
-            Store files to any teaching materials for quick access in the
-            virtual classroom
+            Store files to any teaching materials for quick access in the virtual classroom
           </p>
         </div>
 
@@ -39,9 +38,7 @@ export default function Library() {
               />
 
               <Input
-                onChange={({ target: { value } }) =>
-                  setValue(value.toLowerCase())
-                }
+                onChange={({ target: { value } }) => setValue(value.toLowerCase())}
                 placeholder="Search file"
                 className="h-full border-gray text-lg placeholder:text-lg pl-16"
               />
@@ -56,14 +53,11 @@ export default function Library() {
 
       <div className="space-y-5">
         {files.map(
-          (file) =>
-            file.title.toLowerCase().includes(value) && (
-              <Files key={file.id} file={file} />
-            )
+          (file) => file.title.toLowerCase().includes(value) && <Files key={file.id} file={file} />
         )}
       </div>
 
       <LibraryModal close={close} />
     </Wrapper>
-  );
+  )
 }
