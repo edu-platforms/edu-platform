@@ -34,7 +34,7 @@ const initialState = {
 }
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'auth_old',
   initialState,
   reducers: {
     setLoading: (state, { payload }) => {
@@ -43,7 +43,6 @@ const authSlice = createSlice({
 
     setType: (state, { payload }) => {
       state.user.whom = payload
-      console.log(state.user.whom)
     },
 
     setLogin: (state, { payload }) => {
@@ -71,7 +70,7 @@ const authSlice = createSlice({
       state.teacher.user_lastname = payload.last_name
       state.teacher.user_accent = payload.accent
       state.teacher.user_from = payload.from
-      state.teacher.user_gender = payload.gender ? (payload.gender === 1 ? 'man' : 'woman') : ('none')
+      state.teacher.user_gender = payload.gender ? (payload.gender === 1 ? 'man' : 'woman') : 'none'
       state.teacher.user_current_location = payload.living
       state.teacher.user_displayname = payload.number
       state.teacher.user_birthday = payload.birthday
@@ -88,7 +87,6 @@ const authSlice = createSlice({
 
     setEducation: (state, { payload }) => {
       state.teacher.education = payload
-      console.log(payload)
     },
 
     setExprience: (state, { payload }) => {
@@ -104,8 +102,7 @@ const authSlice = createSlice({
       state.error = null
     },
   },
-  extraReducers: (builder) => {
-  },
+  extraReducers: (builder) => {},
 })
 
 const { reducer, actions } = authSlice

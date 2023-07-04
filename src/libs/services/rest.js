@@ -4,36 +4,36 @@ import { TOKEN } from '../constants/cookie'
 import { API_URL } from '../constants/common.js'
 
 const rest = axios.create({
-    baseURL: API_URL,
-    headers: {
-        'Content-Type': 'application/json',
-    },
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 })
 
 /**
  * Interceptors' handlers
  */
 const setToken = (config) => {
-    if (!config?.headers?.authorization) {
-        const token = Cookies.get(TOKEN)
-        if (token && config.headers) {
-            config.headers.authorization = token
-        }
+  if (!config?.headers?.authorization) {
+    const token = Cookies.get(TOKEN)
+    if (token && config.headers) {
+      config.headers.authorization = token
     }
+  }
 
-    return config
+  return config
 }
 
 const requestMapper = (config) => {
-    return config
+  return config
 }
 
 const responseMapper = (response) => {
-    return Promise.resolve(response)
+  return Promise.resolve(response)
 }
 
 const errorHandler = ({ response }) => {
-    return Promise.reject(response?.data)
+  return Promise.reject(response?.data)
 }
 /**
  * Apply request interceptors
