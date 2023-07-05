@@ -3,13 +3,11 @@ import authReducer from './auth/features.js'
 import appReducer from '../slices/appSlice.js'
 import courceReducer from '../slices/courceSlice.js'
 import profileReducer from '../slices/profileSlice.js'
-import courceReducer from '../slices/courceSlice.js'
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
     auth: authReducer,
-    cources: courceReducer,
     profile: profileReducer,
     cources: courceReducer
   },
