@@ -4,6 +4,7 @@ import tutor from './img/tutor.png'
 import clouds from "./img/clouds.png"
 import forChild from './img/for-child.png'
 import mobileImg from './img/main-img-mobile.png'
+import noPhoto from './img/no-photo-available.png'
 
 // SVG
 import day from "./svg/day.svg";
@@ -102,6 +103,7 @@ export {
   yandex,
   source,
   paypal,
+  noPhoto,
   student,
   payment,
   account,

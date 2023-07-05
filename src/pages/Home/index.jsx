@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Divider } from "antd";
 import { Link } from "react-router-dom";
 import { Primary, Secondary } from "@/UI";
 import { TutorCard, CourseCard } from "@/components";
 import { intro, arrowWhite, forChild, arrowCourseCard, tutor, mobileImg } from "@/assets";
 import { useMedia } from "src/libs/hooks";
+import { courcesSelector, fetchCources } from "@/libs/slices/courceSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { MobileHome } from "./Mobile";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { MobileHome } from "./Mobile";
 
 export default function Home() {
-  const { isSmallMobile, isTablet } = useMedia()
+  const { cources } = useSelector(courcesSelector);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCources());
+  }, []);
+
+  const { isSmallMobile } = useMedia()
 
   const info = {
     name: "Smith",
@@ -28,17 +38,6 @@ export default function Home() {
       "I have experienced a growth in my confidence as an English-speaker, with a host of idioms now at my disposal. No matter where you come from or who you are,   edu-platform will be your best companion on journey toward better English",
   };
 
-  const course = {
-    name: 'John Doe',
-    img: 'https://picsum.photos/305/320',
-    country: 'USA',
-    rating: 4.5,
-    title: 'Basic Conversation Topics',
-    degree: 'Beginner',
-    lessonsCount: '12'
-  };
-
-  const a = Array.from({ length: 8 }, () => Math.random());
   const c = Array.from({ length: 4 }, () => Math.random());
 
   const settings = {
@@ -116,8 +115,8 @@ export default function Home() {
 
           <Divider className="mt-[132px] mb-5" />
           <div className="grid-template">
-            {a.map(i => (
-              <CourseCard course={course} key={i} />
+            {cources?.map(cource => (
+              <CourseCard course={cource} key={cource.id} />
             ))}
           </div>
 

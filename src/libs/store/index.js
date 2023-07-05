@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from './auth/features.js'
 import appReducer from '../slices/appSlice.js'
+import courceReducer from '../slices/courceSlice.js'
 import profileReducer from '../slices/profileSlice.js'
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
     app: appReducer,
     auth: authReducer,
     profile: profileReducer,
+    cources: courceReducer
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>
