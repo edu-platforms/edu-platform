@@ -69,7 +69,7 @@ const courcesSlice = createSlice({
 })
 
 export const courcesSelector = (state) => state.cources;
-export const courceSelector = (state) => state.cource;
+// export const courceSelector = (state) => state.cource;
 export const courceActions = courcesSlice.actions;
 
 export default courcesSlice.reducer;
