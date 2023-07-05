@@ -15,9 +15,9 @@ import { Router } from '@/router/index.jsx'
 
 export const App = () => {
   return (
-    <HistoryRouter history={history}>
-      <GoogleOAuthProvider clientId={client_Id}>
-        <FacebookProvider appId={app_Id}>
+    <QueryClientProvider client={client}>
+      <GoogleOAuthProvider clientId="966040164858-d01oql7ungul6fcpoc3e0ft0vqalnuhc.apps.googleusercontent.com">
+        <HistoryRouter history={history}>
           <Provider store={store}>
             <ConfigProvider theme={theme}>
               <Suspense fallback={<Loader />}>
@@ -27,8 +27,8 @@ export const App = () => {
               </Suspense>
             </ConfigProvider>
           </Provider>
-        </FacebookProvider>
+        </HistoryRouter>
       </GoogleOAuthProvider>
-    </HistoryRouter>
-  )
-}
+    </QueryClientProvider>
+  );
+};

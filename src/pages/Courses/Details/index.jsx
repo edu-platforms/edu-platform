@@ -1,6 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Divider } from 'antd';
+import { useMedia } from 'src/libs/hooks';
+import { useEffect, useState } from 'react';
 import { useParams } from "react-router"
 import { CourseCard } from "@/components";
 import { arrowCources } from '@/assets';

@@ -8,7 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { courcesSelector, fetchCources } from '@/libs/slices/courceSlice';
 
 export default function Courses() {
-  window.scrollTo(0, 0);
+  window.scrollTo(0, 0)
+
+  const { data } = useSelector(courcesSelector)
+
+  useEffect(() => {
+    dispatch(fetchCources())
+  }, [])
 
   const dispatch = useDispatch();
 
