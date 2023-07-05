@@ -1,5 +1,5 @@
-import React from 'react'
-import { Divider, Form, Input } from 'antd'
+import React, { useEffect } from 'react'
+import { Divider } from 'antd'
 import { Link } from 'react-router-dom'
 import { Primary, Secondary } from '@/UI'
 import { TutorCard, CourseCard } from '@/components'
@@ -8,8 +8,18 @@ import { arrowWhite, forChild, tutor, arrowCourseCard, mobileImg } from '@/asset
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { courcesSelector, fetchCources } from '@/libs/slices/courceSlice'
 
 export const MobileHome = () => {
+  const { cources } = useSelector(courcesSelector);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCources());
+  }, []);
+
   const settings = {
     dots: false,
     center: true,
@@ -43,17 +53,6 @@ export const MobileHome = () => {
       'I have experienced a growth in my confidence as an English-speaker, with a host of idioms now at my disposal. No matter where you come from or who you are,   edu-platform will be your best companion on journey toward better English',
   }
 
-  const course = {
-    name: 'John Doe',
-    img: 'https://picsum.photos/305/320',
-    country: 'USA',
-    rating: 4.5,
-    title: 'Basic Conversation Topics',
-    degree: 'Beginner',
-    lessonsCount: '12',
-  }
-
-  const a = Array.from({ length: 8 }, () => Math.random())
   const c = Array.from({ length: 4 }, () => Math.random())
 
   return (
@@ -85,12 +84,15 @@ export const MobileHome = () => {
       <Link to="/find-teacher">
         <Secondary icon={arrowWhite}>Try trial lesson</Secondary>
       </Link>
+
       <Divider className="mt-[70px]" />
+
       <div className="grid-template">
-        {a.map((i) => (
-          <CourseCard course={course} key={i} />
+        {cources?.map(course => (
+          <CourseCard course={course} key={course.id} />
         ))}
       </div>
+
       <p className="main-title mt-10 leading-[48px]">Courses For Every Skill Level And Interest</p>
       <p className="max-w-[340px] mt-5 text-base text-gray-CCC mb-4">
         Aim with us for academic test preparation, business, English, interview practice

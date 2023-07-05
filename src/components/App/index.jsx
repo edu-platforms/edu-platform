@@ -12,6 +12,7 @@ import { theme } from '@/styles/theme/index.js'
 import { Loader } from '@/UI/index.js'
 import { ModalProvider } from '../../context/index.jsx'
 import { Router } from '@/router/index.jsx'
+
 export const App = () => {
   return (
     <HistoryRouter history={history}>
