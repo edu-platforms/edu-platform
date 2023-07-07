@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button } from 'antd'
 import { useMedia } from 'src/libs/hooks'
 import { arrowLeft } from '@/assets'
-export const Subscriptions = () => {
+export const StudentSubscriptions = () => {
   const [tab, setTab] = useState(1)
   const { isMobile } = useMedia()
 

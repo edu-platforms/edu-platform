@@ -6,7 +6,7 @@ import { useMedia } from 'src/libs/hooks'
 import { ModalContext } from '@/context'
 import { AccountModal } from '@/components'
 
-export const Settings = () => {
+export const StudentSettings = () => {
   const { isMobile } = useMedia()
   const { show, close } = useContext(ModalContext)
   const [item, setItem] = useState('')
