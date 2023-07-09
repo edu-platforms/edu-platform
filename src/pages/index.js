@@ -1,6 +1,6 @@
 import Home from './Home'
 import Teachers from './Teachers'
-import Chat from './chat'
+import Chat from './Chat'
 
 export * from './Auth'
 export * from './Tutor'

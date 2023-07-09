@@ -9,7 +9,7 @@ export const API = {
   USER: '/api/user',
   TUTOR: '/api/user/tutor',
   STUDENT: '/api/user/student',
-  CHAT: '/api/user/chat',
+  CHAT: '/api/user/Chat',
   RESET_PASSWORD: '/api/user/password',
   ACCOUNT: '/api/user/account',
   BECOME_TUTOR: '/api/user/become-tutor',

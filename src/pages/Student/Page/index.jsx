@@ -17,13 +17,14 @@ export default function Student() {
       {isMobile ? (
         <StudentMobile />
       ) : (
-        <div>
+        <>
           <h1>The best English tutor for you</h1>
 
           <p className="mt-5 mb-5 w-full">
             Looking for a great way to improve your English? this platform provides you with
             qualified English teachers. Hire an online English tutor to help you learn English.
           </p>
+
           {isTablet ? (
             <form>
               <div className="flex flex-col justify-between">
@@ -199,7 +200,7 @@ export default function Student() {
           <button className="text-green font-bold border border-green py-3 px-14 block mx-auto rounded-full hover:opacity-70">
             Show more
           </button>
-        </div>
+        </>
       )}
     </>
   )

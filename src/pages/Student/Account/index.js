@@ -1,7 +1,7 @@
-import { Favorites } from './Favorites'
-import { Feedback } from './Feedback'
-import { Help } from './Help'
-import { Settings } from './Settings'
-import { Subscriptions } from './Subscriptions'
+import { StudentFavorites } from './Favorites'
+import { StudentFeedback } from './Feedback'
+import { StudentHelp } from './Help'
+import { StudentSettings } from './Settings'
+import { StudentSubscriptions } from './Subscriptions'
 
-export { Favorites, Feedback, Help, Settings, Subscriptions }
+export { StudentFavorites, StudentFeedback, StudentHelp, StudentSettings, StudentSubscriptions }

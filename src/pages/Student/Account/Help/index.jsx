@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Help = () => {
+export const StudentHelp = () => {
   return (
     <div>
       <h3 className="font-bold">Help</h3>

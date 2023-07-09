@@ -4,11 +4,11 @@ import { Wrapper } from '@/UI'
 import { star, BsHeart, student, arrowLeft } from '@/assets'
 import { useMedia } from 'src/libs/hooks'
 
-export const Favorites = () => {
+export const StudentFavorites = () => {
   const { isMobile } = useMedia()
 
   return (
-    <div>
+    <>
       {isMobile ? (
         <div className="flex-between">
           <Button className="flex items-center justify-between h-10 pb-0 bg-white rounded-40">
@@ -78,6 +78,6 @@ export const Favorites = () => {
           </Wrapper>
         ))}
       </div>
-    </div>
+    </>
   )
 }
