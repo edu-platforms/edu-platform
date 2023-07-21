@@ -96,14 +96,13 @@ export const userChangePassword = createAsyncThunk(
   }
 );
 
-
 export const userSignUpGoogle = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
     try {
       dispatch(setLoading(true));
-      const {data} = authApi.signUpWidthGoogle(params.token)
-      if(data) params.navigate('/student')
+      const { data } = authApi.signUpWidthGoogle(params.token);
+      if (data) params.navigate("/student");
     } catch (error) {
       console.log(error);
     } finally {
@@ -111,7 +110,6 @@ export const userSignUpGoogle = createAsyncThunk(
     }
   }
 );
-
 
 export const userSignInGoogle = createAsyncThunk(
   "/user-up-google",
@@ -133,7 +131,6 @@ export const userSignInGoogle = createAsyncThunk(
   }
 );
 
-
 export const userSignUpFacebook = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
@@ -148,7 +145,6 @@ export const userSignUpFacebook = createAsyncThunk(
     }
   }
 );
-
 
 export const userSignInFacebook = createAsyncThunk(
   "/user-up-google",
@@ -165,12 +161,10 @@ export const userSignInFacebook = createAsyncThunk(
   }
 );
 
-
-
 export const teacherBecome = createAsyncThunk(
   "teacher/beacome",
   async (params, { dispatch }) => {
-    console.log(params);
+    // console.log(params);
     try {
       dispatch(setLoading(true));
       const { data } = await usersApi.becomeTeacher(params);
