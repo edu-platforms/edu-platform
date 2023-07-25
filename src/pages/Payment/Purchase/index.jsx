@@ -25,10 +25,17 @@ export default function Purchase() {
     // console.log(payments[paymentId]);
   }
 
-  useEffect(() => {
-    let currentPayment = payments.find((item) => item.id === Number(paymentId));
-    // console.log(currentPayment);
-  }, [paymentId]);
+  // useEffect(() => {
+  //   let currentPaymentPlan = payments.find(
+  //     (item) => item.id === Number(paymentId)
+  //   );
+  //   localStorage.setItem(
+  //     "currentPaymentPlan",
+  //     JSON.stringify(currentPaymentPlan)
+  //   );
+
+  //   console.log(currentPaymentPlan);
+  // }, [paymentId]);
 
   return (
     <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
@@ -111,7 +118,7 @@ export default function Purchase() {
             <h4 className="xl:text-xl text-base">Total due today (in USD)</h4>
 
             <span className="text-green-500 font-bold xl:text-xl text-base">
-              $240.30
+              ${localStorage.getItem("paymentPrice")}
             </span>
           </div>
         </Wrapper>

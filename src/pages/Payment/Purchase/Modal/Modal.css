@@ -13,17 +13,20 @@
 
 .modal {
   min-width: 600px;
-  min-height: 300px;
+  max-width: 600px;
+  /* min-height: 400px; */
   background-color: white;
-  padding: 20px;
-  border-radius: 4px;
+  padding: 2rem;
+  border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  position: relative;
 }
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 2rem;
+  right: 2rem;
   font-size: 20px;
   cursor: pointer;
   background: transparent;
