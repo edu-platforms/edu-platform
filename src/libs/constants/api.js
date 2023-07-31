@@ -25,4 +25,8 @@ export const API = {
   RATING_ID: '/api/rating/:tutorId',
   LIBRARY: '/api/library',
   LIBRARY_ID: '/api/library/:id',
+
+  // EVENTS
+
+  EVENT: '/api/event',
 }

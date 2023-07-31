@@ -9,7 +9,7 @@ import { settings } from '@/libs/constants'
 export const AccountProfile = () => {
   return (
     <div className="flex justify-between">
-      <div className="w-1/3 mx-4">
+      <div className="w-1/3 mx-4 te">
         <iframe
           className="w-full rounded-20 h-52 mb-6"
           src="https://www.youtube.com/embed/zJ0WMaYHIoU"

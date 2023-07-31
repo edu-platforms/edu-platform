@@ -17,8 +17,14 @@ export const fetchUser = createAsyncThunk(getPrefix(name, 'fetchUser'), async ()
   const response = await rest.get(API.USER)
   return response.data
 })
+
 export const updateUser = createAsyncThunk(getPrefix(name, 'updateUser'), async (data) => {
   const response = await rest.post(API.USER, data)
+  return response.data
+})
+
+export const createEvent = createAsyncThunk(getPrefix(name, 'createEvent'), async (data) => {
+  const response = await rest.post(API.EVENT, data)
   return response.data
 })
 
@@ -35,9 +41,10 @@ export const profileSlice = createSlice({
       .addCase(fetchUser.pending, (state) => {
         state.status = LoadingStatus.pending
       })
-      .addCase(fetchUser.rejected, (state) => {
+      .addCase(fetchUser.rejected, (state, action ) => {
         state.user = null
         state.status = LoadingStatus.rejected
+        state.errorMessage = action.error
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = action.payload
@@ -45,5 +52,7 @@ export const profileSlice = createSlice({
       })
   },
 })
+
+const getUserId = (state) => state.profile.user.id
 
 export default profileSlice.reducer

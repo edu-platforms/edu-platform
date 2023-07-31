@@ -46,6 +46,7 @@ export const userResgister = createAsyncThunk(getPrefix(name, 'userRegister'), a
     history.push('/student')
   }
 })
+
 export const login = createAsyncThunk(getPrefix(name, 'login'), async () => {})
 
 export const userLogin = createAsyncThunk(getPrefix(name, 'userLogin'), async (option) => {
