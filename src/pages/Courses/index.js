@@ -1,4 +1,4 @@
-import Courses from './Page';
-import Details from './Details';
+import Courses from './Page'
+import CourseDetails from './Details'
 
-export { Courses, Details }
+export { Courses, CourseDetails }

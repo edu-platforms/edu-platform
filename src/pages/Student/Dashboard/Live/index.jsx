@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Lesson } from "@/UI";
 import { LessonCard } from "@/components";
-import {useMedia} from "@/hooks";
+import {useMedia} from "src/libs/hooks";
 
 export default function Live() {
   const {isMobile} = useMedia();
