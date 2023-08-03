@@ -337,10 +337,13 @@
     @apply w-11/12 flex items-center justify-between
   }
   .chat-menu{
-    @apply w-[350px] min-h-[100vh] overflow-y-scroll
+    @apply w-[350px] min-h-[100vh] overflow-y-scroll border-2 border-slate-200 bg-white rounded-10 flex flex-col
   }
   .chat-menu::-webkit-scrollbar {
     display: none;
+  }
+  .chat-menu-item{
+    @apply w-full cursor-pointer flex items-center justify-between px-2 h-[60px] bg-white hover:bg-[#39B980] transition-all relative
   }
   .chat-bar{
     @apply w-[60%] overflow-y-scroll relative h-[100vh]  border-2 border-slate-200 bg-white rounded-10 flex flex-col

@@ -1,12 +1,11 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import { Header, Footer } from "@/components";
-import { studentLinks } from "src/libs/constants";
+import { Outlet } from 'react-router-dom'
+import { Header, Footer } from '@/components'
+import { studentLinks } from 'src/libs/constants'
 
 export default function Studentayout() {
   return (
     <>
-      <Header links={studentLinks} status="student"/>
+      <Header links={studentLinks} status="student" />
       {
         <main>
           <Outlet />
@@ -14,5 +13,5 @@ export default function Studentayout() {
       }
       <Footer />
     </>
-  );
+  )
 }

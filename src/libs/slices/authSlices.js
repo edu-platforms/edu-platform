@@ -37,7 +37,7 @@ const initialState = {
 export const fetchUser = createAsyncThunk(getPrefix(name, 'fetchUser'), async () => {})
 
 export const userResgister = createAsyncThunk(getPrefix(name, 'userRegister'), async (option) => {
-  const data = await rest.post(API.REGISTER, option)
+  const { data } = await rest.post(API.REGISTER, option)
   if (data?.data?.token) {
     setLocalStorage('access-token', data?.data?.token)
     history.push('/student')
@@ -144,6 +144,7 @@ const authSlice = createSlice({
     setExprience: (state, { payload }) => {
       state.teacher.exprience = payload
     },
+
     setCertificates: (state, { payload }) => {
       state.teacher.certificates = payload
     },

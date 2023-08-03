@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { logo, bar, account, crown, heart, help, feedback, logout } from '@/assets'
 import { ModalContext } from '@/context'
@@ -6,10 +6,20 @@ import { MobileNavbar } from '@/components'
 import { DownOutlined } from '@ant-design/icons'
 import { Button, Dropdown, Select } from 'antd'
 import { question, calendar, notifications } from '@/assets'
+import { useDispatch, useSelector } from 'react-redux'
+import { getMe, profileSelector } from '@/libs/slices/profileSlice'
+
+import useSelection from 'antd/es/table/hooks/useSelection'
 
 export default function Header({ links, status }) {
   const { barShow, barClose } = useContext(ModalContext)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getMe())
+  }, [dispatch])
 
+  const { user } = useSelector(profileSelector)
+  console.log(user)
   const items = [
     {
       key: '1',
@@ -104,7 +114,7 @@ export default function Header({ links, status }) {
                   src={'https://picsum.photos/id/237/200/300'}
                   alt="Person"
                 />
-                <h3>Saidalixon</h3>
+                <h3>{user && user.firstname}</h3>
                 <DownOutlined />
               </div>
             </Dropdown>

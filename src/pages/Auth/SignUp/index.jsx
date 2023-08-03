@@ -67,7 +67,7 @@ export default function SignUp() {
                   className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
                   onClick={() => handleChoose('kid')}
                 >
-                  Kid
+                  kid
                 </button>
 
                 <button

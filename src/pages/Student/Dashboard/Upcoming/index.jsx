@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import { LessonCard } from "@/components";
-import { ScheduleLesson } from "@/UI";
-import { Divider } from "antd";
+import React, { Fragment } from 'react'
+import { LessonCard } from '@/components'
+import { ScheduleLesson } from '@/UI'
+import { Divider } from 'antd'
 
 export default function Upcoming() {
-  const course = true;
-  const lesson_today = false;
+  const course = true
+  const lesson_today = false
   return (
     <Fragment>
       {course ? (
@@ -30,5 +30,5 @@ export default function Upcoming() {
         <ScheduleLesson text="You have no scheduled lessons. Select a teacher to get started." />
       )}
     </Fragment>
-  );
+  )
 }
