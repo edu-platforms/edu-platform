@@ -1,4 +1,4 @@
-import  { Fragment } from "react";
+import { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import { useSteps } from "@/hooks";
 import { setType } from "@/store";
@@ -13,9 +13,9 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 export default function SignUp() {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { next, prev, current } = useSteps();
- const {isMobile} = useMedia()
+  const { isMobile } = useMedia();
   const handleChoose = (type) => {
     dispatch(setType(type));
     next();
@@ -24,14 +24,14 @@ export default function SignUp() {
   const authSignUpGoogle = useGoogleLogin({
     onSuccess: async (res) => {
       const option = {
-        token:res.access_token,
-        navigate:navigate
-      }
-      dispatch(userSignUpGoogle(option))
+        token: res.access_token,
+        navigate: navigate,
+      };
+      dispatch(userSignUpGoogle(option));
     },
-    onError:(error) =>{
+    onError: (error) => {
       console.log(error);
-    }
+    },
   });
 
   const authSignUpFacebook = useGoogleLogin({
@@ -41,9 +41,15 @@ export default function SignUp() {
   });
   return (
     <Sign>
-      <div className={`sign-up-container ${isMobile ? 'px-4':''}`}>
+      <div className={`sign-up-container ${isMobile ? "px-4" : ""}`}>
         <button
-          className={current === 0 ? "hidden" : `absolute ${isMobile ? 'right-10 absolute z-10': 'left-10'} top-[5%]`}
+          className={
+            current === 0
+              ? "hidden"
+              : `absolute ${
+                  isMobile ? "right-10 absolute z-10" : "left-10"
+                } top-[5%]`
+          }
           onClick={() => prev()}
         >
           <img src={arrowBack} alt="Back" />
@@ -58,19 +64,23 @@ export default function SignUp() {
                 Who will be learning English on edu-platform?
               </h2>
 
-              <div className={`w-full flex-center gap-x-5 mt-10 ${isMobile ? "flex-wrap gap-y-5 justify-center" : ''}`}>
+              <div
+                className={`w-full flex-center gap-x-5 mt-10 ${
+                  isMobile ? "flex-wrap gap-y-5 justify-center" : ""
+                }`}
+              >
                 <button
-                  className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
-                  onClick={() => handleChoose("me")}
+                  className={`sign-up-btn ${isMobile ? "w-11/12" : ""}`}
+                  onClick={() => handleChoose("adult")}
                 >
-                  Me
+                  Adult
                 </button>
 
                 <button
-                  className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
-                  onClick={() => handleChoose("child")}
+                  className={`sign-up-btn ${isMobile ? "w-11/12" : ""}`}
+                  onClick={() => handleChoose("kid")}
                 >
-                  My Child
+                  My Kid
                 </button>
               </div>
             </Fragment>

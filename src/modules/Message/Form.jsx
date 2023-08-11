@@ -15,15 +15,11 @@ export const CodeForm = ({ onFinish }) => {
           },
         ]}
       >
-        <Input
-          className="py-3 px-4 my-2"
-          placeholder="enter message"
-     
-        />
+        <Input className="py-3 px-4 my-2" placeholder="enter message" />
       </Form.Item>
 
       <Primary rounded block submit>
-        Next
+        Next22
       </Primary>
     </Form>
   );

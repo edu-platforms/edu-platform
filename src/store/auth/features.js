@@ -4,10 +4,10 @@ import { removeLocalStorage } from "../../libs";
 const initialState = {
   user: {
     whom: "",
-    role:"user",
+    role: "user",
     email: "",
     password: "",
-    passwordConfirm:"",
+    passwordConfirm: "",
   },
   teacher: {
     user_displayname: "",
@@ -20,14 +20,14 @@ const initialState = {
     user_gender: "",
     user_photo: "",
     user_about: "",
-    education:[],
-    exprience:[],
-    certificates:[],
+    education: [],
+    exprience: [],
+    certificates: [],
   },
   loading: false,
   data: null,
   token: null,
-  id:"",
+  id: "",
   error: null,
   isAuth: null,
 };
@@ -42,7 +42,6 @@ const authSlice = createSlice({
 
     setType: (state, { payload }) => {
       state.user.whom = payload;
-      console.log(state.user.whom);
     },
 
     setLogin: (state, { payload }) => {
@@ -57,8 +56,8 @@ const authSlice = createSlice({
       state.token = payload;
     },
 
-    setId:(state,{payload}) =>{
-      state.id = payload
+    setId: (state, { payload }) => {
+      state.id = payload;
     },
 
     setAuth: (state, { payload }) => {
@@ -70,10 +69,14 @@ const authSlice = createSlice({
       state.teacher.user_lastname = payload.last_name;
       state.teacher.user_accent = payload.accent;
       state.teacher.user_from = payload.from;
-      state.teacher.user_gender = payload.gender ? (payload.gender === 1 ? "man":"woman") :( "none" );
+      state.teacher.user_gender = payload.gender
+        ? payload.gender === 1
+          ? "man"
+          : "woman"
+        : "none";
       state.teacher.user_current_location = payload.living;
       state.teacher.user_displayname = payload.number;
-      state.teacher.user_birthday = payload.birthday
+      state.teacher.user_birthday = payload.birthday;
       state.teacher.user_photo = payload.file;
       if (payload.birthday) {
         state.teacher.birthday = +new Date(payload.birthday.$d / 1000);
@@ -86,15 +89,15 @@ const authSlice = createSlice({
     },
 
     setEducation: (state, { payload }) => {
-      state.teacher.education = payload
+      state.teacher.education = payload;
       console.log(payload);
     },
 
-    setExprience: (state,{payload}) =>{
-          state.teacher.exprience = payload
+    setExprience: (state, { payload }) => {
+      state.teacher.exprience = payload;
     },
-    setCertificates:(state,{payload}) =>{
-    state.teacher.certificates = payload
+    setCertificates: (state, { payload }) => {
+      state.teacher.certificates = payload;
     },
     logout: (state) => {
       removeLocalStorage("access-token");
