@@ -1,4 +1,3 @@
-
 import { Form, Input, Select, Typography } from "antd";
 import { Primary } from "@/UI";
 import { genderOptions } from "../../constants/options";
@@ -46,7 +45,7 @@ export const StartForm = ({ onFinish }) => {
         name correctly
       </Typography>
       <Primary rounded block submit>
-        Next
+        Next 3333
       </Primary>
     </Form>
   );

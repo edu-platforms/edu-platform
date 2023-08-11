@@ -12,9 +12,9 @@ export const userSignUp = createAsyncThunk(
   async ({ option, next }, { dispatch }) => {
     try {
       dispatch(setLoading(true));
-      const { id } = await authApi.signUp(option);
-      if (id) {
-        dispatch(setId(id));
+      const response = await authApi.signUp(option);
+      if (response.status === 200) {
+        dispatch(setId(response.data.id));
         next();
       }
     } catch (error) {
@@ -96,14 +96,13 @@ export const userChangePassword = createAsyncThunk(
   }
 );
 
-
 export const userSignUpGoogle = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
     try {
       dispatch(setLoading(true));
-      const {data} = authApi.signUpWidthGoogle(params.token)
-      if(data) params.navigate('/student')
+      const { data } = authApi.signUpWidthGoogle(params.token);
+      if (data) params.navigate("/student");
     } catch (error) {
       console.log(error);
     } finally {
@@ -111,7 +110,6 @@ export const userSignUpGoogle = createAsyncThunk(
     }
   }
 );
-
 
 export const userSignInGoogle = createAsyncThunk(
   "/user-up-google",
@@ -133,7 +131,6 @@ export const userSignInGoogle = createAsyncThunk(
   }
 );
 
-
 export const userSignUpFacebook = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
@@ -149,7 +146,6 @@ export const userSignUpFacebook = createAsyncThunk(
   }
 );
 
-
 export const userSignInFacebook = createAsyncThunk(
   "/user-up-google",
   async (params, { dispatch }) => {
@@ -164,8 +160,6 @@ export const userSignInFacebook = createAsyncThunk(
     }
   }
 );
-
-
 
 export const teacherBecome = createAsyncThunk(
   "teacher/beacome",
