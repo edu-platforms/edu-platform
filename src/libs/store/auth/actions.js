@@ -8,7 +8,7 @@ import { addNotification } from '@/libs/utils/addNotification.js'
 export const userSignUp = createAsyncThunk('user/sign-up', async (params, { dispatch }) => {
   try {
     dispatch(setLoading(true))
-    const { data } = await authApi.signUp(params)
+    const { data } = await authApi.signUp(params.option)
     if (data.token) {
       setLocalStorage('access-token', data.token)
       history.push('/student')
@@ -24,7 +24,6 @@ export const userSignIn = createAsyncThunk('/user/SignIn', async (params, { disp
   try {
     dispatch(setLoading(true))
     const { data } = await authApi.signIn(params)
-    console.log(data)
     if (data.token && data.token !== null) {
       setLocalStorage('access-token', data.token)
       history.push('/student')

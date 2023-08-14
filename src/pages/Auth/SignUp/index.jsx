@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useMedia, useSteps } from 'src/libs/hooks'
-import { authSelector, setType, userResgister } from '@/libs/slices/authSlices'
+import { authSelector, userResgister } from '@/libs/slices/authSlices'
 import { steps } from 'src/libs/constants'
 import { Sign } from '@/components'
 import { Steps, Divider } from 'antd'
@@ -10,6 +10,7 @@ import { apple, google, arrowBack, facebookLogo } from '@/assets'
 import { useGoogleLogin } from '@react-oauth/google'
 import { useLogin } from 'react-facebook'
 import { getFacebookData, getGoogleData } from '@/libs/constants/providerSettings'
+import { setType } from '@/libs/store'
 
 export default function SignUp() {
   const { login } = useLogin()

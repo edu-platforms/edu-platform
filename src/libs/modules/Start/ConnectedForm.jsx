@@ -9,7 +9,6 @@ export default function ConnectedForm({ next }) {
   const { user } = useSelector(authSelector)
   const dispatch = useDispatch()
 
-
   const onFinish = (values) => {
     const option = {
       firstname: values.name,
@@ -18,7 +17,6 @@ export default function ConnectedForm({ next }) {
       whom: user.whom,
     }
     dispatch(userSignUp({ option, next }))
-
   }
 
   return <StartForm onFinish={onFinish} />
