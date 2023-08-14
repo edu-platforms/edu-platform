@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Input, Space } from "antd";
-import { payments } from "@/constants";
+import { payments } from "src/libs/constants";
 import { Wrapper, Primary } from "@/UI";
 import { Modal } from "./Modal";
 import Stripe from "./Stripe";

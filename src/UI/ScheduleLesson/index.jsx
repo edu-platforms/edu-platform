@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { schedule } from "@/assets";
 import { Wrapper, Primary } from "@/UI";
-import {useMedia} from "@/hooks";
+import {useMedia} from "src/libs/hooks";
 export default function ScheduleLesson({ text }) {
   const { isMobile } = useMedia();
   return (
