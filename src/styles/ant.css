@@ -22,3 +22,37 @@
 .fc .fc-daygrid-day.fc-day-today {
   background-color: #39b980;
 }
+
+.slick-arrow {
+  background: #39b980 !important;
+  border-radius: 8px;
+  margin: 200px 0;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.slick-arrow::before {
+  display: none;
+}
+
+.slick-prev {
+  margin-left: 150px;
+}
+
+.slick-next {
+  margin-right: 150px;
+}
+
+.slick-next::before {
+  content: '→';
+  padding: 10px !important;
+  font-size: 20px;
+  display: block;
+}
+
+.slick-prev::before {
+  content: '→';
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+}

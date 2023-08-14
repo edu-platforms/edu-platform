@@ -1,49 +1,52 @@
-import  { Fragment } from "react";
-import { useDispatch } from "react-redux";
-import { useSteps } from "@/hooks";
-import { setType } from "@/store";
-import { steps } from "@/constants";
-import { Sign } from "@/components";
-import { Steps, Divider } from "antd";
-import { SetUpForm, StartUpForm, CodeForm } from "@/modules";
-import { apple, google, arrowBack, facebookLogo } from "@/assets";
-import { userSignUpFacebook, userSignUpGoogle } from "../../../store";
-import { useMedia } from "../../../hooks";
-import { useGoogleLogin } from "@react-oauth/google";
-import { useNavigate } from "react-router-dom";
+import { Fragment } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useMedia, useSteps } from 'src/libs/hooks'
+import { authSelector, userResgister } from '@/libs/slices/authSlices'
+import { steps } from 'src/libs/constants'
+import { Sign } from '@/components'
+import { Steps, Divider } from 'antd'
+import { SetUpForm, StartUpForm } from 'src/libs/modules'
+import { apple, google, arrowBack, facebookLogo } from '@/assets'
+import { useGoogleLogin } from '@react-oauth/google'
+import { useLogin } from 'react-facebook'
+import { getFacebookData, getGoogleData } from '@/libs/constants/providerSettings'
+import { setType } from '@/libs/store'
+
 export default function SignUp() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate()
-  const { next, prev, current } = useSteps();
- const {isMobile} = useMedia()
+  const { login } = useLogin()
+  const dispatch = useDispatch()
+  const { user } = useSelector(authSelector)
+  const { next, prev, current } = useSteps()
+  const { isMobile } = useMedia()
   const handleChoose = (type) => {
-    dispatch(setType(type));
-    next();
-  };
+    dispatch(setType(type))
+    next()
+  }
 
   const authSignUpGoogle = useGoogleLogin({
-    onSuccess: async (res) => {
-      const option = {
-        token:res.access_token,
-        navigate:navigate
-      }
-      dispatch(userSignUpGoogle(option))
-    },
-    onError:(error) =>{
-      console.log(error);
-    }
-  });
-
-  const authSignUpFacebook = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
-      console.log(tokenResponse);
+      if (tokenResponse && tokenResponse.access_token) {
+        const { email, google_id, firstname } = await getGoogleData(tokenResponse.access_token)
+        dispatch(userResgister({ email, google_id, firstname, whom: user.whom }))
+      }
     },
-  });
+  })
+
+  const authSignUpFacebook = async () => {
+    const { authResponse } = await login({
+      scope: 'email',
+    })
+    const { email, facebook_id, firstname } = await getFacebookData(
+      authResponse.userID,
+      authResponse.accessToken
+    )
+    dispatch(userResgister({ email, facebook_id, firstname, whom: user.whom }))
+  }
   return (
     <Sign>
-      <div className={`sign-up-container ${isMobile ? 'px-4':''}`}>
+      <div className={`sign-up-container ${isMobile ? 'px-4' : ''}`}>
         <button
-          className={current === 0 ? "hidden" : `absolute ${isMobile ? 'right-10 absolute z-10': 'left-10'} top-[5%]`}
+          className={current === 0 ? 'hidden' : 'absolute left-10 top-[5%]'}
           onClick={() => prev()}
         >
           <img src={arrowBack} alt="Back" />
@@ -54,23 +57,25 @@ export default function SignUp() {
         <div className="flex-items-center flex-col mt-5">
           {current === 0 ? (
             <Fragment>
-              <h2 className="sign-up-title">
-                Who will be learning English on edu-platform?
-              </h2>
+              <h2 className="sign-up-title">Who will be learning English on edu-platform?</h2>
 
-              <div className={`w-full flex-center gap-x-5 mt-10 ${isMobile ? "flex-wrap gap-y-5 justify-center" : ''}`}>
+              <div
+                className={`w-full flex-center gap-x-5 mt-10 ${
+                  isMobile ? 'flex-wrap gap-y-5 justify-center' : ''
+                }`}
+              >
                 <button
                   className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
-                  onClick={() => handleChoose("me")}
+                  onClick={() => handleChoose('kid')}
                 >
-                  Me
+                  Kid
                 </button>
 
                 <button
                   className={`sign-up-btn ${isMobile ? 'w-11/12' : ''}`}
-                  onClick={() => handleChoose("child")}
+                  onClick={() => handleChoose('adult')}
                 >
-                  My Child
+                  adult
                 </button>
               </div>
             </Fragment>
@@ -102,9 +107,7 @@ export default function SignUp() {
             </Fragment>
           ) : current === 3 ? (
             <Fragment>
-              <h2 className="sign-up-title">
-                Enter the code received in your email!
-              </h2>
+              <h2 className="sign-up-title">Enter the code received in your email!</h2>
 
               <CodeForm />
             </Fragment>
@@ -112,5 +115,5 @@ export default function SignUp() {
         </div>
       </div>
     </Sign>
-  );
+  )
 }
