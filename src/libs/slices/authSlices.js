@@ -105,8 +105,9 @@ const authSlice = createSlice({
       state.isLoading = payload
     },
 
-    setType: (state, { payload }) => {
-      state.user.whom = payload
+    setType: (state, action) => {
+      state.user.whom = action.payload
+      console.log('action.payload', action.payload)
     },
 
     setLogin: (state, { payload }) => {

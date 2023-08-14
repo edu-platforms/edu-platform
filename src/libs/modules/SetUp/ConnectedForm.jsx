@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { setLogin } from '@/libs/slices/authSlices.js'
 import { SetUpForm } from './Form.jsx'
-import { userSignIn } from '../../store/index.js'
+import { setLogin, userSignIn } from '../../store/index.js'
 
 export default function ConnectedForm({ next }) {
   const dispatch = useDispatch()
