@@ -10,7 +10,7 @@ export default function Plan() {
   const onFinish = (values) => {
     localStorage.setItem("paymentType", plans[level].title);
     localStorage.setItem("paymentPrice", plans[level].price);
-    console.log("Received values of form: ", values);
+    // console.log("Received values of form: ", values);
     history.push("/payment");
   };
 
@@ -19,7 +19,9 @@ export default function Plan() {
       <div className="flex-center flex-col mb-10">
         <h2>Private 1:1 plan</h2>
 
-        <p className="text-center">Start learning English with a private tutor today!</p>
+        <p className="text-center">
+          Start learning English with a private tutor today!
+        </p>
       </div>
 
       <Form
@@ -52,26 +54,31 @@ export default function Plan() {
             <h4 className="mb-5">Pick a commitment level</h4>
 
             <ul>
-              {plans.map(({ id, title, type, price, details }) => (
-                <li
-                  key={id}
-                  className={`payment-label ${id === Number(level) ? "payment-label-active":null} flex-between`}
-                  onClick={() => setLevel(id)}
-                >
-                  <div className="flex-col flex-start">
-                    <h4>{title}</h4>
-                    <p>{details}</p>
-                  </div>
-                  <p>
-                    <span className="font-bold">${price}/</span>
-                    {type}
-                  </p>
-                </li>
-              ))}
+              {plans.map((item) => {
+                const { id, title, type, price, details } = item;
+                return (
+                  <li
+                    key={id}
+                    className={`payment-label ${
+                      id === Number(level) ? "payment-label-active" : null
+                    } flex-between`}
+                    onClick={() => setLevel(id)}
+                  >
+                    <div className="flex-col flex-start">
+                      <h4>{title}</h4>
+                      <p>{details}</p>
+                    </div>
+                    <p>
+                      <span className="font-bold">${price}/</span>
+                      {type}
+                    </p>
+                  </li>
+                );
+              })}
             </ul>
           </Wrapper>
 
-          <Primary submit className="w-full" style={{ marginTop: "1rem"}}>
+          <Primary submit className="w-full" style={{ marginTop: "1rem" }}>
             Select Plan
           </Primary>
         </div>
