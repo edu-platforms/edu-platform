@@ -11,3 +11,9 @@ export const format = (option, dateString) => {
         }
   return new Date(dateString).toLocaleDateString(undefined, options)
 }
+
+export const eventFormatLocalTime = (date) => {
+  const realDate = new Date(date)
+  const localDate = new Date(realDate).toISOString()
+  return localDate
+}

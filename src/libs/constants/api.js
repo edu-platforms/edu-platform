@@ -27,6 +27,6 @@ export const API = {
   LIBRARY_ID: '/api/library/:id',
 
   // EVENTS
-
   EVENT: '/api/event',
+  EVENT_ALL_ID: '/api/event/tutor',
 }

@@ -17,7 +17,7 @@ const setToken = (config) => {
   if (!config?.headers?.authorization) {
     const token = getLocalStorage(TOKEN)
     if (token && config.headers) {
-      config.headers.authorization = token
+      config.headers.authorization = `Bearer ${token}`
     }
   }
 
@@ -45,5 +45,5 @@ rest.interceptors.request.use(requestMapper)
  * Apply response interceptors
  */
 rest.interceptors.response.use(responseMapper, errorHandler)
-
+console.log(rest.interceptors)
 export default rest

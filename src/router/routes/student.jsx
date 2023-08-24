@@ -17,6 +17,7 @@ import {
   StudentFavorites,
   StudentSubscriptions,
 } from '@/router/lazy'
+import { StudentCalendar } from '@/pages/Student/Calendar'
 
 export const studentRoutes = (isAuth) => [
   {
@@ -59,7 +60,10 @@ export const studentRoutes = (isAuth) => [
         path: ROUTES.chat,
         element: <Chat />,
       },
-
+      {
+        path: ROUTES.calendar,
+        element: <StudentCalendar />,
+      },
       {
         path: `${ROUTES.student}/${ROUTES.dashboard}`,
         element: <StudentDashboard />,

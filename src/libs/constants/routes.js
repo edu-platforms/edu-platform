@@ -26,7 +26,7 @@ export const ROUTES = {
   live: 'live',
   schedule: 'schedule',
   completed: 'completed',
-
+  calendar: 'calendar',
   // TUTOR
   priority: 'priority',
   library: 'library',

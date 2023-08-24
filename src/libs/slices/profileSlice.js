@@ -41,7 +41,7 @@ export const profileSlice = createSlice({
       .addCase(fetchUser.pending, (state) => {
         state.status = LoadingStatus.pending
       })
-      .addCase(fetchUser.rejected, (state, action ) => {
+      .addCase(fetchUser.rejected, (state, action) => {
         state.user = null
         state.status = LoadingStatus.rejected
         state.errorMessage = action.error
