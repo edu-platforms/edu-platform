@@ -23,8 +23,8 @@ export const addPriorityHour = createAsyncThunk(
 export const getPriorityHours = createAsyncThunk(
   getPrefix('name', 'getPriorityHours'),
   async (tutorId) => {
-    const res = await rest.get(`${API.EVENT_ALL_ID}/${tutorId}`)
-    return res.data
+    const { data } = await rest.get(`${API.EVENT_ALL_ID}/${tutorId}`)
+    return data.data
   }
 )
 
@@ -37,10 +37,11 @@ const eventSlice = createSlice({
       .addCase(addPriorityHour.fulfilled, (state, action) => {
         state.priorityHours = action.payload
       })
-      .addCase(getPriorityHours.fulfilled, (state, { payload }) => {
-        state.events = payload
+      .addCase(getPriorityHours.fulfilled, (state, actions) => {
+        state.events = actions.payload
       })
   },
 })
 
+export const getMyEvents = (state) => state.event
 export default eventSlice.reducer

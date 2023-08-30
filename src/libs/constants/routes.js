@@ -34,4 +34,5 @@ export const ROUTES = {
   incoming: 'incoming',
   unassigned: 'unassigned',
   upcoming: 'upcoming',
+  reservation: 'reservations',
 }
