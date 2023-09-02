@@ -28,5 +28,7 @@ export const API = {
 
   // EVENTS
 
-  EVENT: '/api/event',
+  EVENT: '/api/event/respond',
+  TEACHER_LIST: '/api/user/success/tutor?page=1&limit=10',
+  SLOTS_LIST: `/api/event/tutor`,
 }

@@ -16,7 +16,10 @@ import {
   StudentDashboard,
   StudentFavorites,
   StudentSubscriptions,
+  TutorDetails,
 } from '@/router/lazy'
+import { CreateRoom } from '@/pages/Tutor/CreateRoom'
+import { Room } from '@/pages/Tutor/CreateRoom/Room'
 
 export const studentRoutes = (isAuth) => [
   {
@@ -58,6 +61,14 @@ export const studentRoutes = (isAuth) => [
       {
         path: ROUTES.chat,
         element: <Chat />,
+      },
+      {
+        path: ROUTES.createRoom,
+        element: <CreateRoom />,
+      },
+      {
+        path: ROUTES.room,
+        element: <Room />,
       },
 
       {

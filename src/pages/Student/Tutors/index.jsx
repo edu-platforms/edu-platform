@@ -1,7 +1,10 @@
 import React from 'react'
+import Student from '../Page'
 
 export default function Tutors() {
   return (
-    <div>Tutors</div>
+    <div>
+      <Student />
+    </div>
   )
 }

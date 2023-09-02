@@ -1,16 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Badge, Space, Avatar, Tooltip } from 'antd'
 import { Wrapper, CustomSelect } from '@/UI'
 import { useMedia } from 'src/libs/hooks'
 import { StudentMobile } from './Mobile'
 import { star, offer, timer, search, BsHeart, student, payment, publicEarth } from '@/assets'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTeachersList } from '@/libs/slices/teacherSlice'
 
 export default function Student() {
-  window.scrollTo(0, 0)
-
+  const { teachers } = useSelector((state) => state.teacher)
   const [filter, setFilter] = useState(false)
   const { isMobile, isTablet } = useMedia()
+  const dispatch = useDispatch()
+
+  window.scrollTo(0, 0)
+
+  useEffect(() => {
+    dispatch(getTeachersList())
+  }, [])
 
   return (
     <>
@@ -145,56 +153,57 @@ export default function Student() {
           )}
 
           <div className="my-10 grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
-            {[1, 2, 3].map((item, key) => (
-              <Wrapper size="small" key={key}>
-                <div className="min-h-[185px] gap-x-4">
-                  <Space className="w-full justify-between" direction="horizontal" size={[0, 7]}>
-                    <div className="flex" size={[0, 7]}>
-                      <Badge className="relative">
-                        <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
+            {!!teachers &&
+              teachers?.map((item, key) => (
+                <Wrapper size="small" key={item.id}>
+                  <div className="min-h-[185px] gap-x-4">
+                    <Space className="w-full justify-between" direction="horizontal" size={[0, 7]}>
+                      <div className="flex" size={[0, 7]}>
+                        <Badge className="relative">
+                          <Avatar src={'https://picsum.photos/id/237/200/300'} size={60} />
 
-                        <div className="avatar-active">
-                          <span className="bg-green w-[12px] h-[12px] rounded-full" />
-                        </div>
-                      </Badge>
+                          <div className="avatar-active">
+                            <span className="bg-green w-[12px] h-[12px] rounded-full" />
+                          </div>
+                        </Badge>
 
-                      <div className="ml-3">
-                        <div className="flex-between">
-                          <Link to={`/tutor/1`}>
-                            <h2>Teacher Darren</h2>
-                          </Link>
-                        </div>
+                        <div className="ml-3">
+                          <div className="flex-between">
+                            <Link to={`/tutor/tutorInfo/${item.id}`}>
+                              <h2>{!!item.firstname ? item?.firstname : 'Teacher Darren'}</h2>
+                            </Link>
+                          </div>
 
-                        <div className="flex-center gap-x-2">
-                          <img src={student} alt="Student" />
-                          <span>3,241 students</span>
+                          <div className="flex-center gap-x-2">
+                            <img src={student} alt="Student" />
+                            <span>{item?.event?.studentCount || '3,241 students'}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <Tooltip title="Favourite">
-                      <button>
-                        <BsHeart size={18} />
-                      </button>
-                    </Tooltip>
-                  </Space>
-                  <p className="line-clamp-2 my-5">
-                    Hello everyone, my name is Darren. I live in Normandy in France with my
-                    beautiful wife butdsfsd
-                  </p>
-                  <div className="flex justify-end mt-5">
-                    <div className="flex items-center gap-x-2">
-                      <span className="flex-center gap-x-2">
-                        <img src={star} alt="Rating" />
+                      <Tooltip title="Favourite">
+                        <button>
+                          <BsHeart size={18} />
+                        </button>
+                      </Tooltip>
+                    </Space>
+                    <p className="line-clamp-2 my-5">
+                      Hello everyone, my name is Darren. I live in Normandy in France with my
+                      beautiful wife butdsfsd
+                    </p>
+                    <div className="flex justify-end mt-5">
+                      <div className="flex items-center gap-x-2">
+                        <span className="flex-center gap-x-2">
+                          <img src={star} alt="Rating" />
 
-                        <strong>4.9</strong>
-                      </span>
+                          <strong>4.9</strong>
+                        </span>
 
-                      <p className="text-sm">Ratings: 545</p>
+                        <p className="text-sm">Ratings: 545</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Wrapper>
-            ))}
+                </Wrapper>
+              ))}
           </div>
 
           <button className="text-green font-bold border border-green py-3 px-14 block mx-auto rounded-full hover:opacity-70">

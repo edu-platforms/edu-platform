@@ -3,6 +3,7 @@ import authReducer from './auth/features.js'
 import appReducer from '../slices/appSlice.js'
 import profileReducer from '../slices/profileSlice.js'
 import eventReducer from '../slices/eventSlice.js'
+import teacherSlice from '../slices/teacherSlice.js'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     auth: authReducer,
     profile: profileReducer,
     event: eventReducer,
+    teacher: teacherSlice,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>
