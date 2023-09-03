@@ -90,7 +90,7 @@ export default function Details() {
     // console.log('eventObj', JSON.parse(localStorage.getItem('access-token')))
   }
 
-  const { isMobile } = useMedia()
+  const { isMobile } = useMedia() // this is test  to push changes
 
   const addZero = (number) => (number < 10 ? `0${number}` : number)
 
