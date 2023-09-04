@@ -11,6 +11,8 @@ const initialState = {
   profileLoaded: false,
   status: LoadingStatus.idle,
   isProfileLoaded: false,
+  responseMessage: '',
+  errorMessage: '',
 }
 
 export const fetchUser = createAsyncThunk(getPrefix(name, 'fetchUser'), async () => {
@@ -23,8 +25,8 @@ export const updateUser = createAsyncThunk(getPrefix(name, 'updateUser'), async 
   return response.data
 })
 
-export const createEvent = createAsyncThunk(getPrefix(name, 'createEvent'), async (data) => {
-  const response = await rest.post(API.EVENT, data)
+export const respondEvent = createAsyncThunk(getPrefix(name, 'createEvent'), async (data) => {
+  const response = await rest.post(`/api/event/respond`, data.body)
   return response.data
 })
 
@@ -57,6 +59,17 @@ export const profileSlice = createSlice({
       })
       .addCase(getMe.fulfilled, (state, { payload }) => {
         state.user = payload.data
+      })
+      .addCase(respondEvent.fulfilled, (state, action) => {
+        state.message = action.payload
+        state.status = LoadingStatus.idle
+      })
+      .addCase(respondEvent.pending, (state) => {
+        state.status = LoadingStatus.pending
+      })
+      .addCase(respondEvent.rejected, (state, action) => {
+        state.responseMessage = action.error
+        state.status = LoadingStatus.idle
       })
   },
 })

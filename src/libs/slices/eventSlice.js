@@ -15,7 +15,7 @@ const initialState = {
 export const addPriorityHour = createAsyncThunk(
   getPrefix('name', 'addPriorityHour'),
   async (option) => {
-    const response = await rest.post(API.EVENT, option)
+    const response = await rest.post(API.EVENT_ADD, option)
     return response.data
   }
 )

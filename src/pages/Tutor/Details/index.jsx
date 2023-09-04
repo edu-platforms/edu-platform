@@ -1,20 +1,136 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Tooltip, Badge, Avatar, Divider, Calendar, Pagination, Button, Row, Popover } from 'antd'
 import { BsShare, BsHeart, star, verified, arrowLeft, verticalDots } from '@/assets'
 import { Primary, Wrapper } from '@/UI'
 import { useMedia } from '../../../libs/hooks'
 import { TutorMobile } from './Mobile'
+import ModalToBookHours from './ModalToBookHours/ModalToBookHours'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getSlotList } from '@/libs/slices/teacherSlice'
+import { respondEvent } from '@/libs/slices/profileSlice'
 
 const onPanelChange = (value, mode) => {
-  console.log(value.format('YYYY-MM-DD'), mode)
+  console.log(value.format('YYYY-MM-DD'), mode, value)
 }
 
 export default function Details() {
-  window.scrollTo(0, 0)
+  const { slots } = useSelector((state) => state.teacher)
+  const { responseMessage } = useSelector((state) => state.profile)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [today, setToday] = useState('')
+  const { id } = useParams()
+  const dispatch = useDispatch()
+  // console.log(slots)
+  // window.scrollTo(0, 0)
 
-  const { isMobile } = useMedia()
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const tomorrow = (dt) => {
+    let d = new Date(dt)
+    d.setDate(d.getDate() + 1)
+
+    let year = d.getFullYear()
+    let month = String(d.getMonth() + 1)
+    let day = String(d.getDate())
+
+    month = month.length == 1 ? month.padStart('2', '0') : month
+
+    day = day.length == 1 ? day.padStart('2', '0') : day
+
+    return `${year}-${month}-${day}`
+  }
+
+  const handleSubmit = (date) => {
+    const teacherSlotObj = {
+      tutorId: id,
+      dateFrom: date.format('YYYY-MM-DD') || '',
+      dateTo: tomorrow(date.format('YYYY-MM-DD')) || '',
+      statusName: 'created',
+    }
+
+    dispatch(getSlotList(teacherSlotObj))
+    setToday(date.format('YYYY-MM-DD'))
+    openModal()
+
+    // console.log(teacherSlotObj)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  function convertUTCDateToLocalDate(date) {
+    let newDate = `${addZero(new Date(date).getHours())}:${addZero(
+      new Date(date).getMinutes()
+    )} - ${addZero(new Date(date).getHours())}:${addZero(new Date(date).getMinutes())}`
+
+    return newDate
+  }
+
+  const selectTimeSlot = (item) => {
+    const eventObj = {
+      method: 'POST',
+      headers: {
+        ContentType: 'application/json',
+        accept: '*/*',
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('access-token'))}`,
+      },
+      body: JSON.stringify({
+        event: {
+          id: item.id,
+        },
+      }),
+    }
+
+    dispatch(respondEvent(eventObj))
+
+    // console.log('eventObj', JSON.parse(localStorage.getItem('access-token')))
+  }
+
+  const { isMobile } = useMedia() // this is test  to push changes
+
+  const addZero = (number) => (number < 10 ? `0${number}` : number)
+
+  console.log(responseMessage)
+
   return (
     <>
+      <ModalToBookHours isOpen={isModalOpen} onClose={closeModal}>
+        <h2 className="text-lg font-semibold">Free slots {(' ', !!today && today)}</h2>
+        {!!responseMessage && <h3 style={{ color: 'red' }}>{responseMessage?.message}</h3>}
+
+        {slots.length > 0 ? (
+          slots?.map((item, idx) => {
+            return (
+              <div
+                key={idx}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  margin: '0.4rem 0',
+                  // border: '1px solid red',
+                }}
+              >
+                <span>
+                  {!!item?.dateFrom &&
+                    convertUTCDateToLocalDate(item?.dateFrom) + ' ' + !!item?.dateTo &&
+                    convertUTCDateToLocalDate(item?.dateTo)}
+                </span>{' '}
+                <Primary onClick={() => selectTimeSlot(item)} htmlType="button">
+                  Select
+                </Primary>
+              </div>
+            )
+          })
+        ) : (
+          <div>Teacher did not spesify avaible time slot yet</div>
+        )}
+      </ModalToBookHours>
+
       {isMobile ? (
         <TutorMobile />
       ) : (
@@ -188,7 +304,25 @@ export default function Details() {
               <h2 className="mb-3">Schedule</h2>
               <li className="my-3">Select a day</li>
               <div className="w-full border border-gray rounded-20 overflow-hidden">
-                <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                <Calendar
+                  fullscreen={false}
+                  onPanelChange={onPanelChange}
+                  onSelect={handleSubmit}
+                />
+              </div>
+
+              <div className="mt-3">
+                <Button
+                  block
+                  size="large"
+                  shape="round"
+                  type="primary"
+                  ghost
+                  htmlType="submit"
+                  className="bg-green !h-12"
+                >
+                  Schedule Lesson
+                </Button>
               </div>
             </Wrapper>
             <Wrapper className="mb-6">
@@ -255,9 +389,9 @@ export default function Details() {
               className="w-full rounded-20 h-52 mb-6"
               src="https://www.youtube.com/embed/zJ0WMaYHIoU"
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
             <Wrapper className="mb-6">
               <h2>Trial lesson</h2>

@@ -2,8 +2,10 @@ import { Navigate } from 'react-router-dom'
 import { ROUTES } from '@/libs/constants/routes'
 import { Layout } from '@/layouts'
 import {
+  StudentCourses,
   Tutor,
   TutorDashboard,
+  TutorDetails,
   TutorHistory,
   TutorIncoming,
   TutorLibrary,
@@ -41,6 +43,10 @@ export const tutorRoutes = (isAuth) => [
       {
         path: ROUTES.reservation,
         element: <TutorReservation />,
+      },
+      {
+        path: ROUTES.tutorId,
+        element: <TutorDetails />,
       },
       {
         path: `${ROUTES.tutor}/${ROUTES.dashboard}`,

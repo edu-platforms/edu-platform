@@ -11,6 +11,8 @@ export const ROUTES = {
   singleCourse: '/courses/:id',
   findTeacher: '/find-teacher',
   payment: 'payment',
+  createRoom: `createRoom`,
+  room: `room/:roomId`,
 
   // STUDENT
   plan: 'plan',
@@ -27,6 +29,8 @@ export const ROUTES = {
   schedule: 'schedule',
   completed: 'completed',
   calendar: 'calendar',
+  tutorId: 'tutorInfo/:id',
+
   // TUTOR
   priority: 'priority',
   library: 'library',

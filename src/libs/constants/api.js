@@ -27,6 +27,10 @@ export const API = {
   LIBRARY_ID: '/api/library/:id',
 
   // EVENTS
-  EVENT: '/api/event',
+  EVENT_ADD: '/api/event',
   EVENT_ALL_ID: '/api/event/tutor',
+
+  EVENT: '/api/event/respond',
+  TEACHER_LIST: '/api/user/success/tutor?page=1&limit=10',
+  SLOTS_LIST: `/api/event/tutor`,
 }

@@ -1,3 +1,7 @@
 export default function Teachers() {
-  return <div>Teachers</div>
+  return (
+    <div>
+      <h2>Teacher Profile</h2>
+    </div>
+  )
 }
