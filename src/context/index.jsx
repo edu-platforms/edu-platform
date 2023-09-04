@@ -1,24 +1,24 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react'
 
-export const ModalContext = createContext(null);
+export const ModalContext = createContext(null)
 
 export const ModalProvider = ({ children }) => {
-  const [visible, setVisible] = useState(false);
-  const [bar, setBar] = useState(false);
+  const [visible, setVisible] = useState(false)
+  const [bar, setBar] = useState(false)
 
   const handleShow = () => {
-    setVisible(true);
-  };
+    setVisible(true)
+  }
 
   const handleCancel = () => {
-    setVisible(false);
-  };
+    setVisible(false)
+  }
 
   const barShow = () => {
-    setBar(true);
+    setBar(true)
   }
   const barClose = () => {
-    setBar(false);
+    setBar(false)
   }
 
   return (
@@ -36,5 +36,5 @@ export const ModalProvider = ({ children }) => {
     >
       {children}
     </ModalContext.Provider>
-  );
-};
+  )
+}

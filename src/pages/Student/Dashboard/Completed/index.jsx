@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import { LessonCard } from "@/components";
+import React, { Fragment } from 'react'
+import { LessonCard } from '@/components'
 
 export default function Completed() {
-  return(
+  return (
     <Fragment>
       <div className="w-full">
-        <LessonCard completed={true}/>
+        <LessonCard completed={true} />
       </div>
-  </Fragment>
+    </Fragment>
   )
 }
