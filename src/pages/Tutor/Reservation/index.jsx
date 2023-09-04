@@ -23,7 +23,7 @@ export default function Priority() {
   }, [])
 
   const { events } = useSelector(getMyEvents)
-  console.log(events)
+
   const event = events?.map((el) => {
     return {
       id: el.id,
@@ -34,10 +34,16 @@ export default function Priority() {
   })
 
   const handleEventClick = (event) => {
-    console.log(event)
     const { start, end } = event
     const startDate = eventFormatLocalTime(start)
     const endDate = eventFormatLocalTime(end)
+    console.log(startDate)
+    const utcDate = new Date(startDate)
+    const localDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset());
+    const funcDate = eventTimeCalendarFormat(startDate)
+    console.log('loc: '+localDate)
+    console.log('fuc: '+funcDate)
+
     const date = {
       start: startDate,
       end: endDate,
@@ -77,8 +83,9 @@ export default function Priority() {
           startAccessor="start"
           endAccessor="end"
           step={15}
-          timeslots={2}
+          // timeslots={2}
           defaultView="week"
+          views={['month', 'week', 'day']}
           eventPropGetter={eventStyleGetter}
           selectable={true}
           onSelectSlot={handleEventClick}

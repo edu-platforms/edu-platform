@@ -24,28 +24,30 @@ export default function Priority() {
 
   const { events } = useSelector(getMyEvents)
 
-  console.log(moment(events[0]?.dateFrom).format('MM-DD-YYYY mm:hh'))
-
   const event = events?.map((el) => {
     return {
       id: el.id,
-      start: new Date(el?.dateFrom),
-      end: new Date(el?.dateTo),
+      start: eventTimeCalendarFormat(el?.dateFrom),
+      end: eventTimeCalendarFormat(el?.dateTo),
       title: el.teacher.firstname,
     }
   })
 
   const handleEventClick = (event) => {
-    console.log(event)
+    const nowDate = new Date()
     const { start, end } = event
-    const startDate = eventFormatLocalTime(start)
-    const endDate = eventFormatLocalTime(end)
-    const date = {
-      start: startDate,
-      end: endDate,
+    if (new Date(start) < nowDate) {
+      console.log("vaqt o'tti")
+    } else {
+      const startDate = eventFormatLocalTime(start)
+      const endDate = eventFormatLocalTime(end)
+      const date = {
+        start: startDate,
+        end: endDate,
+      }
+      setTime(date)
+      show()
     }
-    setTime(date)
-    show()
   }
 
   const eventStyleGetter = () => {
@@ -79,6 +81,8 @@ export default function Priority() {
           endAccessor="end"
           step={30}
           // timeslots={2}
+          min={new Date(0, 0, 0, 0, 0)}
+          max={new Date(0, 0, 0, 23, 59)}
           defaultView="week"
           eventPropGetter={eventStyleGetter}
           selectable={true}

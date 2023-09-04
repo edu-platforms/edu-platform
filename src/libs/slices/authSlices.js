@@ -52,10 +52,11 @@ export const login = createAsyncThunk(getPrefix(name, 'login'), async () => {})
 export const userLogin = createAsyncThunk(getPrefix(name, 'userLogin'), async (option) => {
   try {
     const { data } = await rest.post(API.CLIENT_LOGIN, option)
+    console.log('ok')
     if (data?.data?.token) {
       setLocalStorage('access-token', data?.data?.token)
       if (data.data.role === 'tutor') {
-        history.push('/tutor')
+        history.push('/tutor/dashboard/incoming')
       } else {
         history.push('/student')
       }

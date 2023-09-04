@@ -14,17 +14,19 @@ export const format = (option, dateString) => {
 
 export const eventFormatLocalTime = (date) => {
   const localDate = new Date(date).toISOString()
-  console.log(localDate)
   return localDate
 }
 
 export const eventTimeCalendarFormat = (date) => {
-  const newData = new Date(date)
-  return new Date(
-    newData.getFullYear(),
-    newData.getMonth() + 1,
-    newData.getDay(),
-    newData.getHours(),
-    newData.getMinutes()
-  )
+  const utcDate = new Date(date)
+  const localDate = new Date(utcDate.getTime() + utcDate.getTimezoneOffset())
+  // return new Date(
+  //   localDate.getFullYear(),
+  //   localDate.getMonth()+1,
+  //   localDate.getDay(),
+  //   localDate.getHours(),
+  //   localDate.getMinutes(),
+  //   localDate.getSeconds() + 1
+  // )
+  return localDate
 }

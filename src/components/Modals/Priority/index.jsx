@@ -16,6 +16,7 @@ export default function PriorityModal({ close, time }) {
   const from = new Date(time?.start)
   const to = new Date(time?.end)
 
+
   return (
     <Modal className="!w-[600px]" onCancel={close}>
       <div className="w-full flex flex-col justify-around items-center">
@@ -23,7 +24,7 @@ export default function PriorityModal({ close, time }) {
         <p className="text-sm font-medium">
           <span className="text-sm font-bold text-green-500 mr-2"> From:</span>{' '}
           {` ${from.getFullYear()}-${
-            from.getMonth() > 10 ? from.getMonth() : '0' + from.getMonth()
+            from.getMonth() > 10 ? from.getMonth() + 1 : '0' + (from.getMonth() + 1)
           }-${from.getDay() > 10 ? from.getDay() : '0' + from.getDay()} `}
           |{' '}
           <span>{` ${from.getHours() > 10 ? from.getHours() : '0' + from.getHours()} : ${
@@ -32,9 +33,9 @@ export default function PriorityModal({ close, time }) {
         </p>
         <p className="text-sm font-medium">
           <span className="text-sm font-bold text-green-500 mr-2"> To:</span>
-          {` ${to.getFullYear()}-${to.getMonth() > 10 ? to.getMonth() : '0' + to.getMonth()}-${
-            to.getDay() > 10 ? to.getDay() : '0' + to.getDay()
-          }`}{' '}
+          {` ${to.getFullYear()}-${
+            to.getMonth() > 10 ? to.getMonth() + 1 : '0' + (to.getMonth() + 1)
+          }-${to.getDay() > 10 ? to.getDay() : '0' + to.getDay()}`}{' '}
           |{' '}
           <span>{` ${to.getHours() > 10 ? to.getHours() : '0' + to.getHours()} : ${
             to.getMinutes() > 10 ? to.getMinutes() : '0' + to.getMinutes()
