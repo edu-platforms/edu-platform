@@ -29,7 +29,9 @@ export const API = {
   // EVENTS
   EVENT_ADD: '/api/event',
   EVENT_ALL_ID: '/api/event/tutor',
-
+  GET_RESPOND: '/api/event/tutor',
+  SET_BOCKED: 'api/event/bocked',
+  EVENT_CANCEL: 'api/event/cancel',
   EVENT: '/api/event/respond',
   TEACHER_LIST: '/api/user/success/tutor?page=1&limit=10',
   SLOTS_LIST: `/api/event/tutor`,

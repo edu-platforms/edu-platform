@@ -18,12 +18,9 @@ import {
   StudentSubscriptions,
   TutorDetails,
 } from '@/router/lazy'
-<<<<<<< HEAD
 import { StudentCalendar } from '@/pages/Student/Calendar'
-=======
 import { CreateRoom } from '@/pages/Tutor/CreateRoom'
 import { Room } from '@/pages/Tutor/CreateRoom/Room'
->>>>>>> 912234b0758d6700f04803b3ff79fbf64908eef6
 
 export const studentRoutes = (isAuth) => [
   {
@@ -67,11 +64,10 @@ export const studentRoutes = (isAuth) => [
         element: <Chat />,
       },
       {
-<<<<<<< HEAD
         path: ROUTES.calendar,
         element: <StudentCalendar />,
       },
-=======
+      {
         path: ROUTES.createRoom,
         element: <CreateRoom />,
       },
@@ -80,7 +76,6 @@ export const studentRoutes = (isAuth) => [
         element: <Room />,
       },
 
->>>>>>> 912234b0758d6700f04803b3ff79fbf64908eef6
       {
         path: `${ROUTES.student}/${ROUTES.dashboard}`,
         element: <StudentDashboard />,

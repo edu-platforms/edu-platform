@@ -5,6 +5,7 @@ import CertificatesModal from './Certificates'
 import MobileNavbar from './Navbar'
 import AccountModal from './Account'
 import PriorityModal from './Priority'
+import ReservationModal from './Reservation'
 
 export {
   LibraryModal,
@@ -14,4 +15,5 @@ export {
   MobileNavbar,
   AccountModal,
   PriorityModal,
+  ReservationModal,
 }

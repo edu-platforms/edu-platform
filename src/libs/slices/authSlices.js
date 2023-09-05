@@ -52,7 +52,7 @@ export const login = createAsyncThunk(getPrefix(name, 'login'), async () => {})
 export const userLogin = createAsyncThunk(getPrefix(name, 'userLogin'), async (option) => {
   try {
     const { data } = await rest.post(API.CLIENT_LOGIN, option)
-    console.log('ok')
+
     if (data?.data?.token) {
       setLocalStorage('access-token', data?.data?.token)
       if (data.data.role === 'tutor') {
@@ -184,8 +184,8 @@ const authSlice = createSlice({
       .addCase(userResgister.fulfilled, (state) => {
         state.isLoading = false
       })
-      .addCase(userLogin.fulfilled, async (state, action) => {
-        console.log(action)
+      .addCase(userLogin.fulfilled, async (state, { payload }) => {
+        console.log(payload)
         state.user = payload
       })
   },
