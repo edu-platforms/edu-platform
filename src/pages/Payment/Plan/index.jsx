@@ -1,27 +1,25 @@
-import React, { useState } from "react";
-import { Wrapper, Primary } from "@/UI";
-import { history } from "src/libs/utils";
-import { Select, Form } from "antd";
-import { plans, timeOptions, dayOptions } from "src/libs/constants";
+import React, { useState } from 'react'
+import { Wrapper, Primary } from '@/UI'
+import { history } from 'src/libs/utils'
+import { Select, Form } from 'antd'
+import { plans, timeOptions, dayOptions } from 'src/libs/constants'
 
 export default function Plan() {
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState(0)
 
   const onFinish = (values) => {
-    localStorage.setItem("paymentType", plans[level].title);
-    localStorage.setItem("paymentPrice", plans[level].price);
+    localStorage.setItem('paymentType', plans[level].title)
+    localStorage.setItem('paymentPrice', plans[level].price)
     // console.log("Received values of form: ", values);
-    history.push("/payment");
-  };
+    history.push('/payment')
+  }
 
   return (
     <>
       <div className="flex-center flex-col mb-10">
         <h2>Private 1:1 plan</h2>
 
-        <p className="text-center">
-          Start learning English with a private tutor today!
-        </p>
+        <p className="text-center">Start learning English with a private tutor today!</p>
       </div>
 
       <Form
@@ -35,7 +33,7 @@ export default function Plan() {
           <Form.Item
             name="time"
             initialValue={0}
-            rules={[{ required: true, message: "Please select minutes!" }]}
+            rules={[{ required: true, message: 'Please select minutes!' }]}
           >
             <Select options={timeOptions} />
           </Form.Item>
@@ -43,7 +41,7 @@ export default function Plan() {
           <Form.Item
             name="days"
             initialValue={0}
-            rules={[{ required: true, message: "Please select days!" }]}
+            rules={[{ required: true, message: 'Please select days!' }]}
           >
             <Select options={dayOptions} />
           </Form.Item>
@@ -55,12 +53,12 @@ export default function Plan() {
 
             <ul>
               {plans.map((item) => {
-                const { id, title, type, price, details } = item;
+                const { id, title, type, price, details } = item
                 return (
                   <li
                     key={id}
                     className={`payment-label ${
-                      id === Number(level) ? "payment-label-active" : null
+                      id === Number(level) ? 'payment-label-active' : null
                     } flex-between`}
                     onClick={() => setLevel(id)}
                   >
@@ -73,16 +71,16 @@ export default function Plan() {
                       {type}
                     </p>
                   </li>
-                );
+                )
               })}
             </ul>
           </Wrapper>
 
-          <Primary submit className="w-full" style={{ marginTop: "1rem" }}>
+          <Primary submit className="w-full" style={{ marginTop: '1rem' }}>
             Select Plan
           </Primary>
         </div>
       </Form>
     </>
-  );
+  )
 }

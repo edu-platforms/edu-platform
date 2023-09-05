@@ -30,6 +30,11 @@ export const respondEvent = createAsyncThunk(getPrefix(name, 'createEvent'), asy
   return response.data
 })
 
+export const getMe = createAsyncThunk(getPrefix(name, 'getMe'), async () => {
+  const response = await rest.get(API.ME)
+  return response.data
+})
+
 export const profileSlice = createSlice({
   name,
   initialState,
@@ -52,6 +57,9 @@ export const profileSlice = createSlice({
         state.user = action.payload
         state.status = LoadingStatus.idle
       })
+      .addCase(getMe.fulfilled, (state, { payload }) => {
+        state.user = payload.data
+      })
       .addCase(respondEvent.fulfilled, (state, action) => {
         state.message = action.payload
         state.status = LoadingStatus.idle
@@ -66,6 +74,6 @@ export const profileSlice = createSlice({
   },
 })
 
-const getUserId = (state) => state.profile.user.id
+export const getMeUser = (state) => state.profile
 
 export default profileSlice.reducer
