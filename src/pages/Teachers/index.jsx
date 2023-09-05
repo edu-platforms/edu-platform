@@ -1,7 +1,7 @@
-import React from 'react'
-
 export default function Teachers() {
   return (
-    <div>Teachers</div>
+    <div>
+      <h2>Teacher Profile</h2>
+    </div>
   )
 }

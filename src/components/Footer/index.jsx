@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { facebook, telegram, appStore, instagram, playMarket } from "@/assets";
-import { useMedia } from '@/hooks';
+import { useMedia } from 'src/libs/hooks';
 // import FooterMobile from './Mobile';
 import { FooterMobile } from './Mobile';
 
