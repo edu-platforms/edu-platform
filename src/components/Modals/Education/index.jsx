@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import { Modal, Primary } from "@/UI";
-import { Button, Form, Input, Select, Checkbox, DatePicker } from "antd";
-import { useDispatch } from "react-redux";
-import { setEducation } from "@/store";
+import { useState } from 'react'
+import { Modal, Primary } from '@/UI'
+import { Button, Form, Input, Select, Checkbox, DatePicker } from 'antd'
+import { useDispatch } from 'react-redux'
+import { setEducation } from '@/libs/slices/authSlices'
 
 export default function EducationModal({ close }) {
-  const [until, setUntil] = useState(false);
-  const [form] = Form.useForm();
-  const dispatch = useDispatch();
+  const [until, setUntil] = useState(false)
+  const [form] = Form.useForm()
+  const dispatch = useDispatch()
 
   const handleFinishForm = (values) => {
-    dispatch(setEducation(values?.education));
-    close();
-  };
+    dispatch(setEducation(values?.education))
+    close()
+  }
 
   const handleCancel = () => {
-    form.resetFields();
-    close();
-  };
+    form.resetFields()
+    close()
+  }
 
   const onChange = (e) => {
-    setUntil(!until);
-    console.log(`checked = ${e.target.checked}`);
-  };
+    setUntil(!until)
+    console.log(`checked = ${e.target.checked}`)
+  }
 
   return (
     <Modal className="!w-[600px]" onCancel={handleCancel}>
@@ -36,11 +36,11 @@ export default function EducationModal({ close }) {
                 <div key={key} className="border-gray-200 border-b mb-5">
                   <div className="w-full flex items-start gap-x-4">
                     <Form.Item
-                      name={[name, "edu_univercity_name"]}
+                      name={[name, 'edu_univercity_name']}
                       rules={[
                         {
                           required: true,
-                          message: "Please enter your university!",
+                          message: 'Please enter your university!',
                         },
                       ]}
                       className="w-2/3"
@@ -50,7 +50,7 @@ export default function EducationModal({ close }) {
                     </Form.Item>
 
                     <Form.Item
-                      name={[name, "degree"]}
+                      name={[name, 'degree']}
                       // rules={[{ required: true }]}
                       className="w-1/3"
                       {...restField}
@@ -62,20 +62,15 @@ export default function EducationModal({ close }) {
                   <div className="w-full grid grid-cols-3 items-center">
                     <Form.Item
                       className="w-full"
-                      name={[name, "edu_from"]}
-                      rules={[
-                        { required: true, message: "Please enter your date!" },
-                      ]}
+                      name={[name, 'edu_from']}
+                      rules={[{ required: true, message: 'Please enter your date!' }]}
                       {...restField}
                     >
-                      <DatePicker
-                        placeholder="From date"
-                        className="p-2 w-11/12"
-                      />
+                      <DatePicker placeholder="From date" className="p-2 w-11/12" />
                     </Form.Item>
                     <Form.Item
                       className="w-full"
-                      name={[name, "edu_to"]}
+                      name={[name, 'edu_to']}
                       rules={[{ required: false }]}
                       {...restField}
                     >
@@ -93,10 +88,7 @@ export default function EducationModal({ close }) {
                     </Form.Item>
                   </div>
                   <div className="flex justify-end">
-                    <Button
-                      className="border-none text-[#D73604]"
-                      onClick={() => remove(name)}
-                    >
+                    <Button className="border-none text-[#D73604]" onClick={() => remove(name)}>
                       Discard
                     </Button>
                   </div>
@@ -111,11 +103,7 @@ export default function EducationModal({ close }) {
         </Form.List>
 
         <div className="flex justify-end gap-x-4">
-          <button
-            type="button"
-            className="text-green"
-            onClick={() => handleCancel()}
-          >
+          <button type="button" className="text-green" onClick={() => handleCancel()}>
             Cancel
           </button>
 
@@ -123,5 +111,5 @@ export default function EducationModal({ close }) {
         </div>
       </Form>
     </Modal>
-  );
+  )
 }

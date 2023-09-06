@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["src/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "lib": ["es6", "es2018", "esnext", "dom", "dom.iterable"],
-    "noEmit": true,
+    "noEmit": true
   },
   "watchOptions": {
     "watchFile": "useFsEvents",
@@ -27,10 +27,10 @@
     "fallbackPolling": "dynamicPriority"
   },
   "include": [
-    "src",
+    "src"
   ],
   "exclude": [
     "node_modules",
-    "dist",
+    "dist"
   ]
 }

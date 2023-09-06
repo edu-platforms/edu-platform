@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Input, Space } from "antd";
-import { payments } from "@/constants";
+import { payments } from "src/libs/constants";
 import { Wrapper, Primary } from "@/UI";
+import { Modal } from "./Modal";
+import Stripe from "./Stripe";
+// PaymentForm.jsx bu file ni ismi PaymentForm.jsx
 
 export default function Purchase() {
   const [paymentId, setPaymentId] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   function getMethod() {
     localStorage.setItem("payment_method", payments[paymentId].title);
+    openModal();
+    // console.log(payments[paymentId]);
   }
+
+  // useEffect(() => {
+  //   let currentPaymentPlan = payments.find(
+  //     (item) => item.id === Number(paymentId)
+  //   );
+  //   localStorage.setItem(
+  //     "currentPaymentPlan",
+  //     JSON.stringify(currentPaymentPlan)
+  //   );
+
+  //   console.log(currentPaymentPlan);
+  // }, [paymentId]);
 
   return (
     <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
@@ -30,17 +56,21 @@ export default function Purchase() {
             {payments.map(({ id, title, src }) => (
               <div
                 key={id}
-                className={`payment-label ${id === Number(paymentId) ? "payment-label-active" : null} flex-between`}
+                className={`payment-label ${
+                  id === Number(paymentId) ? "payment-label-active" : null
+                } flex-between`}
                 onClick={() => setPaymentId(id)}
               >
-
                 <div className="flex-items-center">
                   <img src={src} alt={title} />
                   <p className="ml-5 font-semibold">{title}</p>
                 </div>
 
-                <div className="paymentRadio"><li className={id === Number(paymentId) ? "bg-green" : null}></li></div>
-
+                <div className="paymentRadio">
+                  <li
+                    className={id === Number(paymentId) ? "bg-green" : null}
+                  ></li>
+                </div>
               </div>
             ))}
           </ul>
@@ -87,12 +117,19 @@ export default function Purchase() {
           <div className="w-full flex-between bg-gray-50 p-5 rounded-10">
             <h4 className="xl:text-xl text-base">Total due today (in USD)</h4>
 
-            <span className="text-green-500 font-bold xl:text-xl text-base">$240.30</span>
+            <span className="text-green-500 font-bold xl:text-xl text-base">
+              ${localStorage.getItem("paymentPrice")}
+            </span>
           </div>
         </Wrapper>
 
-        <Primary className="w-full" onClick={getMethod}>Purchase</Primary>
+        <Primary className="w-full" onClick={getMethod}>
+          Purchase
+        </Primary>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Stripe />
+      </Modal>
     </div>
   );
 }

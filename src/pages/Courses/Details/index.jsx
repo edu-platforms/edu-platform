@@ -5,7 +5,7 @@ import { useParams } from "react-router"
 import { CourseCard } from "@/components";
 import { arrowCources } from '@/assets';
 import { Primary, Secondary } from '@/UI';
-import { useMedia } from '@/hooks';
+import { useMedia } from 'src/libs/hooks';
 
 export default function Details({ courceLevel = 'Beginner' }) {
   const { id } = useParams()
